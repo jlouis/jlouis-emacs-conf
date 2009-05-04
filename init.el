@@ -26,6 +26,7 @@
 
 ;;; Code:
 (setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 (defconst *emacs-config-dir* "~/.emacs.d/configs/" "")
 (defun load-cfg-files (files)
