@@ -20,22 +20,28 @@
 
 ;;; Commentary:
 
+;; Get up and running, set custom to something else, and set up load paths
+;; for the rest of the system. Then proceed to load each configuration file
+;; for each module installed in emacs via load-cfg-files.
+
 ;;; Code:
+(setq custom-file "~/.emacs.d/custom.el")
+
+(defconst *emacs-config-dir* "~/.emacs.d/configs/" "")
 (defun load-cfg-files (files)
   (dolist (f files)
     (load (expand-file-name
-	   (concat emacs-config-dir f)))
+	   (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" file)))
 
 (defun extend-load-path (path)
   (setq load-path (cons (expand-file-name path) load-path)))
 
-(add-to-list 'load-path "~/.emacs.d/vendor")
+(extend-load-path "~/.emacs.d/vendor")
+(extend-load-path "~/.emacs.d")
+;; Get vendor stuff loaded as well
 (progn (cd "~/.emacs.d/vendor")
        (normal-top-level-add-subdirs-to-load-path))
-
-(defconst emacs-config-dir "~/.emacs.d/configs/" "")
-(setq load-path (cons "~/.emacs.d" load-path))
 
 (load-cfg-files '("global"
 		  "local-site"
@@ -57,7 +63,5 @@
 		  "dpaste-setup"
 		  "gist-setup"
 		  "browse-kill-ring-setup"))
-
-(setq custom-file "~/.emacs.d/custom.el")
 
 ;;; init.el ends here
