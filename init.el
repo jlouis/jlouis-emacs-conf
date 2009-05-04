@@ -44,7 +44,6 @@
        (normal-top-level-add-subdirs-to-load-path))
 
 (load-cfg-files '("global"
-		  "local-site"
 		  "c-mode-setup"
 		  "color-theme-setup"
 		  "diredx-setup"
