@@ -15,9 +15,14 @@
  '(current-language-environment "English")
  '(desktop-enable t)
  '(dired-dwim-target t)
+ '(display-time-mode t)
  '(ecb-options-version "2.32")
  '(ecb-source-path (quote ("/home/jlouis/hacking")))
+ '(global-auto-revert-mode t)
  '(global-font-lock-mode t nil (font-lock))
+ '(global-visual-line-mode nil)
+ '(global-whitespace-mode nil)
+ '(global-whitespace-newline-mode t)
  '(haskell-program-name "ghci")
  '(indicate-empty-lines t)
  '(js2-basic-offset 4)
@@ -25,8 +30,10 @@
  '(quack-fontify-style (quote emacs))
  '(safe-local-variable-values (quote ((Syntax . Common-lisp))))
  '(scheme-program-name "scheme48")
+ '(shadow-noquery t)
  '(show-paren-mode t nil (paren))
  '(show-trailing-whitespace t)
+ '(size-indication-mode t)
  '(slime-startup-animation nil)
  '(sml-compile-command "CM.make \"sources.cm\"")
  '(sml-indent-args 2)
@@ -35,3 +42,9 @@
  '(speedbar-show-unknown-files t)
  '(user-mail-address "jesper.louis.andersen@gmail.com")
  '(visible-bell t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )

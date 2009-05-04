@@ -23,7 +23,10 @@
 ;; Get up and running, set custom to something else, and set up load paths
 ;; for the rest of the system. Then proceed to load each configuration file
 ;; for each module installed in emacs via load-cfg-files.
-
+;;
+;; TODO:
+;;  ffap support
+;;
 ;;; Code:
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
