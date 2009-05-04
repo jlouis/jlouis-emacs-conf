@@ -20,7 +20,7 @@ prefix=/usr/local
 lispdir = $(prefix)/share/emacs/site-lisp
 
 # Where info files go.
-infodir = $(prefix)/info
+infodir = $(prefix)/share/info
 
 ##----------------------------------------------------------------------
 ## YOU MAY NEED TO EDIT THESE
@@ -31,7 +31,7 @@ infodir = $(prefix)/info
 # BATCH=$(EMACS) -batch -q -eval "(add-to-list (quote load-path) \".\")"
 
 BATCH=$(EMACS) -batch -q -eval                             \
- "(progn (add-to-list (quote load-path) \".\")             \
+ "(progn (add-to-list (quote load-path) (expand-file-name \"./lisp/\")) \
         (add-to-list (quote load-path) \"$(lispdir)\"))"
 
 # Specify the byte-compiler for compiling org-mode files
@@ -49,47 +49,92 @@ MAKEINFO = makeinfo
 # How to create the HTML file
 TEXI2HTML = makeinfo --html --number-sections
 
-# How to move the byte compiled files to their destination.  
-MV = mv
-
-# How to copy the lisp files to their distination.
+# How to copy the lisp files and elc files to their distination.
 CP = cp -p
+
+# Name of the program to install info files
+INSTALL_INFO=install-info
 
 ##----------------------------------------------------------------------
 ##  BELOW THIS LINE ON YOUR OWN RISK!
 ##----------------------------------------------------------------------
 
 # The following variables need to be defined by the maintainer
-LISPFILES0 = org.el org-publish.el org-mouse.el org-export-latex.el \
-	     org-mac-message.el org-irc.el
-LISPFILES  = $(LISPFILES0) org-install.el 
+LISPF      = 	org.el			\
+		org-agenda.el		\
+		org-ascii.el		\
+	     	org-attach.el		\
+	     	org-archive.el		\
+		org-bbdb.el		\
+		org-bibtex.el		\
+	     	org-clock.el		\
+	     	org-colview.el		\
+	     	org-colview-xemacs.el	\
+	     	org-compat.el		\
+		org-exp.el		\
+		org-docbook.el		\
+		org-faces.el		\
+		org-feed.el		\
+		org-footnote.el		\
+		org-gnus.el		\
+		org-html.el		\
+		org-icalendar.el	\
+		org-id.el		\
+		org-info.el		\
+		org-inlinetask.el	\
+		org-jsinfo.el		\
+		org-irc.el		\
+		org-latex.el		\
+		org-list.el		\
+		org-mac-message.el	\
+	     	org-macs.el		\
+		org-mew.el              \
+		org-mhe.el		\
+		org-mouse.el		\
+		org-publish.el		\
+		org-plot.el		\
+		org-protocol.el		\
+		org-remember.el		\
+		org-rmail.el		\
+		org-table.el		\
+		org-timer.el		\
+		org-vm.el		\
+		org-w3m.el              \
+		org-wl.el		\
+		org-xoxo.el
+
+LISPFILES0 = $(LISPF:%=lisp/%)
+LISPFILES  = $(LISPFILES0) lisp/org-install.el
+ELCFILES0  = $(LISPFILES0:.el=.elc)
 ELCFILES   = $(LISPFILES:.el=.elc)
-DOCFILES   = org.texi org.pdf org
-CARDFILES  = orgcard.tex orgcard.pdf orgcard_letter.pdf
-TEXIFILES  = org.texi
-INFOFILES  = org
-HG_RELEASES = ../org-mode-all-releases-hg/
+DOCFILES   = doc/org.texi doc/org.pdf doc/org doc/dir doc/.nosearch
+CARDFILES  = doc/orgcard.tex doc/orgcard.pdf doc/orgcard_letter.pdf
+TEXIFILES  = doc/org.texi
+INFOFILES  = doc/org
 
 
 .SUFFIXES: .el .elc .texi
 SHELL = /bin/sh
 
-DISTFILES=  README ${LISPFILES} ${DOCFILES} ${CARDFILES} \
-	Makefile dir ChangeLog request-assign-future.txt \
-	CONTRIB
+# Additional distribution files
+DISTFILES_extra=  Makefile ChangeLog request-assign-future.txt contrib
 DISTFILES_xemacs=  xemacs/noutline.el xemacs/ps-print-invisible.el xemacs/README
 
-all:	$(ELCFILES)
+default: $(ELCFILES)
+
+all:	$(ELCFILES) $(INFOFILES)
+
+compile: $(ELCFILES0)
 
 install: install-lisp
 
-doc: org.html org.pdf orgcard.pdf orgcard_letter.pdf
+doc: doc/org.html doc/org.pdf doc/orgcard.pdf doc/orgcard_letter.pdf
 
 p:
-	make pdf && open org.pdf
+	make pdf && open doc/org.pdf
 
 c:
-	make card && gv orgcard.ps
+	make card && gv doc/orgcard.ps
 
 install-lisp: $(LISPFILES) $(ELCFILES)
 	if [ ! -d $(lispdir) ]; then $(MKDIR) $(lispdir); else true; fi ;
@@ -99,137 +144,160 @@ install-lisp: $(LISPFILES) $(ELCFILES)
 install-info: $(INFOFILES)
 	if [ ! -d $(infodir) ]; then $(MKDIR) $(infodir); else true; fi ;
 	$(CP) $(INFOFILES) $(infodir)
+	$(INSTALL_INFO) --info-file=$(INFOFILES) --info-dir=$(infodir)
+
+install-info-debian: $(INFOFILES)
+	$(INSTALL_INFO) --infodir=$(infodir) $(INFOFILES)
 
 install-noutline: xemacs/noutline.elc
 	if [ ! -d $(lispdir) ]; then $(MKDIR) $(lispdir); else true; fi ;
 	$(CP) xemacs/noutline.el xemacs/noutline.elc $(lispdir)
 
-org-install.el: $(LISPFILES0) Makefile
+autoloads: lisp/org-install.el
+
+lisp/org-install.el: $(LISPFILES0) Makefile
 	$(BATCH) --eval "(require 'autoload)" \
 		--eval '(find-file "org-install.el")'  \
 		--eval '(erase-buffer)' \
-		--eval '(mapc (lambda (x) (generate-file-autoloads (symbol-name x))) (quote ($(LISPFILES))))' \
+		--eval '(mapc (lambda (x) (generate-file-autoloads (symbol-name x))) (quote ($(LISPFILES0))))' \
 		--eval '(insert "\n(provide (quote org-install))\n")' \
 		--eval '(save-buffer)'
-
-org.elc:		org.el
-
-org-publish.elc:	org-publish.el
-
-org-install.elc:	org-install.el
+	mv org-install.el lisp
 
 xemacs/noutline.elc: xemacs/noutline.el
 
-org:	org.texi
-	$(MAKEINFO) --no-split org.texi -o org
+doc/org: doc/org.texi
+	(cd doc; $(MAKEINFO) --no-split org.texi -o org)
 
-org.pdf: org.texi
-	$(TEXI2PDF) org.texi
+doc/org.pdf: doc/org.texi
+	(cd doc; $(TEXI2PDF) org.texi)
 
-org.html: org.texi
-	$(TEXI2HTML) --no-split -o org.html org.texi
+doc/org.html: doc/org.texi
+	(cd doc; $(TEXI2HTML) --no-split -o org.html org.texi)
+	UTILITIES/manfull.pl doc/org.html
 
-orgcard.dvi: orgcard.tex
-	tex orgcard.tex
+doc/orgcard.dvi: doc/orgcard.tex
+	(cd doc; tex orgcard.tex)
 
-orgcard.pdf: orgcard.dvi
-	dvips -q -f -t landscape orgcard.dvi | gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=orgcard.pdf -c .setpdfwrite -
+doc/orgcard.pdf: doc/orgcard.dvi
+	dvips -q -f -t landscape doc/orgcard.dvi | gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=doc/orgcard.pdf -c .setpdfwrite -
 
-orgcard.ps: orgcard.dvi
-	dvips -t landscape -o orgcard.ps orgcard.dvi 
+doc/orgcard.ps: doc/orgcard.dvi
+	dvips -t landscape -o doc/orgcard.ps doc/orgcard.dvi 
 
-orgcard_letter.dvi: orgcard.tex
-	perl -pe 's/letterpaper=0/letterpaper=1/' orgcard.tex > orgcard_letter.tex
-	tex orgcard_letter.tex
+doc/orgcard_letter.dvi: doc/orgcard.tex
+	perl -pe 's/letterpaper=0/letterpaper=1/' doc/orgcard.tex > doc/orgcard_letter.tex
+	(cd doc; tex orgcard_letter.tex)
 
-orgcard_letter.pdf: orgcard_letter.dvi
-	dvips -q -f -t landscape orgcard_letter.dvi | gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=orgcard_letter.pdf -c .setpdfwrite -
+doc/orgcard_letter.pdf: doc/orgcard_letter.dvi
+	dvips -q -f -t landscape doc/orgcard_letter.dvi | gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=doc/orgcard_letter.pdf -c .setpdfwrite -
 
-orgcard_letter.ps: orgcard_letter.dvi
-	dvips -t landscape -o orgcard_letter.ps orgcard_letter.dvi 
+doc/orgcard_letter.ps: doc/orgcard_letter.dvi
+	dvips -t landscape -o doc/orgcard_letter.ps doc/orgcard_letter.dvi 
 
 # Below here are special targets for maintenance only
 
-webfiles:
-	(cd ORGWEBPAGE; emacs -batch -l ~/.emacs index.org -f org-publish-current-project)
+updateweb:
+	ssh cdominik@caprisun.dreamhost.com 'pull-worg-org.sh && publish-worg-org.sh'
 
-web:
-	make webfiles
-	(cd ORGWEBPAGE/tmp; lftp -f ../../../org-mode-proprietary/ftp_upload_website)
+html: doc/org.html
 
-html: org.html
+html_manual: doc/org.texi
+	rm -rf doc/manual
+	mkdir doc/manual
+	$(TEXI2HTML) -o doc/manual doc/org.texi
+	UTILITIES/mansplit.pl doc/manual/*.html
 
-html_split: org.texi
-	rm -rf manual
-	mkdir manual
-	$(TEXI2HTML) -o manual org.texi
+info:	doc/org
 
-info:	
-	$(MAKEINFO) --no-split org.texi -o org
+pdf:	doc/org.pdf
 
-pdf:	org.pdf
-
-card:	orgcard.pdf orgcard.ps orgcard_letter.pdf orgcard_letter.ps
+card:	doc/orgcard.pdf doc/orgcard.ps doc/orgcard_letter.pdf doc/orgcard_letter.ps
 
 distfile:
 	@if [ "X$(TAG)" = "X" ]; then echo "*** No tag ***"; exit 1; fi
-	touch org.texi orgcard.tex
+	touch doc/org.texi doc/orgcard.tex # force update
+	make cleancontrib
 	make info
 	make doc
-	make org-install.el
+	make lisp/org-install.el
 	rm -rf org-$(TAG) org-$(TAG).zip
 	$(MKDIR) org-$(TAG)
 	$(MKDIR) org-$(TAG)/xemacs
-	cp -r $(DISTFILES) org-$(TAG)/
+	$(MKDIR) org-$(TAG)/doc
+	$(MKDIR) org-$(TAG)/lisp
+	cp -r $(LISPFILES) org-$(TAG)/lisp
+	cp -r $(DOCFILES) $(CARDFILES) org-$(TAG)/doc
+	cp -r $(DISTFILES_extra) org-$(TAG)/
+	cp -r README_DIST org-$(TAG)/README
+	cp -r ORGWEBPAGE/Changes.org org-$(TAG)/
 	cp -r $(DISTFILES_xemacs) org-$(TAG)/xemacs/
 	zip -r org-$(TAG).zip org-$(TAG)
 	gtar zcvf org-$(TAG).tar.gz org-$(TAG)
 
 release:
 	@if [ "X$(TAG)" = "X" ]; then echo "*** No tag ***"; exit 1; fi
-	make webfiles
 	make distfile
 	make doc
-	make html_split
+	UTILITIES/gplmanual.pl
+	make html_manual
 	rm -rf RELEASEDIR
 	$(MKDIR) RELEASEDIR
 	cp org-$(TAG).zip org-$(TAG).tar.gz RELEASEDIR
-	cp org.pdf orgcard.pdf org.texi org.html RELEASEDIR
-	cp ORGWEBPAGE/tmp/*.html   RELEASEDIR
-#	cp ORGWEBPAGE/tmp/*.el     RELEASEDIR
-	cp ORGWEBPAGE/tmp/*.txt    RELEASEDIR
-	cp ORGWEBPAGE/tmp/*.css    RELEASEDIR
-#	cp ORGWEBPAGE/tmp/*.jpg    RELEASEDIR
+	cp doc/org.pdf doc/orgcard.pdf doc/org.texi doc/org.html RELEASEDIR
 	cp RELEASEDIR/org-$(TAG).zip    RELEASEDIR/org.zip
 	cp RELEASEDIR/org-$(TAG).tar.gz RELEASEDIR/org.tar.gz
-	(cd $(HG_RELEASES); rm -rf $(DISTFILES) xemacs)
-	cp -r org-$(TAG)/* $(HG_RELEASES)
-	(cd $(HG_RELEASES); hg addremove; hg ci -m $(TAG); hg tag $(TAG))
-
-trackrelease:
-	(cd $(HG_RELEASES); rm -rf $(DISTFILES) xemacs)
-	cp -r org-$(TAG)/* $(HG_RELEASES)
-	(cd $(HG_RELEASES); hg addremove; hg ci -m $(TAG); hg tag $(TAG))
 
 upload_release:
-	(cd RELEASEDIR; lftp -f ../../org-mode-proprietary/ftp_upload_release)
+	rsync -avuz RELEASEDIR/ cdominik@orgmode.org:orgmode.org/
 
 upload_manual:
-	lftp -f ../org-mode-proprietary/ftp_upload_manual
+	rsync -avuz --delete doc/manual/ cdominik@orgmode.org:orgmode.org/manual/
+
+snap:
+	make release TAG=snapshot
+	scp RELEASEDIR/org-snapshot.zip cdominik@orgmode.org:orgmode.org/
+	scp RELEASEDIR/org-snapshot.tar.gz cdominik@orgmode.org:orgmode.org/
+	make cleanrel
+
+relup0:
+	make release
+	make upload_release
 
 relup:
 	make release
 	make upload_release
 	make upload_manual
 
-clean:
-	rm -f $(ELCFILES) org.pdf org org.html orgcard.pdf orgcard.ps
-	rm -f *~ */*~ */*/*~
-	rm -f *.aux *.cp *.cps *.dvi *.fn *.fns *.ky *.kys *.pg *.pgs
-	rm -f *.toc *.tp *.tps *.vr *.vrs *.log *.html *.ps
-	rm -f orgcard_letter.tex orgcard_letter.pdf
-	rm -rf manual
+db:
+	grep -e '(debug)' lisp/*el
+
+cleancontrib:
+	find contrib -name \*~ -exec rm {} \;
+
+cleanelc:
+	rm -f $(ELCFILES)
+cleandoc:
+	(cd doc; rm -f org.pdf org org.html orgcard.pdf orgcard.ps)
+	(cd doc; rm -f *.aux *.cp *.cps *.dvi *.fn *.fns *.ky *.kys *.pg *.pgs)
+	(cd doc; rm -f *.toc *.tp *.tps *.vr *.vrs *.log *.html *.ps)
+	(cd doc; rm -f orgcard_letter.tex orgcard_letter.pdf)
+	(cd doc; rm -rf manual)
+
+cleanrel:
 	rm -rf RELEASEDIR
+	rm -rf org-6.*
+	rm -rf org-6*zip org-6*tar.gz org-snapshot*
+
+clean:
+	make cleanelc
+	make cleandoc
+	make cleanrel
+	rm -f *~ */*~ */*/*~
+
+cleanall:
+	make clean
+	rm -f lisp/org-install.el
 
 .el.elc:
 	$(ELC) $<
@@ -241,3 +309,55 @@ push:
 pushtag:
 	git-tag -m "Adding tag" -a $(TAG)
 	git-push git+ssh://repo.or.cz/srv/git/org-mode.git $(TAG)
+
+pushreleasetag:
+	git-tag -m "Adding release tag" -a release_$(TAG)
+	git-push git+ssh://repo.or.cz/srv/git/org-mode.git release_$(TAG)
+
+dummy:
+	echo ${prefix}
+
+# Dependencies
+
+lisp/org.elc:		lisp/org-macs.el lisp/org-compat.el lisp/org-faces.el
+lisp/org-agenda.elc:	lisp/org.el
+lisp/org-ascii.elc:	lisp/org-exp.el
+lisp/org-attach.elc:	lisp/org.el lisp/org-id.el
+lisp/org-archive.elc:	lisp/org.el
+lisp/org-bbdb.elc:	lisp/org.el
+lisp/org-bibtex.elc:	lisp/org.el
+lisp/org-clock.elc:	lisp/org.el
+lisp/org-colview.elc:	lisp/org.el
+lisp/org-colview-xemacs.elc:	lisp/org.el
+lisp/org-compat.elc:	lisp/org-macs.el
+lisp/org-exp.elc:	lisp/org.el lisp/org-agenda.el
+lisp/org-latex.elc:	lisp/org.el lisp/org-exp.el
+lisp/org-docbook.elc:	lisp/org.el lisp/org-exp.el
+lisp/org-faces.elc:	lisp/org-macs.el lisp/org-compat.el
+lisp/org-feed.elc:	lisp/org.el
+lisp/org-footnotes.elc:	lisp/org-macs.el lisp/org-compat.el
+lisp/org-gnus.elc:	lisp/org.el
+lisp/org-html.elc:	lisp/org-exp.el
+lisp/org-icalendar.elc:	lisp/org-exp.el
+lisp/org-id.elc:	lisp/org.el
+lisp/org-info.elc:	lisp/org.el
+lisp/org-inlinetask.elc:
+lisp/org-irc.elc:	lisp/org.el
+lisp/org-jsinfo.elc:	lisp/org.el lisp/org-exp.el
+lisp/org-list.elc:	lisp/org-macs.el lisp/org-compat.el
+lisp/org-mac-message.elc:	lisp/org.el
+lisp/org-macs.elc:
+lisp/org-mew.elc:	lisp/org.el
+lisp/org-mhe.elc:	lisp/org.el
+lisp/org-mouse.elc:	lisp/org.el
+lisp/org-plot.elc:	lisp/org.el lisp/org-exp.el lisp/org-table.el
+lisp/org-publish.elc:
+lisp/org-protocol.elc:	lisp/org.el
+lisp/org-remember.elc:	lisp/org.el
+lisp/org-rmail.elc:	lisp/org.el
+lisp/org-table.elc:	lisp/org.el
+lisp/org-timer.elc:	lisp/org.el
+lisp/org-vm.elc:	lisp/org.el
+lisp/org-w3m.elc:	lisp/org.el
+lisp/org-wl.elc:	lisp/org.el
+lisp/org-xoxo.elc:	lisp/org-exp.el
