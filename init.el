@@ -67,4 +67,7 @@
 		  "gist-setup"
 		  "browse-kill-ring-setup"))
 
+;; Get back to homedir
+(cd "~")
+
 ;;; init.el ends here
