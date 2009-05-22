@@ -122,5 +122,6 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f11] 'fullscreen-toggle)
+(global-set-key [f10] 'magit-status)
 
 ;;; global.el ends here
