@@ -62,6 +62,7 @@
 		  "c-mode-setup"
 		  ;"color-theme-setup"
 		  "uniquify-setup"
+		  "midnight-setup"
 		  "diredx-setup"
 		  "epa-setup"
 		  "hippie-expand-setup"

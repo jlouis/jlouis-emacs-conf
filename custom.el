@@ -26,6 +26,7 @@
  '(haskell-program-name "ghci")
  '(indicate-empty-lines t)
  '(js2-basic-offset 4)
+ '(midnight-mode t nil (midnight))
  '(quack-default-program "scheme48")
  '(quack-fontify-style (quote emacs))
  '(safe-local-variable-values (quote ((Syntax . Common-lisp))))
