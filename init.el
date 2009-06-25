@@ -61,6 +61,7 @@
 (load-cfg-files '("global"
 		  "c-mode-setup"
 		  ;"color-theme-setup"
+		  "uniquify-setup"
 		  "diredx-setup"
 		  "epa-setup"
 		  "hippie-expand-setup"
