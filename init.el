@@ -51,6 +51,7 @@
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
+(setq abbrev-file-name (concat dotfiles-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat dotfiles-dir "/configs/" ""))
 
 (defun load-config-files (files)
@@ -72,29 +73,28 @@
 (package-initialize)
 
 
-(load-config-files '("global"
-		     "c-mode-setup"
-		     ;"color-theme-setup"
-		     "uniquify-setup"
-		     "midnight-setup"
-		     "diredx-setup"
-		     "epa-setup"
-		     "hippie-expand-setup"
-		     "ido-setup"
-		     "js2-setup"
-		     "nxml-setup"
-		     "org-setup"
-		     "proof-general-setup"
-		     "sml-setup"
-		     "tex-code"
-		     "tramp-setup"
-		     "tuareg-setup"
-		     "twelf-setup"
-		     ;"dpaste-setup"
-		     "gist-setup"
-		     "magit-setup"
-		     "browse-kill-ring-setup"))
-
+(load-config-files  '("defuns"
+		      "c-mode-setup"
+		      "diredx-setup"
+		      "epa-setup"
+		      "eshell-setup"
+		      "gist-setup"
+		      "global"
+		      "hippie-expand-setup"
+		      "ido-setup"
+		      "js2-setup"
+		      "kill-ring-search-setup"
+		      "magit-setup"
+		      "midnight-setup"
+		      "nxml-setup"
+		      "org-setup"
+		      "proof-general-setup"
+		      "sml-setup"
+		      "tex-code"
+		      "tramp-setup"
+		      "tuareg-setup"
+		      "twelf-setup"
+		      "uniquify-setup"))
 
 (load custom-file 'noerror)
 
