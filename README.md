@@ -9,3 +9,12 @@ To use these, you first clone the git repo and then make a symlink to
 
 You get the idea, surely
 
+In addition, you might want to start from other projects: I have been
+heavily inspired by the emacs-starter-kit for instance.
+
+There are also the 20seven-emacs by gregnewman which I have drawn ideas
+from as well.
+
+Finally, you can search for "emacs configuration" on github. There is
+a plethora!
+
