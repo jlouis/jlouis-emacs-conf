@@ -1,0 +1,5 @@
+auto-save-list/*
+*.elc
+elpa/*
+/tramp
+/.org-id-locations

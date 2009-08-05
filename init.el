@@ -39,49 +39,65 @@
 ;;  ffap support
 ;;
 ;;; Code:
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
 
-(defconst *emacs-config-dir* "~/.emacs.d/configs/" "")
-(defun load-cfg-files (files)
+;;; Load path setup
+
+(setq dotfiles-dir (file-name-directory
+		    (or (buffer-file-name) load-file-name)))
+
+(add-to-list 'load-path dotfiles-dir)
+;;; TODO: More to add here.
+
+(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
+(setq package-user-dir (concat dotfiles-dir "elpa"))
+(setq custom-file (concat dotfiles-dir "custom.el"))
+(defconst *emacs-config-dir* (concat dotfiles-dir "/configs/" ""))
+
+(defun load-config-files (files)
   (dolist (f files)
     (load (expand-file-name
 	   (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" file)))
 
-(defun extend-load-path (path)
-  (setq load-path (cons (expand-file-name path) load-path)))
+;; From the emacs starter kit.
 
-(extend-load-path "~/.emacs.d/vendor")
-(extend-load-path "~/.emacs.d")
-;; Get vendor stuff loaded as well
-(progn (cd "~/.emacs.d/vendor")
-       (normal-top-level-add-subdirs-to-load-path))
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
 
-(load-cfg-files '("global"
-		  "c-mode-setup"
-		  ;"color-theme-setup"
-		  "uniquify-setup"
-		  "midnight-setup"
-		  "diredx-setup"
-		  "epa-setup"
-		  "hippie-expand-setup"
-		  "ido-setup"
-		  "js2-setup"
-		  "nxml-setup"
-		  "org-setup"
-		  "proof-general-setup"
-		  "sml-setup"
-		  "tex-code"
-		  "tramp-setup"
-		  "tuareg-setup"
-		  "twelf-setup"
-		  "dpaste-setup"
-		  "gist-setup"
-		  "magit-setup"
-		  "browse-kill-ring-setup"))
+(load (concat dotfiles-dir "elpa/package.el"))
+(package-initialize)
 
-;; Get back to homedir
-(cd "~")
+
+(load-config-files '("global"
+		     "c-mode-setup"
+		     ;"color-theme-setup"
+		     "uniquify-setup"
+		     "midnight-setup"
+		     "diredx-setup"
+		     "epa-setup"
+		     "hippie-expand-setup"
+		     "ido-setup"
+		     "js2-setup"
+		     "nxml-setup"
+		     "org-setup"
+		     "proof-general-setup"
+		     "sml-setup"
+		     "tex-code"
+		     "tramp-setup"
+		     "tuareg-setup"
+		     "twelf-setup"
+		     ;"dpaste-setup"
+		     "gist-setup"
+		     "magit-setup"
+		     "browse-kill-ring-setup"))
+
+
+(load custom-file 'noerror)
 
 ;;; init.el ends here
+
+
