@@ -3,4 +3,7 @@ auto-save-list/*
 elpa/*
 /tramp
 /.org-id-locations
+completions
+session.*
+\#*
 *~
