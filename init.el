@@ -46,6 +46,8 @@
 		    (or (buffer-file-name) load-file-name)))
 
 (add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path (concat dotfiles-dir "/site/"))
+
 ;;; TODO: More to add here.
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
