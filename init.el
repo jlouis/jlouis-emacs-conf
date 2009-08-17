@@ -90,12 +90,13 @@
 		      "midnight-setup"
 		      "nxml-setup"
 		      "org-setup"
-		      "proof-general-setup"
+		      ;"proof-general-setup"
 		      "sml-setup"
 		      "tex-code"
 		      "tramp-setup"
 		      "tuareg-setup"
 		      "twelf-setup"
+		      "twelf2-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
@@ -103,3 +104,14 @@
 ;;; init.el ends here
 
 
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
