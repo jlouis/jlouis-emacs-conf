@@ -21,17 +21,14 @@
 (defvar twelf-declarations-regexp (regexp-opt twelf-declarations))
 
 (defvar twelf-keywords
-  '("<-" "->" "=" "_")) ; Decide if this should declare 'type'
+  '("<-" "->" "type" "=" "_")) ; Decide if this should declare 'type'
 (defvar twelf-keywords-regexp (regexp-opt twelf-keywords))
-
-(defvar twelf-types '("type"))
-(defvar twelf-types-regexp (regexp-opt twelf-types))
 
 (defconst twelf2-font-lock-keywords
   `(
     (,twelf-declarations-regexp . font-lock-preprocessor-face)
     (,twelf-keywords-regexp . font-lock-keyword-face)
-    (,twelf-types-regexp . font-lock-type-face))
+    ("\\<[A-Z_]\\w*\\>" . font-lock-variable-name-face))
   "Minimal highlighting for Twelf")
 
 (defvar twelf2-mode-syntax-table
@@ -68,11 +65,6 @@
 
 ;; (defvar twelf-font-patterns
 ;;  '(
-;;    ;; single-line comments
-;;    ("%[% \t\f].*$" 0 twelf-font-comment-face)
-
-;;    ;; keywords, omit punctuations for now.
-;;    . twelf-font-keyword-face)
 ;;    ;; declared constants
 ;;    (twelf-font-find-decl . twelf-font-decl-face)
 ;;    ;; parameters
@@ -84,8 +76,6 @@
 ;;    ;; nil black)
 ;;    ;; qualified identifiers
 ;;    ("\\<\\w+\\(\\.\\w+\\)+\\>" . twelf-font-const-face)
-;;    ;; upper-case identifiers (almost = variables)
-;;    ("\\<[A-Z_]\\w*\\>" . twelf-font-fvar-face)
 ;;    ;; numbers and quoted identifiers omitted for now
 ;;    )
 ;;  "Highlighting patterns for Twelf mode.
