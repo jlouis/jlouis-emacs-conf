@@ -76,6 +76,7 @@
 
 
 (load-config-files  '("defuns"
+		      "color-theme-setup"
 		      "c-mode-setup"
 		      "diredx-setup"
 		      "epa-setup"
