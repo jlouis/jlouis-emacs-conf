@@ -97,7 +97,6 @@
 		      "tramp-setup"
 		      "tuareg-setup"
 		      "twelf-setup"
-		      "twelf2-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
