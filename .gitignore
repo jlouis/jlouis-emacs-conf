@@ -1,4 +1,5 @@
 auto-save-list/*
+custom.el
 *.elc
 elpa/*
 /tramp
@@ -7,3 +8,4 @@ completions
 session.*
 \#*
 *~
+/url/cookies
