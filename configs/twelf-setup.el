@@ -31,5 +31,5 @@
 
 (setq twelf-root "/home/jlouis/hacking/twelf/")
 (load (concat twelf-root "emacs/twelf-init.el"))
-(setq twelf-font-dark-background t)
+;(setq twelf-font-dark-background t)
 
