@@ -98,6 +98,7 @@
 		      "tuareg-setup"
 		      "twelf-setup"
 		      "twit-setup"
+		      "haskell-mode-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
