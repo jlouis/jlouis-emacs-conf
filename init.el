@@ -1,4 +1,4 @@
-;;; init.el --- Initialization file for my Emacs setup
+;; init.el --- Initialization file for my Emacs setup
 
 ; Copyright (c) 2009, Jesper Louis Andersen <jesper.louis.andersen@gmail.com>
 ; All rights reserved.
@@ -47,11 +47,11 @@
 
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path (concat dotfiles-dir "/site/"))
+(add-to-list 'load-path (concat dotfiles-dir "/auto-install/"))
 
 ;;; TODO: More to add here.
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (setq abbrev-file-name (concat dotfiles-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat dotfiles-dir "/configs/" ""))
@@ -70,33 +70,31 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
-
-(load (concat dotfiles-dir "elpa/package.el"))
-(package-initialize)
-
+(require 'auto-install)
 
 (load-config-files  '("defuns"
+		      "anything-setup"
 		      "color-theme-setup"
 		      "c-mode-setup"
 		      "diredx-setup"
 		      "epa-setup"
 		      "eshell-setup"
-		      "gist-setup"
+		      ;"gist-setup"
 		      "global"
 		      "hippie-expand-setup"
 		      "ido-setup"
-		      "js2-setup"
-		      "kill-ring-search-setup"
+		      ;"js2-setup"
+		      ;"kill-ring-search-setup"
 		      "magit-setup"
 		      "midnight-setup"
 		      "nxml-setup"
 		      "org-setup"
-		      ;"proof-general-setup"
-		      "sml-setup"
+		      "proof-general-setup"
+		      ;"sml-setup"
 		      "tex-code"
 		      "tramp-setup"
 		      "tuareg-setup"
-		      "twelf-setup"
+		      ;"twelf-setup"
 		      "twit-setup"
 		      "haskell-mode-setup"
 		      "go-mode-setup"
@@ -105,16 +103,3 @@
 (load custom-file 'noerror)
 
 ;;; init.el ends here
-
-
-
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
