@@ -99,6 +99,7 @@
 		      "twelf-setup"
 		      "twit-setup"
 		      "haskell-mode-setup"
+		      "go-mode-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
