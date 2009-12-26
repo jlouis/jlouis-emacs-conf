@@ -23,7 +23,7 @@
 	anything-c-source-kill-ring
 	anything-c-source-fixme
 	anything-c-source-man-pages
-	anything-c-source-info-pages
+;	anything-c-source-info-pages
 ;	anything-c-source-info-elisp
 	anything-c-source-locate
         anything-c-source-emacs-commands
