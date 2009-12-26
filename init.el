@@ -101,5 +101,5 @@
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
-
+(server-start)
 ;;; init.el ends here
