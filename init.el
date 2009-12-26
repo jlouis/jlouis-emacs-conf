@@ -85,7 +85,7 @@
 		      "ido-setup"
 		      ;"js2-setup"
 		      ;"kill-ring-search-setup"
-		      "magit-setup"
+		      ;"magit-setup"
 		      "midnight-setup"
 		      "nxml-setup"
 		      "org-setup"
