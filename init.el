@@ -95,11 +95,10 @@
 		      "tramp-setup"
 		      "tuareg-setup"
 		      ;"twelf-setup"
-		      "twit-setup"
+		      ;"twit-setup"
 		      "haskell-mode-setup"
 		      "go-mode-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
-(server-start)
 ;;; init.el ends here
