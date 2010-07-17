@@ -47,12 +47,12 @@
 
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path (concat dotfiles-dir "/site/"))
-(add-to-list 'load-path (concat dotfiles-dir "/auto-install/"))
 
 ;;; TODO: More to add here.
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
+(setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq abbrev-file-name (concat dotfiles-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat dotfiles-dir "/configs/" ""))
 
@@ -62,6 +62,9 @@
 	   (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" file)))
 
+(load (concat dotfiles-dir "elpa/package.el"))
+(package-initialize)
+
 ;; From the emacs starter kit.
 
 (require 'cl)
@@ -70,7 +73,6 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
-(require 'auto-install)
 
 (load-config-files  '("defuns"
 		      "color-theme-setup"
@@ -79,17 +81,17 @@
 		      "epa-setup"
 		      "eshell-setup"
 		      "global"
+		      "magit-setup"
 		      "hippie-expand-setup"
 		      "ido-setup"
 		      "midnight-setup"
 		      "nxml-setup"
 		      "org-setup"
-		      "proof-general-setup"
 		      "tex-code"
 		      "tramp-setup"
 		      "tuareg-setup"
 		      "haskell-mode-setup"
-		      "go-mode-setup"
+;		      "go-mode-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
