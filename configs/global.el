@@ -94,11 +94,7 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f11] 'fullscreen-toggle)
-;(global-set-key [f10] 'magit-status)
+(global-set-key [f10] 'magit-status)
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
-
-;; Anything setup
-(global-set-key [(control / )] 'anything-at-point)
-(global-set-key (kbd "C-.") 'anything-etags-maybe-at-point)
 
 ;;; global.el ends here
