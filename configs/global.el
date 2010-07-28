@@ -63,9 +63,9 @@
       whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab)
       whitespace-line-column 100
-      oddmuse-directory (concat dotfiles-dir "oddmuse")
+      oddmuse-directory (concat emacs-config-dir "oddmuse")
       xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places"))
+      save-place-file (concat emacs-config-dir "places"))
 
 (set-language-environment "UTF-8")
 (auto-compression-mode t)

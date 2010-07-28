@@ -30,4 +30,4 @@
 ; POSSIBILITY OF SUCH DAMAGE.
 
 (require 'color-theme)
-(color-theme-aalto-light)
+(color-theme-greiner)

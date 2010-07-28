@@ -42,19 +42,20 @@
 
 ;;; Load path setup
 
-(setq dotfiles-dir (file-name-directory
+(setq emacs-config-dir (file-name-directory
 		    (or (buffer-file-name) load-file-name)))
 
-(add-to-list 'load-path dotfiles-dir)
-(add-to-list 'load-path (concat dotfiles-dir "/site/"))
+(add-to-list 'load-path emacs-config-dir)
+(add-to-list 'load-path (concat emacs-config-dir "/site/"))
 
 ;;; TODO: More to add here.
 
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
-(setq abbrev-file-name (concat dotfiles-dir "abbrev_defs"))
-(defconst *emacs-config-dir* (concat dotfiles-dir "/configs/" ""))
+(setq autoload-file (concat emacs-config-dir "loaddefs.el"))
+(setq site-root (concat emacs-config-dir "/site/"))
+(setq custom-file (concat emacs-config-dir "custom.el"))
+(setq package-user-dir (concat emacs-config-dir "elpa"))
+(setq abbrev-file-name (concat emacs-config-dir "abbrev_defs"))
+(defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
 (defun load-config-files (files)
   (dolist (f files)
@@ -62,7 +63,7 @@
 	   (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" file)))
 
-(load (concat dotfiles-dir "elpa/package.el"))
+(load (concat emacs-config-dir "elpa/package.el"))
 (package-initialize)
 
 ;; From the emacs starter kit.
@@ -81,6 +82,7 @@
 		      "epa-setup"
 		      "eshell-setup"
 		      "global"
+		      "graphviz-mode-setup"
 		      "magit-setup"
 		      "hippie-expand-setup"
 		      "ido-setup"

@@ -161,6 +161,6 @@ Symbols matching the text at point are put first in the completion list."
 (defun recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory dotfiles-dir 0)
-  (byte-recompile-directory (concat dotfiles-dir "configs/" 0))
-  (byte-recompile-directory (concat dotfiles-dir "elpa-to-submit/" 0)))
+  (byte-recompile-directory emacs-config-dir 0)
+  (byte-recompile-directory (concat emacs-config-dir "configs/" 0))
+  (byte-recompile-directory (concat emacs-config-dir "elpa-to-submit/" 0)))
