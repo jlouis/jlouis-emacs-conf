@@ -93,7 +93,7 @@
 		      "tramp-setup"
 		      "tuareg-setup"
 		      "haskell-mode-setup"
-;		      "go-mode-setup"
+		      "go-mode-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
