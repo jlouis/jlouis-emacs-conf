@@ -30,4 +30,7 @@
 ; POSSIBILITY OF SUCH DAMAGE.
 
 (require 'color-theme)
-(color-theme-greiner)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-greiner)))
