@@ -79,6 +79,7 @@
 		      "color-theme-setup"
 		      "c-mode-setup"
 		      "diredx-setup"
+		      "erlang-setup"
 		      "epa-setup"
 		      "eshell-setup"
 		      "global"
