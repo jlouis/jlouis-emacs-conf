@@ -90,6 +90,7 @@
 		      "midnight-setup"
 		      "nxml-setup"
 		      "org-setup"
+		      "proof-general-setup"
 		      "tex-code"
 		      "tramp-setup"
 		      "tuareg-setup"

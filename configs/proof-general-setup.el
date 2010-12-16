@@ -28,4 +28,4 @@
 ; POSSIBILITY OF SUCH DAMAGE.
 
 
-(load-file "/home/jlouis/hacking/ProofGeneral/generic/proof-site.el")
+(load-file "/home/jlouis/Projects/ProofGeneral/generic/proof-site.el")
