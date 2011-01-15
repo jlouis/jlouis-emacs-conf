@@ -40,9 +40,10 @@
 ;(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
 (mouse-wheel-mode t)
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 
 (setq visible-bell t
       echo-keystrokes 0.1
