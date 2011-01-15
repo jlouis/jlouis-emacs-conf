@@ -75,14 +75,15 @@
 (require 'ansi-color)
 (require 'recentf)
 
-(load-config-files  '("defuns"
+(load-config-files  '("defuns" ;; Has to go first
+		      "global" ;; Has to go second
 		      "color-theme-setup"
 		      "c-mode-setup"
 		      "diredx-setup"
 		      "erlang-setup"
+		      "agda2-setup"
 		      "epa-setup"
 		      "eshell-setup"
-		      "global"
 		      "graphviz-mode-setup"
 		      "magit-setup"
 		      "hippie-expand-setup"
