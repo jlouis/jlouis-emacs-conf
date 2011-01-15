@@ -57,6 +57,10 @@
 (setq abbrev-file-name (concat emacs-config-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
+;;; package.el configuration
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+			 ("gnu" . "http://elpa.gnu.org/packages/")))
+
 (defun load-config-files (files)
   (dolist (f files)
     (load (expand-file-name
