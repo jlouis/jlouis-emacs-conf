@@ -57,12 +57,14 @@
       line-number-mode t
       mouse-yank-at-point t
       scroll-step 1
+      next-line-add-newlines t
       ediff-merge-split-window-functon 'split-window-vertically
       ediff-window-setup-function 'ediff-setup-windows-plain
       mode-compile-always-save-buffer-p t
       compilation-window-height 12
       whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab)
+      x-select-enable-clipboard t
       whitespace-line-column 100
       oddmuse-directory (concat emacs-config-dir "oddmuse")
       xterm-mouse-mode t
