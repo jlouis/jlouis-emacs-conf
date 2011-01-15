@@ -96,5 +96,6 @@
 (global-set-key [f11] 'fullscreen-toggle)
 (global-set-key [f10] 'magit-status)
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
 
 ;;; global.el ends here
