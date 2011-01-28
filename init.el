@@ -105,3 +105,4 @@
 
 (load custom-file 'noerror)
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)
