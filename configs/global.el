@@ -55,6 +55,7 @@
       default-tab-width 8
       indent-tabs-mode nil
       line-number-mode t
+      column-number-mode t
       mouse-yank-at-point t
       scroll-step 1
       next-line-add-newlines t
@@ -69,6 +70,11 @@
       oddmuse-directory (concat emacs-config-dir "oddmuse")
       xterm-mouse-mode t
       save-place-file (concat emacs-config-dir "places"))
+
+(defun dont-kill-emacs ()
+      (interactive)
+      (error (substitute-command-keys "To exit emacs: \\[kill-emacs]")))
+(global-set-key "\C-x\C-c" 'dont-kill-emacs)
 
 (set-language-environment "UTF-8")
 (auto-compression-mode t)
