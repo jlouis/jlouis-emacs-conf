@@ -45,31 +45,29 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(setq visible-bell t
-      echo-keystrokes 0.1
-      font-lock-maximum-decoration t
-      inhibit-startup-message t
-      global-font-lock-mode t
-      delete-by-moving-to-trash t
-      shift-select-mode nil
-      default-tab-width 8
-      indent-tabs-mode nil
-      line-number-mode t
-      column-number-mode t
-      mouse-yank-at-point t
-      scroll-step 1
-      next-line-add-newlines t
-      ediff-merge-split-window-functon 'split-window-vertically
-      ediff-window-setup-function 'ediff-setup-windows-plain
-      mode-compile-always-save-buffer-p t
-      compilation-window-height 12
-      whitespace-style '(trailing lines space-before-tab
-                                  indentation space-after-tab)
-      x-select-enable-clipboard t
-      whitespace-line-column 100
-      oddmuse-directory (concat emacs-config-dir "oddmuse")
-      xterm-mouse-mode t
-      save-place-file (concat emacs-config-dir "places"))
+(setq visible-bell t)
+(setq-default echo-keystrokes 0.1)
+(setq-default font-lock-maximum-decoration t)
+(setq-default inhibit-startup-message t)
+(setq-default global-font-lock-mode t)
+(setq-default delete-by-moving-to-trash t)
+(setq-default shift-select-mode nil)
+(setq-default default-tab-width 8)
+(setq-default indent-tabs-mode nil)
+(setq-default line-number-mode t)
+(setq-default column-number-mode t)
+(setq-default mouse-yank-at-point t)
+(setq-default scroll-step 1)
+(setq-default next-line-add-newlines t)
+(setq-default ediff-merge-split-window-functon 'split-window-vertically)
+(setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq-default mode-compile-always-save-buffer-p t)
+(setq-default compilation-window-height 12)
+(setq-default x-select-enable-clipboard t)
+(setq-default whitespace-line-column 100)
+(setq-default oddmuse-directory (concat emacs-config-dir "oddmuse"))
+(setq-default xterm-mouse-mode t)
+(setq-default save-place-file (concat emacs-config-dir "places"))
 
 (defun dont-kill-emacs ()
       (interactive)
