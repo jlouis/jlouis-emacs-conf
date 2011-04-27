@@ -11,6 +11,7 @@
 ;;; Code:
 
 ;;; Load path setup
+(setq disabled-command-function nil)
 
 (setq emacs-config-dir (file-name-directory
 		    (or (buffer-file-name) load-file-name)))
