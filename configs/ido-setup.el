@@ -29,7 +29,8 @@
 ; ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ; POSSIBILITY OF SUCH DAMAGE.
 
+(setq ido-max-directory-size 1000000)
+(setq ido-enable-flex-matching t)
 (require 'ido)
 (ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-max-directory-size 100000)
+
