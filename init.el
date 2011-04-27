@@ -70,9 +70,11 @@
 		      "tramp-setup"
 		      "tuareg-setup"
 		      "haskell-mode-setup"
-		      "go-mode-setup"
 		      "uniquify-setup"))
 
 (load custom-file 'noerror)
 ;;; init.el ends here
 (put 'downcase-region 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
