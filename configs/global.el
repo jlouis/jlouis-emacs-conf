@@ -35,6 +35,7 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (tool-bar-mode -1)
+  (toggle-scroll-bar -1)
   (blink-cursor-mode -1))
 
 ;(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
@@ -68,6 +69,9 @@
 (setq-default oddmuse-directory (concat emacs-config-dir "oddmuse"))
 (setq-default xterm-mouse-mode t)
 (setq-default save-place-file (concat emacs-config-dir "places"))
+
+(setf split-height-threshold 25
+      split-width-threshold 80)
 
 (defun dont-kill-emacs ()
       (interactive)
