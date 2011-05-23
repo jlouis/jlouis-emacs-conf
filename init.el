@@ -52,6 +52,7 @@
 (load-config-files  '("defuns" ;; Has to go first
 		      "global" ;; Has to go second
 		      "color-theme-setup"
+                      "auctex-setup"
 		      "c-mode-setup"
 		      "diredx-setup"
 		      "erlang-setup"
@@ -70,6 +71,7 @@
 		      "tex-code"
 		      "tramp-setup"
 		      "tuareg-setup"
+                      "go-mode-setup"
 		      "haskell-mode-setup"
 		      "uniquify-setup"))
 
