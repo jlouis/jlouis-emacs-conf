@@ -126,8 +126,8 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f11] 'fullscreen-toggle)
 (global-set-key [f10] 'magit-status)
-(global-set-key [f8] 'color-theme-solarized-light)
-(global-set-key [f7] 'color-theme-solarized-dark)
+(global-set-key [f8] 'color-theme-tomorrow-night)
+(global-set-key [f7] 'color-theme-tomorrow-night-blue)
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 
