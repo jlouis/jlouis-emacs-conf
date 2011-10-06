@@ -28,9 +28,14 @@
 (setq abbrev-file-name (concat emacs-config-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
+
 ;;; package.el configuration
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-			 ("gnu" . "http://elpa.gnu.org/packages/")))
+(load (concat emacs-config-dir "package.el"))
+(package-initialize)
+
+(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 (defun load-config-files (files)
   (dolist (f files)
@@ -38,8 +43,8 @@
 	   (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" file)))
 
-(load (concat emacs-config-dir "elpa/package.el"))
-(package-initialize)
+
+
 
 ;; From the emacs starter kit.
 
