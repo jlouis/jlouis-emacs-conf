@@ -71,8 +71,8 @@
 (setq-default xterm-mouse-mode t)
 (setq-default save-place-file (concat emacs-config-dir "places"))
 
-(setf split-height-threshold 25
-      split-width-threshold 80)
+(setf split-height-threshold 40
+      split-width-threshold 160)
 
 (defun dont-kill-emacs ()
       (interactive)
