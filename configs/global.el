@@ -60,7 +60,6 @@
 (setq-default column-number-mode t)
 (setq-default mouse-yank-at-point t)
 (setq-default scroll-step 1)
-(setq-default next-line-add-newlines t)
 (setq-default ediff-merge-split-window-functon 'split-window-vertically)
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq-default mode-compile-always-save-buffer-p t)
