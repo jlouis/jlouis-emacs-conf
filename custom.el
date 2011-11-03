@@ -4,7 +4,6 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(agda2-highlight-face-groups (quote conor))
  '(agda2-include-dirs (quote ("." "/home/jlouis/lib/agda/src")))
  '(auto-compression-mode t nil (jka-compr))
  '(auto-image-file-mode t)
