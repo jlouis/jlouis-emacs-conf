@@ -65,7 +65,6 @@
 (setq-default mode-compile-always-save-buffer-p t)
 (setq-default compilation-window-height 12)
 (setq-default x-select-enable-clipboard t)
-(setq-default whitespace-line-column 100)
 (setq-default oddmuse-directory (concat emacs-config-dir "oddmuse"))
 (setq-default xterm-mouse-mode t)
 (setq-default save-place-file (concat emacs-config-dir "places"))
@@ -128,7 +127,60 @@
 (global-set-key [f10] 'magit-status)
 (global-set-key [f8] 'color-theme-tomorrow-night)
 (global-set-key [f7] 'color-theme-tomorrow-night-blue)
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "C-x C-i") 'imenu)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key (kbd "C-c e") 'esk-eval-and-replace)
 
 ;;; global.el ends here
+
+;; whitespace mode
+(autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
+(autoload 'whitespace-toggle-options "whitespace"
+  "Toggle local `whitespace-mode' options." t)
+
+(setq sentence-end-double-space nil
+      uniquify-buffer-name-style 'forward
+      whitespace-style '(face trailing lines lines-tail tabs space-before-tab
+                              space-after-tab)
+      whitespace-line-column 80
+      ediff-window-setup-function 'ediff-setup-windows-plain
+      oddmuse-directory "~/.emacs.d/oddmuse"
+      save-place-file "~/.emacs.d/places"
+      backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
+      diff-switches "-u")
+
+(add-to-list 'safe-local-variable-values '(lexical-binding . t))
+(add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
+
+;; Highlight matching parentheses when the point is on them.
+(show-paren-mode 1)
+
+(set-default 'indicate-empty-lines t)
+(set-default 'imenu-auto-rescan t)
+
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'auto-tail-revert-mode 'tail-mode)
+
+(random t) ;; Seed the random-number generator
+
+;; Cosmetics
+(eval-after-load 'diff-mode
+  '(progn
+     (set-face-foreground 'diff-added "green4")
+     (set-face-foreground 'diff-removed "red3")))
+
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "green4")
+     (set-face-foreground 'magit-diff-del "red3")))
+
+;; Get around the emacswiki spam protection
+(eval-after-load 'oddmuse
+  (add-hook 'oddmuse-mode-hook
+            (lambda ()
+              (unless (string-match "question" oddmuse-post)
+                (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post))))))
+

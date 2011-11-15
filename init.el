@@ -56,6 +56,7 @@
 
 (load-config-files  '("defuns" ;; Has to go first
 		      "global" ;; Has to go second
+                      "smex-setup"
                       "anything-setup"
 		      "color-theme-setup"
                       "auctex-setup"

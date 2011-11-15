@@ -33,6 +33,7 @@
  '(recentf-max-saved-items 500)
  '(safe-local-variable-values (quote ((erlang-indent-level . 4) (Syntax . Common-lisp))))
  '(scheme-program-name "scheme48")
+ '(sentence-end-double-space nil)
  '(shadow-noquery t)
  '(show-paren-mode t nil (paren))
  '(size-indication-mode t)
@@ -44,6 +45,8 @@
  '(speedbar-show-unknown-files t)
  '(user-mail-address "jesper.louis.andersen@gmail.com")
  '(visible-bell t)
+ '(whitespace-global-modes t)
+ '(whitespace-modes (quote (awk-mode elisp-mode erlang-mode haskell-mode tuareg-mode)))
  '(wrangler-search-paths (quote ("/home/jlouis/Projects/etorrent/apps/utp/src" "/home/jlouis/Projects/etorrent/apps/utp/include"))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.

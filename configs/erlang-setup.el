@@ -12,4 +12,8 @@
 (require 'wrangler)
 
 (load-file "/usr/local/share/wrangler/elisp/graphviz-dot-mode.el")
+(add-hook 'erlang-mode-hook 'esk-prog-mode-hook)
+
+
+
 

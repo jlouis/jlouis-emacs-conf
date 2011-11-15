@@ -1,6 +1,64 @@
 (require 'thingatpt)
 (require 'imenu)
 
+(defun esk-local-column-number-mode ()
+  (make-local-variable 'column-number-mode)
+  (column-number-mode t))
+
+(defun esk-local-comment-auto-fill ()
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (auto-fill-mode t))
+
+(defun esk-turn-on-hl-line-mode ()
+  (when (> (display-color-cells) 8)
+    (hl-line-mode t)))
+
+(defun esk-turn-on-save-place-mode ()
+  (require 'saveplace)
+  (setq save-place t))
+
+(defun esk-turn-on-whitespace ()
+  (whitespace-mode t))
+
+(defun esk-turn-on-paredit ()
+  (paredit-mode t))
+
+(defun esk-turn-on-idle-highlight-mode ()
+  (idle-highlight-mode t))
+
+(defun esk-add-watchwords ()
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
+          1 font-lock-warning-face t))))
+
+(add-hook 'prog-mode-hook 'esk-local-column-number-mode)
+(add-hook 'prog-mode-hook 'esk-local-comment-auto-fill)
+(add-hook 'prog-mode-hook 'esk-turn-on-hl-line-mode)
+(add-hook 'prog-mode-hook 'esk-turn-on-save-place-mode)
+(add-hook 'prog-mode-hook 'esk-turn-on-whitespace)
+(add-hook 'prog-mode-hook 'esk-add-watchwords)
+(add-hook 'prog-mode-hook 'esk-turn-on-idle-highlight-mode)
+
+(defun esk-prog-mode-hook ()
+  (run-hooks 'prog-mode-hook))
+
+;; Commands
+
+(defun esk-eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+
+(defun esk-insert-date ()
+  "Insert a time-stamp according to locale's date and time format."
+  (interactive)
+  (insert (format-time-string "%c" (current-time))))
+
 ;;; Function definitions
 (defun fullscreen-toggle ()
   (interactive)

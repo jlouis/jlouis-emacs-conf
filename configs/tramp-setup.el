@@ -28,6 +28,16 @@
 ; ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ; POSSIBILITY OF SUCH DAMAGE.
 
-
+(require 'tramp)
 (setq tramp-default-method "sshx")
 
+
+(add-to-list 'tramp-default-method-alist
+	     '("\\`localhost\\'" "\\`root\\'" "su"))
+(add-to-list 'tramp-default-method-alist '("" "jlouis" "ssh"))
+(add-to-list 'tramp-default-method-alist '("" "jla" "ssh"))
+(add-to-list 'tramp-default-method-alist '("" "root" "ssh"))
+
+(tramp-set-completion-function "ssh"
+			       '((tramp-parse-sconfig "/etc/ssh_config")
+				 (tramp-parse-sconfig "~/.ssh/config")))

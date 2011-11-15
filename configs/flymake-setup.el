@@ -9,3 +9,5 @@
 
 (add-to-list 'flymake-allowed-file-name-masks '("\\.erl\\'" flymake-erlang-init))
 
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
