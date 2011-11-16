@@ -36,7 +36,8 @@
 (package-initialize)
 
 (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 ;;; el-get configuration
@@ -61,19 +62,23 @@
                      (global-set-key (kbd "M-x") 'smex))))
    (:name idle-highlight-mode
           :type elpa)
+   (:name ido-ubiquitous
+          :type elpa)
    (:name magit
           :after (lambda ()
                    (global-set-key (kbd "C-c g") 'magit-status)))))
 
 (setq my-packages
       (append
-       '(el-get )
+       '(el-get auctex haskell-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
 (el-get 'wait)
 
-(load-theme 'tango)
+(add-to-list 'custom-theme-load-path (concat emacs-config-dir "/themes"))
+(setq custom-safe-themes t)
+(load-theme 'solarized)
 
 (defun load-config-files (files)
   (dolist (f files)
@@ -83,27 +88,29 @@
 
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      ;;"auctex-setup"
+                      "init-auctex"
+                      "init-ido"
                       "init-c-mode"
-                      ;;"erlang-setup"
-                      ;;"agda2-setup"
+                      "init-erlang"
                       "init-epa"
                       "init-eshell"
-                      ;; "flymake-setup"
-                      ;; "graphviz-mode-setup"
-                      ;; "hippie-expand-setup"
-                      ;; "ido-setup"
-                      ;; "midnight-setup"
-                      ;; "nxml-setup"
-                      ;; "org-setup"
-                      ;; "proof-general-setup"
-                      ;; "recentf-setup"
-                      ;;"tex-code"
-;                     "tramp-setup"
-;                     "tuareg-setup"
+                      "init-recentf"
+                      "init-tramp"
+                      "init-flymake"
+                      "init-hippie-expand"
+                      ;;"graphviz-mode-setup"
+                      ;;"nxml-setup"
+                      ;;"org-setup"
+                      ;;"proof-general-setup"
+                      ;;"tuareg-setup"
+                      ;;"agda2-setup"
                       ;;"go-mode-setup"
                       ;;"haskell-mode-setup"
                       "init-uniquify"))
+
+;; Awfully simple initializations
+(require 'midnight)
+(require 'inf-haskell)
 
 (load custom-file 'noerror)
 ;;; init.el ends here

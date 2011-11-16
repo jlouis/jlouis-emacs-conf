@@ -1,10 +1,9 @@
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+
 (add-hook 'text-mode-hook
             '(lambda ()
                (auto-fill-mode)))
-
-;; LaTeX and TeX modes
-;(load "auctex.el" nil t t)
-;(load "preview-latex.el" nil t t)
 
 (add-hook 'LaTeX-mode-hook
           'turn-on-auto-fill)

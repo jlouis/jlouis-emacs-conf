@@ -82,7 +82,7 @@
    `(custom-button-mouse ((t (:inherit custom-button :foreground ,base1))))
    `(custom-button-pressed
      ((t (:inherit custom-button-mouse
-		   :box (:line-width 2 :style pressed-button)))))
+                   :box (:line-width 2 :style pressed-button)))))
    `(custom-comment-tag ((t (:background ,base02))))
    `(custom-comment-tag ((t (:background ,base02))))
    `(custom-documentation ((t (:inherit default))))
