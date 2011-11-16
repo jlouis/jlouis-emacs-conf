@@ -70,7 +70,7 @@
 
 (setq my-packages
       (append
-       '(el-get auctex haskell-mode)
+       '(el-get auctex haskell-mode graphviz-dot-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
@@ -98,17 +98,14 @@
                       "init-tramp"
                       "init-flymake"
                       "init-hippie-expand"
-                      ;;"graphviz-mode-setup"
                       ;;"nxml-setup"
                       ;;"org-setup"
                       ;;"proof-general-setup"
                       ;;"tuareg-setup"
-                      ;;"agda2-setup"
-                      ;;"go-mode-setup"
-                      ;;"haskell-mode-setup"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
+(require 'go-mode-load)
 (require 'midnight)
 (require 'inf-haskell)
 

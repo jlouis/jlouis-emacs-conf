@@ -48,7 +48,9 @@
    `(mode-line ((t (:background ,base1 :foreground ,base02))))
    `(mode-line-inactive ((t (:background ,base2 :foreground ,base01))))
    `(fringe ((t (:background ,base2))))
-   `(minibuffer-prompt ((t (:background ,base3 :foreground ,blue :weight bold))))
+   `(highlight ((t (:background ,base2))))
+   `(minibuffer-prompt
+     ((t (:background ,base3 :foreground ,blue :weight bold))))
    `(font-lock-builtin-face ((t (:foreground ,green))))
    `(font-lock-comment-face ((t (:slant italic :foreground ,base1))))
    `(font-lock-constant-face ((t (:foreground ,cyan))))
@@ -67,7 +69,7 @@
    `(hl-line ((t (:background ,base2))))
    ;; from color-theme version
    `(escape-glyph-face ((t (:foreground ,red))))
-   `(highlight ((t (:background ,base02))))
+   `(highlight ((t (:background ,base2))))
    `(menu ((t (:foreground ,base0 :background ,base02))))
    `(mode-line-buffer-id ((t (:foreground ,base1))))
    `(secondary-selection ((t (:background ,base02))))
@@ -159,7 +161,21 @@
    `(gnus-summary-normal-read ((t (:foreground ,base1))))
    `(gnus-summary-normal-ticked ((t (:foreground ,base3))))
    `(gnus-summary-normal-undownloaded ((t (:foreground ,base2))))
-   ;; Message
+   ; Flymake
+   `(flymake-errline ((t (:background ,orange))))
+   `(flymake-warnline ((t (:background ,violet))))
+   ;; whitespace
+   `(whitespace-empty ((t (:foreground ,red))))
+   `(whitespace-hspace ((t (:foreground ,orange))))
+   `(whitespace-indentation ((t (:foreground ,base2))))
+   `(whitespace-space ((t (:foreground ,base2))))
+   `(whitespace-space-after-tab ((t (:foreground ,cyan))))
+   `(whitespace-space-before-tab ((t (:foreground ,red :bold t))))
+   `(whitespace-tab ((t (:foreground ,base2))))
+   `(whitespace-trailing ((t
+     (:background ,base2 :foreground ,red :bold t))))
+   `(whitespace-highlight-face ((t (:background ,blue :foreground ,red))))
+;; Message
    `(message-mml ((t (:foreground ,blue))))
    `(message-cited-text ((t (:foreground ,base2))))
    `(message-separator ((t (:foreground ,base3))))
