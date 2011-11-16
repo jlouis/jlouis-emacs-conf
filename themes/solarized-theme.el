@@ -62,9 +62,9 @@
    `(font-lock-warning-face ((t (:foreground ,red :weight bold))))
    `(isearch ((t (:background ,base2 :foreground ,base01))))
    `(lazy-highlight ((t (:background ,base2 :foreground ,base00))))
-   `(link ((t (:foreground ,violet :underline t))))
+   `(link ((t (:foreground ,violet :background ,base2 :underline t))))
    `(link-visited ((t (:foreground ,magenta :underline t))))
-   `(button ((t (:background ,base1 :underline t))))
+   `(button ((t (:background ,base2 :foreground ,yellow :underline t))))
    `(header-line ((t (:background ,base2 :foreground ,base01))))
    `(hl-line ((t (:background ,base2))))
    ;; from color-theme version
@@ -85,11 +85,10 @@
    `(custom-button-pressed
      ((t (:inherit custom-button-mouse
                    :box (:line-width 2 :style pressed-button)))))
-   `(custom-comment-tag ((t (:background ,base02))))
-   `(custom-comment-tag ((t (:background ,base02))))
+   `(custom-comment-tag ((t (:background ,base02 :foreground ,base2))))
    `(custom-documentation ((t (:inherit default))))
    `(custom-group-tag ((t (:foreground ,orange :bold t))))
-   `(custom-link ((t (:foreground ,violet))))
+   `(custom-link ((t (:foreground ,violet :background ,base2))))
    `(custom-state ((t (:foreground ,green))))
    `(custom-variable-tag ((t (:foreground ,orange :bold t))))
    ;; diff
