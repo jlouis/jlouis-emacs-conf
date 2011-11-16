@@ -374,4 +374,4 @@ purple cursor)
 
 (eval-after-load "color-theme"
   '(progn
-     (color-theme-tomorrow-night)))
+     (color-theme-solarized-dark)))

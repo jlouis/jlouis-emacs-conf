@@ -125,8 +125,8 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f11] 'fullscreen-toggle)
 (global-set-key [f10] 'magit-status)
-(global-set-key [f8] 'color-theme-tomorrow-night)
-(global-set-key [f7] 'color-theme-tomorrow-night-blue)
+(global-set-key [f8] 'color-theme-solarized-dark)
+(global-set-key [f7] 'color-theme-solarized-light)
 (global-set-key (kbd "C-x C-i") 'imenu)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key (kbd "C-c e") 'esk-eval-and-replace)
@@ -165,17 +165,6 @@
 (defalias 'auto-tail-revert-mode 'tail-mode)
 
 (random t) ;; Seed the random-number generator
-
-;; Cosmetics
-(eval-after-load 'diff-mode
-  '(progn
-     (set-face-foreground 'diff-added "green4")
-     (set-face-foreground 'diff-removed "red3")))
-
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-add "green4")
-     (set-face-foreground 'magit-diff-del "red3")))
 
 ;; Get around the emacswiki spam protection
 (eval-after-load 'oddmuse
