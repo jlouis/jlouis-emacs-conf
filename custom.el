@@ -43,7 +43,6 @@
  '(sml-indent-level 2)
  '(speedbar-frame-parameters (quote ((minibuffer) (width . 20) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (set-background-color "black"))))
  '(speedbar-show-unknown-files t)
- '(user-mail-address "jesper.louis.andersen@gmail.com")
  '(visible-bell t)
  '(whitespace-global-modes t)
  '(whitespace-modes (quote (awk-mode elisp-mode erlang-mode haskell-mode tuareg-mode)))

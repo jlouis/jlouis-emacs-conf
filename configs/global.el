@@ -125,8 +125,8 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f11] 'fullscreen-toggle)
 (global-set-key [f10] 'magit-status)
-(global-set-key [f8] 'color-theme-solarized-dark)
-(global-set-key [f7] 'color-theme-solarized-light)
+(global-set-key [f8] 'solarized-dark)
+(global-set-key [f7] 'solarized-light)
 (global-set-key (kbd "C-x C-i") 'imenu)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key (kbd "C-c e") 'esk-eval-and-replace)
@@ -172,4 +172,9 @@
             (lambda ()
               (unless (string-match "question" oddmuse-post)
                 (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post))))))
+
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
