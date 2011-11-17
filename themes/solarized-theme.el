@@ -48,7 +48,6 @@
    `(mode-line ((t (:background ,base1 :foreground ,base02))))
    `(mode-line-inactive ((t (:background ,base2 :foreground ,base01))))
    `(fringe ((t (:background ,base2))))
-   `(highlight ((t (:background ,base2))))
    `(minibuffer-prompt
      ((t (:background ,base3 :foreground ,blue :weight bold))))
    `(font-lock-builtin-face ((t (:foreground ,green))))
@@ -161,8 +160,8 @@
    `(gnus-summary-normal-ticked ((t (:foreground ,base3))))
    `(gnus-summary-normal-undownloaded ((t (:foreground ,base2))))
    ; Flymake
-   `(flymake-errline ((t (:background ,orange))))
-   `(flymake-warnline ((t (:background ,violet))))
+   ;`(flymake-errline ((t (:underline t))))
+   ;`(flymake-warnline ((t (:background ,base2))))
    ;; whitespace
    `(whitespace-empty ((t (:foreground ,red))))
    `(whitespace-hspace ((t (:foreground ,orange))))
