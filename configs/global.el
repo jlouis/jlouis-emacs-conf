@@ -118,6 +118,10 @@
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-z" 'undo)
 (global-set-key (kbd "M-/") 'hippie-expand)
+;; These two is because the M-` is now taken by Unity, and there
+;; were no intelligent binding on ', so I just took that one.
+(global-set-key (kbd "M-'") 'jump-to-mark)
+(global-set-key (kbd "C-'") 'push-mark-no-activate)
 (global-set-key [f12] 'compile)
 (global-set-key "\C-w"     'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
