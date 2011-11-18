@@ -5,12 +5,8 @@
 ;; for the rest of the system. Then proceed to load each configuration file
 ;; for each module installed in emacs via load-cfg-files.
 ;;
-;; TODO:
-;;  ffap support
-;;
-;;; Code:
 
-;;; Load path setup
+;; Load path setup
 (setq disabled-command-function nil)
 
 (setq emacs-config-dir (file-name-directory
@@ -26,6 +22,7 @@
 (setq abbrev-file-name (concat emacs-config-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
+;; Basic stuff we really need all the time
 (require 'cl)
 (require 'saveplace)
 (require 'ffap)
@@ -53,6 +50,7 @@
 (setq el-get-user-package-directory
       (concat user-emacs-directory "/config"))
 
+;; Now, set up some el-get-sources overrides for our programs
 (setq el-get-sources
  '((:name smex
           :after (lambda ()
@@ -68,29 +66,36 @@
           :after (lambda ()
                    (global-set-key (kbd "C-c g") 'magit-status)))))
 
+;; Set up the packages that we are using
 (setq my-packages
       (append
        '(el-get auctex reftex haskell-mode graphviz-dot-mode
          gist tuareg-mode
          ;;ProofGeneral
-	 sml-mode
-	 markdown-mode
+         sml-mode
+         markdown-mode
          json js2-mode dig go-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
+;; Install all the packages
 (el-get 'sync my-packages)
-(el-get 'wait)
+;; This is worth setting the first time you run, to wait on
+;; the sync to complete
+;(el-get 'wait)
 
+;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path (concat emacs-config-dir "/themes"))
 (setq custom-safe-themes t)
 (load-theme 'solarized)
 
+;; A function to load config files
 (defun load-config-files (files)
   (dolist (f files)
     (load (expand-file-name
            (concat *emacs-config-dir* f)))
     (message "Loaded config file: %s" file)))
 
+;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
                       "init-auctex"
@@ -110,10 +115,10 @@
                       "init-uniquify"))
 
 ;; Awfully simple initializations
-(require 'go-mode-load)
 (require 'midnight)
 (require 'inf-haskell)
 
+;; Get our custom configuration loaded
 (load custom-file 'noerror)
 ;;; init.el ends here
 
