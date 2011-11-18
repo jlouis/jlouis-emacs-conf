@@ -73,6 +73,7 @@
        '(el-get auctex reftex haskell-mode graphviz-dot-mode
          gist tuareg-mode
          ;;ProofGeneral
+	 sml-mode
 	 markdown-mode
          json js2-mode dig go-mode)
        (mapcar 'el-get-source-name el-get-sources)))
