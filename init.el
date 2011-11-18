@@ -70,8 +70,11 @@
 
 (setq my-packages
       (append
-       '(el-get auctex haskell-mode graphviz-dot-mode
-         gist)
+       '(el-get auctex reftex haskell-mode graphviz-dot-mode
+         gist tuareg-mode
+         ;;ProofGeneral
+	 markdown-mode
+         json js2-mode dig go-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
