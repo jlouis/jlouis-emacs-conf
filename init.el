@@ -110,7 +110,7 @@
                       "init-hippie-expand"
                       ;;"nxml-setup"
                       ;;"org-setup"
-                      ;;"proof-general-setup"
+                      "proof-general-setup"
                       ;;"tuareg-setup"
                       "init-uniquify"))
 
