@@ -29,7 +29,6 @@
 (require 'ansi-color)
 
 ;;; package.el configuration
-(load (concat emacs-config-dir "package.el"))
 (package-initialize)
 
 (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
