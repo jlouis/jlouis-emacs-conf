@@ -6,7 +6,6 @@
 ;; for each module installed in emacs via load-cfg-files.
 ;;
 
-;; Load path setup
 (setq disabled-command-function nil)
 
 (setq emacs-config-dir (file-name-directory
