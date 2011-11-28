@@ -133,6 +133,7 @@
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key (kbd "C-c e") 'esk-eval-and-replace)
 (global-set-key (kbd "C-c h") 'compile)
+(global-set-key (kbd "C-c r") 'vc-git-grep)
 
 ;;; global.el ends here
 
