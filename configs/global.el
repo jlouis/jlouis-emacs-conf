@@ -142,6 +142,7 @@
   "Toggle local `whitespace-mode' options." t)
 
 (setq sentence-end-double-space nil
+      
       uniquify-buffer-name-style 'forward
       whitespace-style '(face trailing lines lines-tail tabs space-before-tab
                               space-after-tab)
@@ -158,6 +159,7 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
+(set-default 'indicate-buffer-boundaries 'left)
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
