@@ -57,6 +57,7 @@
 (setq tab-always-indent 'complete)
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
+(setq-default size-indication-mode t)
 (setq-default mouse-yank-at-point t)
 (setq-default scroll-step 1)
 (setq-default ediff-merge-split-window-functon 'split-window-vertically)
@@ -69,6 +70,14 @@
 
 (setf split-height-threshold 40
       split-width-threshold 160)
+
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
+(electric-pair-mode t)
+(electric-indent-mode t)
+(electric-layout-mode t)
 
 (defun dont-kill-emacs ()
       (interactive)
@@ -133,8 +142,8 @@
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key (kbd "C-c e") 'esk-eval-and-replace)
 (global-set-key (kbd "C-c h") 'compile)
+(global-set-key (kbd "C-c j") 'join-line)
 (global-set-key (kbd "C-c r") 'vc-git-grep)
-
 ;;; global.el ends here
 
 ;; whitespace mode
