@@ -73,9 +73,8 @@
 (setq my-packages
       (append
        '(el-get
-	 ; auctex
-	 ; reftex haskell-mode
-	 graphviz-dot-mode
+         ; auctex reftex haskell-mode
+         graphviz-dot-mode
          gist tuareg-mode
          ;;ProofGeneral
          sml-mode
@@ -104,7 +103,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      "init-auctex"
+;                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
@@ -116,13 +115,13 @@
                       "init-hippie-expand"
                       ;;"nxml-setup"
                       ;;"org-setup"
-                      "proof-general-setup"
+;                      "proof-general-setup"
                       ;;"tuareg-setup"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
 (require 'midnight)
-(require 'inf-haskell)
+;(require 'inf-haskell)
 
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
