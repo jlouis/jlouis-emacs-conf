@@ -14,3 +14,4 @@ session.*
 /el-get/
 /history
 /bookmarks
+/eshell/history
