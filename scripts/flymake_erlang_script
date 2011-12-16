@@ -1,4 +1,4 @@
-#!/usr/bin/env escript
+#!/usr/local/bin/escript
 -export([main/1]).
 
 main([File_Name]) ->

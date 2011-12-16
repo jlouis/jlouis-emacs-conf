@@ -6,6 +6,11 @@
 ;; for each module installed in emacs via load-cfg-files.
 ;;
 
+(add-to-list 'exec-path "/usr/bin")
+(add-to-list 'exec-path "/usr/sbin")
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/usr/local/sbin")
+
 (setq disabled-command-function nil)
 
 (setq emacs-config-dir (file-name-directory
@@ -67,7 +72,10 @@
 ;; Set up the packages that we are using
 (setq my-packages
       (append
-       '(el-get auctex reftex haskell-mode graphviz-dot-mode
+       '(el-get
+	 ; auctex
+	 ; reftex haskell-mode
+	 graphviz-dot-mode
          gist tuareg-mode
          ;;ProofGeneral
          sml-mode
