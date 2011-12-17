@@ -64,6 +64,10 @@
                      (setq smex-save-file
                            (concat user-emacs-directory ".smex-items"))
                      (global-set-key (kbd "M-x") 'smex))))
+   (:name haskell-mode
+          :after (lambda ()
+                   (progn
+                     (require 'inf-haskell))))
    (:name idle-highlight-mode
           :type elpa)
    (:name ido-ubiquitous
@@ -119,7 +123,8 @@
 (setq my-packages
       (append
        '(el-get
-         ; auctex reftex haskell-mode
+         ;; auctex reftex
+         haskell-mode
          graphviz-dot-mode
          gist tuareg-mode
          ;;ProofGeneral
@@ -162,13 +167,10 @@
                       ;;"nxml-setup"
                       ;;"org-setup"
 ;                      "proof-general-setup"
-                      ;;"tuareg-setup"
-;                      "init-yasnippet"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
 (require 'midnight)
-;(require 'inf-haskell)
 
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
