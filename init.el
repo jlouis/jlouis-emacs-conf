@@ -6,10 +6,13 @@
 ;; for each module installed in emacs via load-cfg-files.
 ;;
 
-(add-to-list 'exec-path "/usr/bin")
-(add-to-list 'exec-path "/usr/sbin")
-(add-to-list 'exec-path "/usr/local/bin")
-(add-to-list 'exec-path "/usr/local/sbin")
+(if (string-equal "darwin" (symbol-name system-type))
+    (progn 
+      (add-to-list 'exec-path "/usr/bin")
+      (add-to-list 'exec-path "/usr/sbin")
+      (add-to-list 'exec-path "/usr/local/bin")
+      (add-to-list 'exec-path "/usr/local/sbin")
+      (set-frame-font "Menlo-14")))
 
 (setq disabled-command-function nil)
 
