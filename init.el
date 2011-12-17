@@ -54,7 +54,7 @@
     (eval-print-last-sexp)))
 
 (setq el-get-user-package-directory
-      (concat user-emacs-directory "/config"))
+      (concat user-emacs-directory "/configs"))
 
 ;; Now, set up some el-get-sources overrides for our programs
 (setq el-get-sources
@@ -163,7 +163,7 @@
                       ;;"org-setup"
 ;                      "proof-general-setup"
                       ;;"tuareg-setup"
-                      "init-yasnippet"
+;                      "init-yasnippet"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
