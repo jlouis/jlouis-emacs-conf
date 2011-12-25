@@ -15,3 +15,4 @@ session.*
 /history
 /bookmarks
 /eshell/history
+/eshell/lastdir
