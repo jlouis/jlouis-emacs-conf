@@ -126,16 +126,27 @@
 ;; Set up the packages that we are using
 (setq my-packages
       (append
-       '(el-get
-         ; auctex reftex ;; Needs override of --with-texmf-dir=...
-         haskell-mode
-         graphviz-dot-mode
-         gist tuareg-mode
-         nxhtml
+       '(
+         el-get
+         ;; auctex reftex ;; Needs override of --with-texmf-dir=...
          ;;ProofGeneral
-         sml-mode
+         csv-mode
+         dig
+         flymake-fringe-icons
+         ;;flymake-point
+         gist tuareg-mode
+         go-mode
+         graphviz-dot-mode
+         haskell-mode
+         htmlize
+         json js2-mode
          markdown-mode
-         json js2-mode dig go-mode)
+         magithub
+         nxhtml
+         org-mode
+         sml-mode
+         ssh-config
+         )
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
@@ -169,7 +180,6 @@
                       "init-tramp"
                       "init-flymake"
                       "init-hippie-expand"
-                      ;;"org-setup"
 ;                      "proof-general-setup"
                       "init-uniquify"))
 
