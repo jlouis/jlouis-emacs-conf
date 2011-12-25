@@ -7,12 +7,16 @@
 ;;
 
 (if (string-equal "darwin" (symbol-name system-type))
-    (progn 
-      (add-to-list 'exec-path "/usr/bin")
-      (add-to-list 'exec-path "/usr/sbin")
-      (add-to-list 'exec-path "/usr/local/bin")
-      (add-to-list 'exec-path "/usr/local/sbin")
-      (set-frame-font "Menlo-14")))
+    (progn
+      (push "/usr/local/bin" exec-path)
+      (push "/usr/local/sbin" exec-path)
+      (push "/usr/texbin" exec-path)
+      (push "/usr/bin" exec-path)
+      (push "/usr/sbin" exec-path)
+      (setenv "PATH"
+              (concat "/usr/local/bin:/usr/local/sbin:"
+                      "/usr/texbin:" (getenv "PATH")))
+      (set-frame-font "Menlo-12")))
 
 (setq disabled-command-function nil)
 
@@ -123,10 +127,11 @@
 (setq my-packages
       (append
        '(el-get
-         ;; auctex reftex
+         ; auctex reftex ;; Needs override of --with-texmf-dir=...
          haskell-mode
          graphviz-dot-mode
          gist tuareg-mode
+         nxhtml
          ;;ProofGeneral
          sml-mode
          markdown-mode
@@ -164,7 +169,6 @@
                       "init-tramp"
                       "init-flymake"
                       "init-hippie-expand"
-                      ;;"nxml-setup"
                       ;;"org-setup"
 ;                      "proof-general-setup"
                       "init-uniquify"))
