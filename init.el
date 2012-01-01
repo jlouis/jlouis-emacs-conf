@@ -180,7 +180,7 @@
                       "init-tramp"
                       "init-flymake"
                       "init-hippie-expand"
-;                      "proof-general-setup"
+                      "init-proofgeneral"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
