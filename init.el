@@ -132,7 +132,6 @@
          ;;ProofGeneral
          csv-mode
          dig
-         flymake-fringe-icons
          ;;flymake-point
          gist tuareg-mode
          go-mode

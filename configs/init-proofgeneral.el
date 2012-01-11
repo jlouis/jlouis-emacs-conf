@@ -1,1 +1,1 @@
-(load-file "/home/jlouis/Projects/ProofGeneral/generic/proof-site.el")
+(load-file "~/Projects/ProofGeneral/generic/proof-site.el")

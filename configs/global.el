@@ -143,6 +143,7 @@
 (global-set-key (kbd "C-c h") 'compile)
 (global-set-key (kbd "C-c j") 'join-line)
 (global-set-key (kbd "C-c r") 'vc-git-grep)
+(global-set-key (kbd "C-c |") 'align)
 ;;; global.el ends here
 
 ;; whitespace mode
