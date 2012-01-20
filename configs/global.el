@@ -59,7 +59,6 @@
 (setq-default column-number-mode t)
 (setq-default size-indication-mode t)
 (setq-default mouse-yank-at-point t)
-(setq-default scroll-step 1)
 (setq-default ediff-merge-split-window-functon 'split-window-vertically)
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq-default mode-compile-always-save-buffer-p t)
@@ -71,9 +70,7 @@
 (setf split-height-threshold 40
       split-width-threshold 160)
 
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
+(setq scroll-preserve-screen-position 1)
 
 (electric-pair-mode t)
 (electric-indent-mode t)
