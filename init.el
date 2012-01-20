@@ -13,8 +13,10 @@
       (push "/usr/texbin" exec-path)
       (push "/usr/bin" exec-path)
       (push "/usr/sbin" exec-path)
+      (push "~/.cabal/bin" exec-path)
       (setenv "PATH"
               (concat "/usr/local/bin:/usr/local/sbin:"
+                      "~/.cabal/bin:"
                       "/usr/texbin:" (getenv "PATH")))
       (set-frame-font "Menlo-12")))
 
@@ -178,6 +180,7 @@
                       "init-recentf"
                       "init-tramp"
                       "init-flymake"
+                      "init-agda2"
                       "init-hippie-expand"
                       "init-proofgeneral"
                       "init-uniquify"))
