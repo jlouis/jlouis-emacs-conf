@@ -1,3 +1,4 @@
+(require 'tex-site)
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
 
@@ -25,8 +26,24 @@
 ; LaTeX-mode but also useful with plain TeX + eplain and with ConTeXt, so:
 (setq reftex-plug-into-AUCTeX t)
 (add-hook 'TeX-mode-hook 'reftex-mode)
-
-(setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) %o")))
-(setq TeX-view-program-selection '((output-pdf "Evince")))
 (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-(setq TeX-source-correlate-start-server t)
+(setq TeX-source-correlate-method 'synctex)
+(add-hook 'LaTeX-mode-hook
+      (lambda()
+        (add-to-list 'TeX-expand-list
+             '("%q" skim-make-url))))
+
+(defun skim-make-url ()
+  (concat
+   (TeX-current-line)
+   " "
+   (expand-file-name (funcall file (TeX-output-extension) t)
+                     (file-name-directory (TeX-master-file)))
+   " "
+   (buffer-file-name)))
+
+(setq TeX-view-program-list
+      '(("Skim"
+         "/Applications/Skim.app/Contents/SharedSupport/displayline %q")))
+
+(setq TeX-view-program-selection '((output-pdf "Skim")))

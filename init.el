@@ -74,6 +74,8 @@
           :after (lambda ()
                    (progn
                      (require 'inf-haskell))))
+   (:name pastels-on-dark-theme
+          :type elpa)
    (:name idle-highlight-mode
           :type elpa)
    (:name ido-ubiquitous
@@ -150,7 +152,6 @@
       (append
        '(
          el-get
-         ;; auctex reftex ;; Needs override of --with-texmf-dir=...
          ;;ProofGeneral
          csv-mode
          dig
@@ -167,6 +168,7 @@
          org-mode
          sml-mode
          ssh-config
+         color-theme-solarized
          )
        (if (string-equal "darwin" (symbol-name system-type))
          '(growl)
@@ -182,7 +184,13 @@
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path (concat emacs-config-dir "/themes"))
 (setq custom-safe-themes t)
-(load-theme 'solarized)
+(color-theme-solarized-dark)
+(defun light ()
+  (interactive)
+  (color-theme-solarized-light))
+(defun dark ()
+  (interactive)
+  (color-theme-solarized-dark))
 
 ;; A function to load config files
 (defun load-config-files (files)
@@ -194,7 +202,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-;                      "init-auctex"
+                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
