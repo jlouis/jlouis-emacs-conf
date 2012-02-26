@@ -184,13 +184,7 @@
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path (concat emacs-config-dir "/themes"))
 (setq custom-safe-themes t)
-(color-theme-solarized-dark)
-(defun light ()
-  (interactive)
-  (color-theme-solarized-light))
-(defun dark ()
-  (interactive)
-  (color-theme-solarized-dark))
+(load-theme 'pastels-on-dark)
 
 ;; A function to load config files
 (defun load-config-files (files)
@@ -222,4 +216,5 @@
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
 ;;; init.el ends here
+(server-start)
 
