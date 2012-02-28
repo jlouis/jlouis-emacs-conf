@@ -76,6 +76,10 @@
                      (require 'inf-haskell))))
    (:name pastels-on-dark-theme
           :type elpa)
+   (:name solarized-theme
+          :type elpa)
+   (:name zenburn-theme
+          :type elpa)
    (:name idle-highlight-mode
           :type elpa)
    (:name ido-ubiquitous
@@ -124,25 +128,25 @@
        ;; see https://github.com/dimitri/el-get/issues/200
        :compile nil)
    ;; (:name ProofGeneral ;; Requires Emacs >= 23.3
-   ;; 	  :website "http://proofgeneral.inf.ed.ac.uk/"
-   ;; 	  :description "Proof General is a generic front-end for proof assistants (also known as interactive theorem provers)"
-   ;; 	  :type http-tar
-   ;; 	  :options ("xzf")
-   ;; 	  :url "http://proofgeneral.inf.ed.ac.uk/releases/ProofGeneral-4.2pre111207.tgz"
-   ;; 	  :build ("cd ProofGeneral && make compile")
-   ;; 	  :load  ("ProofGeneral/generic/proof-site.el")
-   ;; 	  :info "./ProofGeneral/doc/")
+   ;;     :website "http://proofgeneral.inf.ed.ac.uk/"
+   ;;     :description "Proof General is a generic front-end for proof assistants (also known as interactive theorem provers)"
+   ;;     :type http-tar
+   ;;     :options ("xzf")
+   ;;     :url "http://proofgeneral.inf.ed.ac.uk/releases/ProofGeneral-4.2pre111207.tgz"
+   ;;     :build ("cd ProofGeneral && make compile")
+   ;;     :load  ("ProofGeneral/generic/proof-site.el")
+   ;;     :info "./ProofGeneral/doc/")
    (:name ess
-	  :description "Emacs Speaks Statistics: statistical programming within Emacs"
-	  :type svn
-	  :url "https://svn.r-project.org/ESS/trunk/"
-	  :info "doc/info/"
-	  :build `,(mapcar
-		    (lambda (target)
-		      (concat "make " target " EMACS=" el-get-emacs))
-		    '("clean" "all"))
-	  :load-path ("lisp")
-	  :features ess-site)
+          :description "Emacs Speaks Statistics: statistical programming within Emacs"
+          :type svn
+          :url "https://svn.r-project.org/ESS/trunk/"
+          :info "doc/info/"
+          :build `,(mapcar
+                    (lambda (target)
+                      (concat "make " target " EMACS=" el-get-emacs))
+                    '("clean" "all"))
+          :load-path ("lisp")
+          :features ess-site)
    (:name magit
           :after (lambda ()
                    (global-set-key (kbd "C-c g") 'magit-status)))))
@@ -166,9 +170,9 @@
          magithub
          nxhtml
          org-mode
+         rainbow-delimiters
          sml-mode
          ssh-config
-         color-theme-solarized
          )
        (if (string-equal "darwin" (symbol-name system-type))
          '(growl)
@@ -182,9 +186,19 @@
 ;(el-get 'wait)
 
 ;; Setup a theme, it is a solarized variant
-(add-to-list 'custom-theme-load-path (concat emacs-config-dir "/themes"))
 (setq custom-safe-themes t)
-(load-theme 'pastels-on-dark)
+
+(defun dark ()
+  (interactive)
+  (load-theme 'solarized-dark))
+(defun light ()
+  (interactive)
+  (load-theme 'solarized-light))
+
+(light)
+(if (string-equal "darwin" (symbol-name system-type))
+  (progn
+    (set-frame-font "Menlo-12")))
 
 ;; A function to load config files
 (defun load-config-files (files)
