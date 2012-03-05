@@ -127,15 +127,6 @@
        ;; byte-compile load vc-svn and that fails
        ;; see https://github.com/dimitri/el-get/issues/200
        :compile nil)
-   ;; (:name ProofGeneral ;; Requires Emacs >= 23.3
-   ;;     :website "http://proofgeneral.inf.ed.ac.uk/"
-   ;;     :description "Proof General is a generic front-end for proof assistants (also known as interactive theorem provers)"
-   ;;     :type http-tar
-   ;;     :options ("xzf")
-   ;;     :url "http://proofgeneral.inf.ed.ac.uk/releases/ProofGeneral-4.2pre111207.tgz"
-   ;;     :build ("cd ProofGeneral && make compile")
-   ;;     :load  ("ProofGeneral/generic/proof-site.el")
-   ;;     :info "./ProofGeneral/doc/")
    (:name ess
           :description "Emacs Speaks Statistics: statistical programming within Emacs"
           :type svn
