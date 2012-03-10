@@ -9,9 +9,8 @@
 ;; Wrangler
 
 (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
-;(require 'wrangler)
+(require 'wrangler)
 
-;(load-file "/usr/local/share/wrangler/elisp/graphviz-dot-mode.el")
 (add-hook 'erlang-mode-hook 'esk-prog-mode-hook)
 
 ;; Align (thanks @eproxus)

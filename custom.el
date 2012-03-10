@@ -10,6 +10,7 @@
  '(indicate-buffer-boundaries (quote left))
  '(org-agenda-files (quote ("~/org")))
  '(org-refile-use-outline-path nil)
+ '(wrangler-search-paths (quote ("/Users/jlouis/Projects/issuu/payflow")))
  '(yas/snippet-dirs (quote ("~/.emacs.d/snippets" "~/.emacs.d/el-get/yasnippet/snippets")) nil (yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
