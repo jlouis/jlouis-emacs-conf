@@ -18,6 +18,8 @@
               (concat "/usr/local/bin:/usr/local/sbin:"
                       "~/.cabal/bin:"
                       "/usr/texbin:" (getenv "PATH")))
+      (setenv "ERL_LIBS"
+              (concat "/Users/jlouis/lib/erlang"))
       (set-frame-font "Menlo-12")))
 
 (setq disabled-command-function nil)
@@ -151,6 +153,8 @@
          csv-mode
          dig
          ;;flymake-point
+         slime
+         ac-slime
          gist tuareg-mode
          go-mode
          graphviz-dot-mode
