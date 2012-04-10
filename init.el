@@ -20,6 +20,9 @@
                       "/usr/texbin:" (getenv "PATH")))
       (setenv "ERL_LIBS"
               (concat "/Users/jlouis/lib/erlang"))
+      (set-fontset-font "fontset-default"
+                        'unicode
+                        '("Menlo" . "iso10646-1"))
       (set-frame-font "Menlo-12")))
 
 (setq disabled-command-function nil)
@@ -153,6 +156,7 @@
          csv-mode
          dig
          ;;flymake-point
+         ace-jump-mode
          slime
          ac-slime
          gist tuareg-mode
@@ -190,7 +194,7 @@
   (interactive)
   (load-theme 'solarized-light))
 
-(light)
+(dark)
 (if (string-equal "darwin" (symbol-name system-type))
   (progn
     (set-frame-font "Menlo-12")))
