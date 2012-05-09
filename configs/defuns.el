@@ -13,9 +13,6 @@
   (require 'saveplace)
   (setq save-place t))
 
-(defun esk-turn-on-whitespace ()
-  (whitespace-mode t))
-
 (defun esk-turn-on-paredit ()
   (paredit-mode t))
 
@@ -30,7 +27,6 @@
 (add-hook 'prog-mode-hook 'esk-local-column-number-mode)
 (add-hook 'prog-mode-hook 'esk-local-comment-auto-fill)
 (add-hook 'prog-mode-hook 'esk-turn-on-save-place-mode)
-(add-hook 'prog-mode-hook 'esk-turn-on-whitespace)
 (add-hook 'prog-mode-hook 'esk-add-watchwords)
 (add-hook 'prog-mode-hook 'esk-turn-on-idle-highlight-mode)
 

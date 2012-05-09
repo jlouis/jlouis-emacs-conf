@@ -145,17 +145,8 @@
 
 ;;; global.el ends here
 
-;; whitespace mode
-(autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
-(autoload 'whitespace-toggle-options "whitespace"
-  "Toggle local `whitespace-mode' options." t)
-
 (setq sentence-end-double-space nil
-      
       uniquify-buffer-name-style 'forward
-      whitespace-style '(face trailing lines lines-tail tabs space-before-tab
-                              space-after-tab)
-      whitespace-line-column 80
       ediff-window-setup-function 'ediff-setup-windows-plain
       oddmuse-directory "~/.emacs.d/oddmuse"
       save-place-file "~/.emacs.d/places"
