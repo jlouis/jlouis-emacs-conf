@@ -218,7 +218,7 @@
                       "init-recentf"
                       "init-tramp"
                       "init-flymake"
-                      "init-agda2"
+                      ;;"init-agda2"
                       "init-hippie-expand"
                       "init-proofgeneral"
                       "init-uniquify"))
