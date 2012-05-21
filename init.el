@@ -57,6 +57,14 @@
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
+;;; Erlang mode load path needs to go here. Otherwise distel will not like us
+(setq erlang-root-dir "/usr/local/lib/erlang")
+(setq tools-ver "2.6.7")
+(setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
+                      load-path))
+(setq exec-path (cons (concat erlang-root-dir "/bin")
+                      exec-path))
+
 (unless (require 'el-get nil t)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -155,6 +163,7 @@
          ;;ProofGeneral
          csv-mode
          dig
+	 distel
          ;;flymake-point
          ace-jump-mode
          slime
