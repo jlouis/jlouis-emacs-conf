@@ -21,3 +21,6 @@
 (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
 (delete '("\\.xml?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
 
+(defun flymake-get-tex-args (file-name)
+  (list "latex" (list "-file-line-error-style" file-name)))
+
