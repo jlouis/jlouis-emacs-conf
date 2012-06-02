@@ -28,4 +28,3 @@
 (add-hook 'TeX-mode-hook 'reftex-mode)
 (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
 (setq TeX-source-correlate-method 'synctex)
-
