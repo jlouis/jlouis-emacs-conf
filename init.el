@@ -140,17 +140,6 @@
        ;; byte-compile load vc-svn and that fails
        ;; see https://github.com/dimitri/el-get/issues/200
        :compile nil)
-   (:name ess
-          :description "Emacs Speaks Statistics: statistical programming within Emacs"
-          :type svn
-          :url "https://svn.r-project.org/ESS/trunk/"
-          :info "doc/info/"
-          :build `,(mapcar
-                    (lambda (target)
-                      (concat "make " target " EMACS=" el-get-emacs))
-                    '("clean" "all"))
-          :load-path ("lisp")
-          :features ess-site)
    (:name magit
           :after (lambda ()
                    (global-set-key (kbd "C-c g") 'magit-status)))))
@@ -164,11 +153,9 @@
          csv-mode
          dig
 	 distel
-         ;;flymake-point
+         ess ess-edit ess-smart-underscore
          ace-jump-mode
-         slime
-         ac-slime
-         gist tuareg-mode
+	 tuareg-mode
          go-mode
          graphviz-dot-mode
          haskell-mode
@@ -178,8 +165,7 @@
          magithub
          nxhtml
          org-mode
-         rainbow-delimiters
-         sml-mode
+         ;;sml-mode
          ssh-config
          )
        (if (string-equal "darwin" (symbol-name system-type))
@@ -218,7 +204,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      "init-auctex"
+                      ;"init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
