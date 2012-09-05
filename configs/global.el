@@ -54,6 +54,7 @@
 (setq-default shift-select-mode nil)
 (setq-default default-tab-width 8)
 (setq-default indent-tabs-mode nil)
+(setq-default require-final-newline t) 
 (setq tab-always-indent 'complete)
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
