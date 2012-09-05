@@ -87,12 +87,6 @@
           :after (lambda ()
                    (progn
                      (require 'inf-haskell))))
-   (:name pastels-on-dark-theme
-          :type elpa)
-   (:name solarized-theme
-          :type elpa)
-   (:name zenburn-theme
-          :type elpa)
    (:name idle-highlight-mode
           :type elpa)
    (:name ido-ubiquitous
@@ -194,16 +188,12 @@
 ;(el-get 'wait)
 
 ;; Setup a theme, it is a solarized variant
+(add-to-list 'custom-theme-load-path
+	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
-(defun dark ()
-  (interactive)
-  (load-theme 'solarized-dark))
-(defun light ()
-  (interactive)
-  (load-theme 'solarized-light))
+(load-theme 'tomorrow-night)
 
-(dark)
 (if (string-equal "darwin" (symbol-name system-type))
   (progn
     (set-frame-font "Menlo-12")))
@@ -230,6 +220,7 @@
                       ;;"init-agda2"
                       "init-hippie-expand"
                       "init-proofgeneral"
+                      "init-twelf"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
