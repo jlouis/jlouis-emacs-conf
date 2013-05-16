@@ -48,4 +48,4 @@
     "Use Emacs grep facility instead of calling external grep."
     (eshell-grep "rgrep" args t)))
 
-(provide 'eshell-setup)
+(provide 'init-eshell)
