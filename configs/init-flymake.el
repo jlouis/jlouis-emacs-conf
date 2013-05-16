@@ -1,5 +1,5 @@
-(require 'flymake)
-(require 'erlang-flymake)
+;(require 'flymake)
+;(require 'erlang-flymake)
 
 ;; Erlang
 ;; (defun flymake-erlang-init ()

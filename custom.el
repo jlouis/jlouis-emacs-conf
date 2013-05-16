@@ -11,7 +11,7 @@
  '(indicate-buffer-boundaries (quote left))
  '(org-agenda-files (quote ("~/org")))
  '(org-refile-use-outline-path nil)
- '(wrangler-search-paths (quote ("/Users/jlouis/Projects/issuu/backend-insight/apps/insight/src"))))
+ '(wrangler-search-paths (quote ("/Users/jlouis/Projects/issuu/backend-erlang"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

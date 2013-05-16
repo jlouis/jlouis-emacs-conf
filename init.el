@@ -22,8 +22,7 @@
               (concat "/Users/jlouis/lib/erlang"))
       (set-fontset-font "fontset-default"
                         'unicode
-                        '("Menlo" . "iso10646-1"))
-      (set-frame-font "Menlo-12")))
+                        '("Menlo" . "iso10646-1"))))
 
 (setq disabled-command-function nil)
 
@@ -157,7 +156,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      "init-flymake"
+                      ;"init-flymake"
                       ;;"init-agda2"
                       "init-hippie-expand"
                       "init-proofgeneral"
