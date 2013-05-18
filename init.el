@@ -1,31 +1,32 @@
 ;; init.el --- Initialization file for my Emacs setup
 ;;; Commentary:
 
-;; Get up and running, set custom to something else, and set up load paths
-;; for the rest of the system. Then proceed to load each configuration file
-;; for each module installed in emacs via load-cfg-files.
-;;
-
-(if (string-equal "darwin" (symbol-name system-type))
-    (progn
-      (push "/usr/local/bin" exec-path)
-      (push "/usr/local/sbin" exec-path)
-      (push "/usr/texbin" exec-path)
-      (push "/usr/bin" exec-path)
-      (push "/usr/sbin" exec-path)
-      (push "~/.cabal/bin" exec-path)
-      (setenv "PATH"
-              (concat "/usr/local/bin:/usr/local/sbin:"
-                      "~/.cabal/bin:"
-                      "/usr/texbin:" (getenv "PATH")))
-      (setenv "ERL_LIBS"
-              (concat "/Users/jlouis/lib/erlang"))
-      (set-fontset-font "fontset-default"
-                        'unicode
-                        '("Menlo" . "iso10646-1"))))
-
+;; Set up system-specific stuff quickly
+(cond
+ ((eq system-type 'gnu/linux)
+  (progn
+    (set-face-attribute 'default nil :font "Monospace-11")))
+ ((eq system-type 'darwin)
+  (progn
+    (push "/usr/local/bin" exec-path)
+    (push "/usr/local/sbin" exec-path)
+    (push "/usr/texbin" exec-path)
+    (push "/usr/bin" exec-path)
+    (push "/usr/sbin" exec-path)
+    (push "~/.cabal/bin" exec-path)
+    (setenv "PATH"
+            (concat "/usr/local/bin:/usr/local/sbin:"
+                    "~/.cabal/bin:"
+                    "/usr/texbin:" (getenv "PATH")))
+    (setenv "ERL_LIBS"
+            (concat "/Users/jlouis/lib/erlang"))
+    (set-fontset-font "fontset-default"
+                      'unicode
+                      '("Menlo" . "iso10646-1")))))
+ 
 (setq disabled-command-function nil)
 
+;; Paths, sir, paths!
 (setq emacs-config-dir (file-name-directory
                         (or (buffer-file-name) load-file-name)))
 
@@ -77,19 +78,17 @@
 ;; Now, set up some el-get-sources overrides for our programs
 (setq el-get-sources
  '((:name smex
-          :after (lambda ()
-                   (progn
+          :after (progn
                      (setq smex-save-file
                            (concat user-emacs-directory ".smex-items"))
-                     (global-set-key (kbd "M-x") 'smex))))
+                     (global-set-key (kbd "M-x") 'smex)))
    (:name haskell-mode
-          :after (lambda ()
-                   (progn
-                     (require 'inf-haskell))))
+          :after (progn
+                     (require 'inf-haskell)))
    (:name ido-ubiquitous
           :type elpa)
    (:name magit
-          :after (lambda ()
+          :after (progn
                    (global-set-key (kbd "C-c g") 'magit-status)))))
 
 ;; Set up the packages that we are using
@@ -160,7 +159,7 @@
                       ;;"init-agda2"
                       "init-hippie-expand"
                       "init-proofgeneral"
-                      "init-twelf"
+                      ;"init-twelf"
                       "init-uniquify"))
 
 ;; Awfully simple initializations
