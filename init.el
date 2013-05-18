@@ -5,8 +5,10 @@
 (cond
  ((eq system-type 'gnu/linux)
   (progn
-    ;(set-face-attribute 'default nil :font "Source Code Pro Medium-11")
-    (set-face-attribute 'default nil :font "Monospace-11")))
+    ;;(set-face-attribute 'default nil :font "Source Code Pro Medium-11")
+    (set-face-attribute 'default nil :font "Monospace-11")
+    )
+  )
  ((eq system-type 'darwin)
   (progn
     (push "/usr/local/bin" exec-path)
@@ -83,6 +85,11 @@
                      (setq smex-save-file
                            (concat user-emacs-directory ".smex-items"))
                      (global-set-key (kbd "M-x") 'smex)))
+   (:name solarized-theme
+          :type github
+          :pkgname "sellout/emacs-color-theme-solarized"
+          :description "Solarized themes for Emacs"
+          :prepare (add-to-list 'custom-theme-load-path default-directory))
    (:name haskell-mode
           :after (progn
                      (require 'inf-haskell)))
@@ -110,6 +117,7 @@
          htmlize
          json js2-mode
          markdown-mode
+         tomorrow-theme
          magithub
          nxhtml
          org-mode
@@ -132,7 +140,7 @@
 	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
-(load-theme 'tomorrow-night)
+(load-theme 'solarized-light)
 
 (if (string-equal "darwin" (symbol-name system-type))
   (progn
