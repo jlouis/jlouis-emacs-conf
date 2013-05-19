@@ -5,8 +5,10 @@
 (cond
  ((eq system-type 'gnu/linux)
   (progn
-    ;;(set-face-attribute 'default nil :font "Source Code Pro Medium-11")
-    (set-face-attribute 'default nil :font "Monospace-11")
+    ;;(set-face-attribute 'default nil :font "Monospace-11")
+    (set-default-font "Source Code Pro")
+    (set-face-attribute 'default nil :font "Source Code Pro" :height 105)
+    (set-face-font 'default "Source Code Pro")
     )
   )
  ((eq system-type 'darwin)
