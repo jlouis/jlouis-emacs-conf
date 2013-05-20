@@ -1,16 +1,18 @@
 ;; init.el --- Initialization file for my Emacs setup
 ;;; Commentary:
 
-;; Set up system-specific stuff quickly
+;; Set up system-specific stuff first
 (cond
  ((eq system-type 'gnu/linux)
   (progn
-    ;;(set-face-attribute 'default nil :font "Monospace-11")
-    (set-default-font "Source Code Pro")
-    (set-face-attribute 'default nil :font "Source Code Pro" :height 110)
-    (set-face-font 'default "Source Code Pro")
-    )
-  )
+    ((lambda (font)
+       (set-default-font font)
+       (set-face-attribute 'default nil
+                           :font font
+                           :height 105
+                           :weight 'normal)
+       (set-face-font 'default font))
+     "Source Code Pro")))
  ((eq system-type 'darwin)
   (progn
     (push "/usr/local/bin" exec-path)
@@ -52,12 +54,15 @@
 (require 'ansi-color)
 
 ;;; package.el configuration
+(require 'package)
+(dolist (arch '(("org" . "http://orgmode.org/elpa/")
+                ("gnu" . "http://elpa.gnu.org/packages/")
+                ("melpa" . "http://melpa.milkbox.net/packages/")
+                ("tromey" . "http://tromey.com/elpa/")
+                ("marmalade" . "http://marmalade-repo.org/packages/")
+                ))
+  (add-to-list 'package-archives arch))
 (package-initialize)
-
-(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
