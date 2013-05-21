@@ -35,7 +35,8 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (tool-bar-mode -1)
-  (toggle-scroll-bar -1))
+  (toggle-scroll-bar -1)
+  (scroll-bar-mode -1))
 
 ;(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
