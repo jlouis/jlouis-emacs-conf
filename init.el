@@ -140,7 +140,7 @@
 (el-get 'sync my-packages)
 ;; This is worth setting the first time you run, to wait on
 ;; the sync to complete
-;(el-get 'wait)
+;;(el-get 'wait)
 
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path
@@ -151,7 +151,7 @@
 
 (if (string-equal "darwin" (symbol-name system-type))
   (progn
-    (set-frame-font "Menlo-12")))
+    (set-frame-font "Source Code Pro-14")))
 
 ;; A function to load config files
 (defun load-config-files (files)
