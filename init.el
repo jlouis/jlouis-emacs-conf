@@ -27,9 +27,14 @@
                     "/usr/texbin:" (getenv "PATH")))
     (setenv "ERL_LIBS"
             (concat "/Users/jlouis/lib/erlang"))
-    (set-fontset-font "fontset-default"
-                      'unicode
-                      '("Menlo" . "iso10646-1")))))
+    ((lambda (font)
+       (set-default-font font)
+       (set-face-attribute 'default nil
+                           :font font
+                           :height 140
+                           :weight 'normal)
+       (set-face-font 'default font))
+     "Source Code Pro"))))
  
 (setq disabled-command-function nil)
 
@@ -148,10 +153,6 @@
 (setq custom-safe-themes t)
 
 (load-theme 'solarized-light)
-
-(if (string-equal "darwin" (symbol-name system-type))
-  (progn
-    (set-frame-font "Source Code Pro-14")))
 
 ;; A function to load config files
 (defun load-config-files (files)
