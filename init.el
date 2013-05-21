@@ -105,6 +105,8 @@
    (:name haskell-mode
           :after (progn
                      (require 'inf-haskell)))
+   (:name http-twiddle
+          :type elpa)
    (:name ido-ubiquitous
           :type elpa)
    (:name magit
