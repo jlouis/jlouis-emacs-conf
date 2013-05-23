@@ -156,7 +156,7 @@
 	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
-(load-theme 'tomorrow-night-eighties t)
+(load-theme 'tomorrow-night t)
 
 ;; A function to load config files
 (defun load-config-files (files)
