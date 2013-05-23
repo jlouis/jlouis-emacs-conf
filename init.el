@@ -102,6 +102,8 @@
           :pkgname "sellout/emacs-color-theme-solarized"
           :description "Solarized themes for Emacs"
           :prepare (add-to-list 'custom-theme-load-path default-directory))
+   (:name tomorrow-theme
+          :after (add-to-list 'custom-theme-load-path (concat default-directory  "/GNU Emacs")))
    (:name haskell-mode
           :after (progn
                      (require 'inf-haskell)))
@@ -154,7 +156,7 @@
 	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
-(load-theme 'solarized-light)
+(load-theme 'tomorrow-night t)
 
 ;; A function to load config files
 (defun load-config-files (files)
