@@ -125,6 +125,7 @@
          dig
 	 distel
          ess
+         expand-region
          ace-jump-mode
 	 tuareg-mode
          go-mode
@@ -156,6 +157,7 @@
 	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
+(load-theme 'solarized-dark t)
 (load-theme 'solarized-light t)
 
 ;; A function to load config files

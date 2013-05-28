@@ -134,8 +134,6 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f11] 'fullscreen-toggle)
 (global-set-key [f10] 'magit-status)
-(global-set-key [f8] 'solarized-dark)
-(global-set-key [f7] 'solarized-light)
 (global-set-key (kbd "C-x C-i") 'imenu)
 (global-set-key (kbd "C-c e") 'esk-eval-and-replace)
 (global-set-key (kbd "C-c h") 'compile)
@@ -143,6 +141,7 @@
 (global-set-key (kbd "C-c r") 'vc-git-grep)
 (global-set-key (kbd "C-c |") 'align)
 (global-set-key (kbd "C-c c") 'ace-jump-mode)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;;; global.el ends here
 
