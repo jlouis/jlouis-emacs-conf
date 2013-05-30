@@ -1,51 +1,13 @@
 ;;; global.el --- Global configuration
 
-; Copyright (c) 2009, Jesper Louis Andersen <jesper.louis.andersen@gmail.com>
-; All rights reserved.
-
-; Redistribution and use in source and binary forms, with or
-; without modification, are permitted provided that the following
-; conditions are met:
-
-; * Redistributions of source code must retain the above
-;   copyright notice, this list of conditions and the following
-;   disclaimer.
-
-; * Redistributions in binary form must reproduce the above
-;   copyright notice, this list of conditions and the following
-;   disclaimer in the documentation and/or other materials
-;   provided with the distribution.
-
-; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-; "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-; LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-; FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-; COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-; BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-; CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-; ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-; POSSIBILITY OF SUCH DAMAGE.
-
-;;; Commentary:
-
 ;; Disable lots and lots of fluff from the terminal. I don't want it.
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (tool-bar-mode -1)
   (toggle-scroll-bar -1)
-  ;; I don't want a blinking cursor at all
   (blink-cursor-mode -1)
   (scroll-bar-mode -1))
-
-;; Set up the cursor style in a way that I like,
-;; This cursor style is quite plan9/acme-esque and quite minimal
-;; I prefer a bar to a block because it allows you to see more clearly
-;; what characters you have picked and what you have not.
-(setq-default cursor-type 'bar)
 
 (mouse-wheel-mode t)
 (prefer-coding-system       'utf-8)
