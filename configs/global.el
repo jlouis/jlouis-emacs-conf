@@ -41,7 +41,7 @@
   (scroll-bar-mode -1))
 
 ;; Set up some line modes which I like on the cursor.
-(setq-default cursor-type 'bar)
+;;(setq-default cursor-type 'bar)
 (global-hl-line-mode 1)
 
 (mouse-wheel-mode t)
