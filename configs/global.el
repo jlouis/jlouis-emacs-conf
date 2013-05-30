@@ -37,12 +37,15 @@
   (tooltip-mode -1)
   (tool-bar-mode -1)
   (toggle-scroll-bar -1)
+  ;; I don't want a blinking cursor at all
   (blink-cursor-mode -1)
   (scroll-bar-mode -1))
 
-;; Set up some line modes which I like on the cursor.
+;; Set up the cursor style in a way that I like,
+;; This cursor style is quite plan9/acme-esque and quite minimal
+;; I prefer a bar to a block because it allows you to see more clearly
+;; what characters you have picked and what you have not.
 (setq-default cursor-type 'bar)
-;; (global-hl-line-mode 1)
 
 (mouse-wheel-mode t)
 (prefer-coding-system       'utf-8)
