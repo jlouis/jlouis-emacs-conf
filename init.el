@@ -96,7 +96,9 @@
           :after (progn
                      (setq smex-save-file
                            (concat user-emacs-directory ".smex-items"))
-                     (global-set-key (kbd "M-x") 'smex)))
+                     (global-set-key (kbd "M-x") 'smex)
+                     (global-set-key (kbd "C-x C-m") 'smex)
+                     (global-set-key (kbd "C-c C-m") 'smex)))
    (:name solarized-theme
           :type github
           :pkgname "sellout/emacs-color-theme-solarized"
@@ -157,7 +159,7 @@
 	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
-(load-theme 'solarized-dark t)
+; (load-theme 'solarized-dark t)
 (load-theme 'solarized-light t)
 
 ;; A function to load config files
