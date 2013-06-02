@@ -121,6 +121,7 @@
 (setq my-packages
       (append
        '(
+         auctex
          el-get
          ;;ProofGeneral
          csv-mode
@@ -142,6 +143,7 @@
          org-mode
          ;;sml-mode
          ssh-config
+         ;;slime
          )
        (if (string-equal "darwin" (symbol-name system-type))
          '(growl)
@@ -172,7 +174,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      ;"init-auctex"
+                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
