@@ -9,7 +9,7 @@
        (set-default-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 105
+                           :height 110
                            :weight 'normal)
        (set-face-font 'default font))
      "Source Code Pro")))
