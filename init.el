@@ -12,7 +12,7 @@
                            :height 110
                            :weight 'normal)
        (set-face-font 'default font))
-     "Source Code Pro")))
+     "Consolas")))
  ((eq system-type 'darwin)
   (progn
     (push "/usr/local/bin" exec-path)
