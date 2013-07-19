@@ -31,12 +31,19 @@
        (set-default-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 130
+                           :height 140
                            :weight 'normal)
        (set-face-font 'default font))
      "Source Code Pro"))))
  
 (setq disabled-command-function nil)
+(put 'set-goal-column           'disabled nil)
+(put 'erase-buffer              'disabled nil)
+(put 'downcase-region           'disabled nil)
+(put 'upcase-region             'disabled nil)
+(put 'narrow-to-region          'disabled nil)
+(put 'narrow-to-page            'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; Paths, sir, paths!
 (setq emacs-config-dir (file-name-directory
@@ -74,7 +81,7 @@
 
 ;;; Erlang mode load path needs to go here. Otherwise distel will not like us
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.6.10")
+(setq tools-ver "2.6.11")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -106,9 +113,8 @@
           :prepare (add-to-list 'custom-theme-load-path default-directory))
    (:name tomorrow-theme
           :after (add-to-list 'custom-theme-load-path (concat default-directory  "/GNU Emacs")))
-   (:name haskell-mode
-          :after (progn
-                     (require 'inf-haskell)))
+   (:name git-gutter-fringe
+          :type elpa)
    (:name http-twiddle
           :type elpa)
    (:name ido-ubiquitous
@@ -133,7 +139,7 @@
 	 tuareg-mode
          go-mode
          graphviz-dot-mode
-         haskell-mode
+         ;;haskell-mode
          htmlize
          json js2-mode
          markdown-mode
