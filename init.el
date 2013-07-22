@@ -180,7 +180,6 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
@@ -193,7 +192,8 @@
                       "init-hippie-expand"
                       "init-proofgeneral"
                       ;"init-twelf"
-                      "init-uniquify"))
+                      "init-uniquify"
+                      "acme-mouse"))
 
 ;; Awfully simple initializations
 (require 'midnight)
