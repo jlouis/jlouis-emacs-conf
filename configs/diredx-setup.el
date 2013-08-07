@@ -1,1 +1,0 @@
-(load "dired-x")
