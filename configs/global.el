@@ -105,11 +105,17 @@
 (global-set-key [f10] 'magit-status)
 (global-set-key (kbd "C-x C-i") 'imenu)
 (global-set-key (kbd "C-c e") 'esk-eval-and-replace)
-(global-set-key (kbd "C-c h") 'compile)
+(global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c j") 'join-line)
 (global-set-key (kbd "C-c r") 'vc-git-grep)
+
 (global-set-key (kbd "C-c |") 'align)
-(global-set-key (kbd "C-c c") 'ace-jump-mode)
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c n") 'jl/notes)
+(global-set-key (kbd "C-c s") 'org-remember)
+
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;;; global.el ends here
