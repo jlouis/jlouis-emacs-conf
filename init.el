@@ -193,6 +193,7 @@
                       "init-proofgeneral"
                       ;"init-twelf"
                       "init-uniquify"
+                      "init-org-mode"
                       "acme-mouse"))
 
 ;; Awfully simple initializations

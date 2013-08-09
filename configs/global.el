@@ -113,8 +113,8 @@
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c n") 'jl/notes)
-(global-set-key (kbd "C-c s") 'org-remember)
+(global-set-key (kbd "C-c n") 'org-iswitchb)
+(global-set-key (kbd "C-c s") 'org-capture)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 

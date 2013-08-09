@@ -1,6 +1,4 @@
 (require 'org-install)
-(require 'org)
-(require 'remember)
 
 ;; Mouse control
 (require 'org-mouse)
@@ -8,20 +6,14 @@
 ;; Extension handling
 (add-to-list 'auto-mode-alist '("\\.org$'" . org-mode))
 
-(defvar org-notes-file "~/Dropbox/notes.org")
+(setq org-directory "~/Dropbox/org")
 
-(defun jl/notes ()
-  "Open the Notes organization file"
-  (interactive)
-  (find-file org-notes-file))
+(setq org-default-notes-file (concat org-directory "/todo.org"))
 
 (setq org-todo-keywords '((type "TODO" "NEXT" "WAITING" "DONE")))
 
-(defvar org-other-notes)
-(setf org-other-notes
-      (list "~/Dropbox/issuu.org"))
+(setq org-agenda-files '("~/Dropbox/org"))
 
-(setf org-agenda-files (cons org-notes-file org-other-notes))
 
 ;; #+SEQ_TODO: TODO | DONE
 ;; #+SEQ_TODO: REPORT BUG KNOWNCAUSE | FIXED 
@@ -35,6 +27,7 @@
 (setq org-tag-alist
       '(("STUDIO" . ?s)
         ("COMPUTER" . ?c)
+        ("BUY" . ?b)
         ("MAIL" . ?m)
         ("HOME" . ?h)
         ("WORK" . ?w)
@@ -49,10 +42,17 @@
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
-(setq org-remember-templates
-      '((?t "* TODO %?\n  %i\n  %a" "~/Dropbox/todo.org")
-        (?j "* %U %?\n\n  %i\n  %a" "~/Dropbox/journal.org")
-        (?i "* %^{Title}\n  %i\n  %a" "~/Dropbox/remember.org" "New Ideas")))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline
+                           (concat org-directory "/todo.org") "Tasks") 
+	 "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry
+         (file+datetree (concat org-directory
+                                "/journal.org"))
+	 "* %?\nEntered on %U\n  %i\n  %a")
+	("k" "Kwotes" item
+         (file+headline (concat org-directory "/quotes.org")
+                        "Unsorted Quotes"))))
 
 (setq org-return-follows-link t)
 (setq org-hide-leading-stars t) 
@@ -64,14 +64,9 @@
 (setq org-fontify-emphasized-text t)
 (setq org-fontify-done-headline t)
 (setq org-agenda-include-all-todo nil)
-(setq org-directory "~/Dropbox")
 (setq org-export-with-section-numbers nil)
 (setq org-export-with-toc nil)
 (setq org-adapt-indentation nil)
 
 ;; widen category field a little
 (setq org-agenda-prefix-format "  %-17:c%?-12t% s") 
-
-(setq org-capture-templates
-      '(("t" "Task" entry (file+headline "~/org/notes.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")))
