@@ -81,7 +81,7 @@
 
 ;;; Erlang mode load path needs to go here. Otherwise distel will not like us
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.6.11")
+(setq tools-ver "2.6.13")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -113,10 +113,6 @@
           :prepare (add-to-list 'custom-theme-load-path default-directory))
    (:name tomorrow-theme
           :after (add-to-list 'custom-theme-load-path (concat default-directory  "/GNU Emacs")))
-   (:name git-gutter-fringe
-          :type elpa)
-   (:name http-twiddle
-          :type elpa)
    (:name ido-ubiquitous
           :type elpa)
    (:name magit
@@ -126,34 +122,21 @@
 ;; Set up the packages that we are using
 (setq my-packages
       (append
-       '(
-         auctex
+       '(auctex
          el-get
-         ;;ProofGeneral
          csv-mode
          dig
-	 distel
+ 	 distel
          ess
          expand-region
-         ace-jump-mode
 	 tuareg-mode
          go-mode
          graphviz-dot-mode
-         ;;haskell-mode
          htmlize
          json js2-mode
          markdown-mode
          tomorrow-theme
-         magithub
-         nxhtml
-         org-mode
-         ;;sml-mode
-         ssh-config
-         ;;slime
-         )
-       (if (string-equal "darwin" (symbol-name system-type))
-         '(growl)
-         '())
+         nxhtml)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
@@ -187,14 +170,11 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      ;"init-flymake"
-                      ;;"init-agda2"
+                      "init-agda2"
                       "init-hippie-expand"
                       "init-proofgeneral"
                       ;"init-twelf"
-                      "init-uniquify"
-                      "init-org-mode"
-                      "acme-mouse"))
+                      "init-uniquify" ))
 
 ;; Awfully simple initializations
 (require 'midnight)

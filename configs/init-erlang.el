@@ -3,9 +3,9 @@
 (distel-setup)
 
 ;; Wrangler
-(add-to-list 'load-path
-          "/usr/local/lib/erlang/lib/wrangler-1.0/elisp")
-(require 'wrangler)
+;; (add-to-list 'load-path
+;;           "/usr/local/lib/erlang/lib/wrangler-1.0/elisp")
+;; (require 'wrangler)
 
 (add-hook 'erlang-mode-hook 'esk-prog-mode-hook)
 
