@@ -24,6 +24,7 @@
     (setenv "PATH"
             (concat "/usr/local/bin:/usr/local/sbin:"
                     "~/.cabal/bin:"
+                    "/Users/jlouis/bin:"
                     "/usr/texbin:" (getenv "PATH")))
     (setenv "ERL_LIBS"
             (concat "/Users/jlouis/lib/erlang"))
@@ -113,7 +114,9 @@
           :prepare (add-to-list 'custom-theme-load-path default-directory))
    (:name tomorrow-theme
           :after (add-to-list 'custom-theme-load-path (concat default-directory  "/GNU Emacs")))
-   (:name ido-ubiquitous
+   (:name git-gutter-fringe
+          :type elpa)
+   (:name http-twiddle
           :type elpa)
    (:name magit
           :after (progn
@@ -122,7 +125,7 @@
 ;; Set up the packages that we are using
 (setq my-packages
       (append
-       '(auctex
+       '(
          el-get
          csv-mode
          dig
@@ -170,9 +173,9 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      "init-agda2"
+                      ;;"init-agda2"
                       "init-hippie-expand"
-                      "init-proofgeneral"
+                      ;;"init-proofgeneral"
                       ;"init-twelf"
                       "init-uniquify" ))
 

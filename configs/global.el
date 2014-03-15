@@ -97,7 +97,6 @@
 ;; were no intelligent binding on ', so I just took that one.
 (global-set-key (kbd "M-'") 'jump-to-mark)
 (global-set-key (kbd "C-'") 'push-mark-no-activate)
-(global-set-key [f12] 'compile)
 (global-set-key "\C-w"     'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
