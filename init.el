@@ -6,7 +6,7 @@
  ((eq system-type 'gnu/linux)
   (progn
     ((lambda (font)
-       (set-default-font font)
+       (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
                            :height 110
@@ -29,7 +29,7 @@
     (setenv "ERL_LIBS"
             (concat "/Users/jlouis/lib/erlang"))
     ((lambda (font)
-       (set-default-font font)
+       (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
                            :height 140
@@ -61,7 +61,6 @@
 (defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
 ;; Basic stuff we really need all the time
-(require 'cl)
 (require 'saveplace)
 (require 'ffap)
 (require 'ansi-color)
@@ -88,12 +87,15 @@
 (setq exec-path (cons (concat erlang-root-dir "/bin")
                       exec-path))
 
-(unless (require 'el-get nil t)
+(unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (end-of-buffer)
+    (goto-char (point-max))
     (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path (concat emacs-config-dir "/el-get-user/recipes"))
+
 
 (setq el-get-user-package-directory
       (concat user-emacs-directory "/configs"))
@@ -125,8 +127,7 @@
 ;; Set up the packages that we are using
 (setq my-packages
       (append
-       '(
-         el-get
+       '(el-get
          csv-mode
          dig
  	 distel
@@ -146,7 +147,7 @@
 (el-get 'sync my-packages)
 ;; This is worth setting the first time you run, to wait on
 ;; the sync to complete
-;;(el-get 'wait)
+;; (el-get 'wait)
 
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path
@@ -161,7 +162,7 @@
   (dolist (f files)
     (load (expand-file-name
            (concat *emacs-config-dir* f)))
-    (message "Loaded config file: %s" file)))
+    (message "Loaded config file: %s" f)))
 
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first

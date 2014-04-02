@@ -117,7 +117,6 @@
 (setq sentence-end-double-space nil
       uniquify-buffer-name-style 'forward
       ediff-window-setup-function 'ediff-setup-windows-plain
-      oddmuse-directory "~/.emacs.d/oddmuse"
       save-place-file "~/.emacs.d/places"
       backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
       diff-switches "-u")
@@ -137,15 +136,6 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'auto-tail-revert-mode 'tail-mode)
-
-(random t) ;; Seed the random-number generator
-
-;; Get around the emacswiki spam protection
-(eval-after-load 'oddmuse
-  (add-hook 'oddmuse-mode-hook
-            (lambda ()
-              (unless (string-match "question" oddmuse-post)
-                (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post))))))
 
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-defun 'disabled nil)
