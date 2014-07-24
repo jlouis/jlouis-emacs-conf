@@ -13,7 +13,7 @@
  '(org-refile-use-outline-path nil)
  '(user-full-name "Jesper Louis Andersen")
  '(user-mail-address "jesper.louis.andersen@gmail.com")
- '(wrangler-search-paths (quote ("/home/jlouis/P/etorrent_core/"))))
+ '(wrangler-search-paths (quote ("/Users/jlouis/Store/P/dht_bt_src"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

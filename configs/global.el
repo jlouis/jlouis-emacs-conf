@@ -1,5 +1,6 @@
 ;;; global.el --- Global configuration
 
+
 ;; Disable lots and lots of fluff from the terminal. I don't want it.
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -8,6 +9,16 @@
   (toggle-scroll-bar -1)
   (blink-cursor-mode -1)
   (scroll-bar-mode -1))
+
+;; Do not really pop up dialog boxes which doesn't really work
+(defadvice yes-or-no-p (around prevent-dialog activate)
+  "Prevent yes-or-no-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
+(defadvice y-or-n-p (around prevent-dialog-yorn activate)
+  "Prevent y-or-n-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
 
 (mouse-wheel-mode t)
 (prefer-coding-system       'utf-8)

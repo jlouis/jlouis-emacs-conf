@@ -79,9 +79,8 @@
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
-;;; Erlang mode load path needs to go here. Otherwise distel will not like us
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.6.13")
+(setq tools-ver "2.6.15")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -130,7 +129,6 @@
        '(el-get
          csv-mode
          dig
- 	 distel
          ess
          expand-region
 	 tuareg-mode
