@@ -5,7 +5,7 @@
 ;; Wrangler
 (add-to-list 'load-path
           "/usr/local/lib/erlang/lib/wrangler-1.1.01/elisp")
-(require 'wrangler)
+;;(require 'wrangler)
 
 (add-hook 'erlang-mode-hook 'esk-prog-mode-hook)
 

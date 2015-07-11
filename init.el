@@ -9,10 +9,10 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 110
+                           :height 210
                            :weight 'normal)
        (set-face-font 'default font))
-     "Consolas")))
+     "Source Code Pro")))
  ((eq system-type 'darwin)
   (progn
     (push "/usr/local/bin" exec-path)
@@ -50,7 +50,6 @@
 (setq emacs-config-dir (file-name-directory
                         (or (buffer-file-name) load-file-name)))
 
-(add-to-list 'load-path emacs-config-dir)
 (add-to-list 'load-path (concat emacs-config-dir "/site/"))
 
 (setq autoload-file (concat emacs-config-dir "loaddefs.el"))
@@ -80,7 +79,7 @@
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.6.15")
+(setq tools-ver "2.8")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -153,7 +152,7 @@
 (setq custom-safe-themes t)
 
 ; (load-theme 'solarized-dark t)
-(load-theme 'solarized-light t)
+(load-theme 'solarized t)
 
 ;; A function to load config files
 (defun load-config-files (files)
