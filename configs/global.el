@@ -26,7 +26,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(setq visible-bell t)
+(setq visible-bell f)
 (setq-default echo-keystrokes 0.1)
 (setq-default font-lock-maximum-decoration t)
 (setq-default inhibit-startup-message t)
@@ -46,7 +46,6 @@
 (setq-default mode-compile-always-save-buffer-p t)
 (setq-default compilation-window-height 12)
 (setq-default x-select-enable-clipboard t)
-(setq-default oddmuse-directory (concat emacs-config-dir "oddmuse"))
 (setq-default xterm-mouse-mode t)
 
 (setf split-height-threshold 40

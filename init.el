@@ -32,7 +32,7 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 140
+                           :height 150
                            :weight 'normal)
        (set-face-font 'default font))
      "Source Code Pro"))))
@@ -79,7 +79,7 @@
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.8")
+(setq tools-ver "2.8.2")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -112,10 +112,6 @@
           :pkgname "sellout/emacs-color-theme-solarized"
           :description "Solarized themes for Emacs"
           :prepare (add-to-list 'custom-theme-load-path default-directory))
-   (:name tomorrow-theme
-          :after (add-to-list 'custom-theme-load-path (concat default-directory  "/GNU Emacs")))
-   (:name git-gutter-fringe
-          :type elpa)
    (:name http-twiddle
           :type elpa)
    (:name magit
@@ -128,7 +124,7 @@
        '(el-get
          csv-mode
          dig
-         ess
+         ;ess
          expand-region
 	 tuareg-mode
          go-mode
