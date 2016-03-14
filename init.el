@@ -9,10 +9,10 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 210
+                           :height 120
                            :weight 'normal)
        (set-face-font 'default font))
-     "Source Code Pro")))
+     "Droid Sans Mono")))
  ((eq system-type 'darwin)
   (progn
     (push "/usr/local/bin" exec-path)
@@ -66,8 +66,7 @@
 
 ;;; package.el configuration
 (require 'package)
-(dolist (arch '(("org" . "http://orgmode.org/elpa/")
-                ("gnu" . "http://elpa.gnu.org/packages/")
+(dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
                 ("melpa" . "http://melpa.milkbox.net/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
                 ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -79,7 +78,7 @@
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.8")
+(setq tools-ver "2.8.2")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -107,17 +106,8 @@
                      (global-set-key (kbd "M-x") 'smex)
                      (global-set-key (kbd "C-x C-m") 'smex)
                      (global-set-key (kbd "C-c C-m") 'smex)))
-   (:name solarized-theme
-          :type github
-          :pkgname "sellout/emacs-color-theme-solarized"
-          :description "Solarized themes for Emacs"
-          :prepare (add-to-list 'custom-theme-load-path default-directory))
-   (:name tomorrow-theme
-          :after (add-to-list 'custom-theme-load-path (concat default-directory  "/GNU Emacs")))
-   (:name git-gutter-fringe
-          :type elpa)
-   (:name http-twiddle
-          :type elpa)
+   (:name plan9-theme
+	  :type elpa)
    (:name magit
           :after (progn
                    (global-set-key (kbd "C-c g") 'magit-status)))))
@@ -127,7 +117,6 @@
       (append
        '(el-get
          csv-mode
-         dig
          ess
          expand-region
 	 tuareg-mode
@@ -136,7 +125,6 @@
          htmlize
          json js2-mode
          markdown-mode
-         tomorrow-theme
          nxhtml)
        (mapcar 'el-get-source-name el-get-sources)))
 
@@ -151,8 +139,6 @@
 	     (concat emacs-config-dir "themes/"))
 (setq custom-safe-themes t)
 
-; (load-theme 'solarized-dark t)
-(load-theme 'solarized t)
 
 ;; A function to load config files
 (defun load-config-files (files)
@@ -171,7 +157,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      ;;"init-agda2"
+                      "init-agda2"
                       "init-hippie-expand"
                       ;;"init-proofgeneral"
                       ;"init-twelf"
@@ -184,4 +170,5 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-
+(load-theme 'plan9)
+(enable-theme 'plan9)

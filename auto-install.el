@@ -795,7 +795,7 @@ If UNFORCED is non-nil, just update package name when `auto-install-package-name
   ;; Load emacs-lisp syntax highlight.
   (set-syntax-table emacs-lisp-mode-syntax-table)
   (lisp-mode-variables)
-  (setq font-lock-mode t)
+  (setq font-lock-mode nil)
   (font-lock-fontify-buffer)
   ;; Read only.
   (setq buffer-read-only t)
