@@ -106,18 +106,10 @@
                      (global-set-key (kbd "M-x") 'smex)
                      (global-set-key (kbd "C-x C-m") 'smex)
                      (global-set-key (kbd "C-c C-m") 'smex)))
-<<<<<<< HEAD
-   (:name solarized-theme
-          :type github
-          :pkgname "sellout/emacs-color-theme-solarized"
-          :description "Solarized themes for Emacs"
-          :prepare (add-to-list 'custom-theme-load-path default-directory))
    (:name http-twiddle
           :type elpa)
-=======
    (:name plan9-theme
 	  :type elpa)
->>>>>>> ac12c69eb805011daf8b8a652e0b9c574b654061
    (:name magit
           :after (progn
                    (global-set-key (kbd "C-c g") 'magit-status)))))
@@ -127,12 +119,7 @@
       (append
        '(el-get
          csv-mode
-<<<<<<< HEAD
-         dig
-         ;ess
-=======
          ess
->>>>>>> ac12c69eb805011daf8b8a652e0b9c574b654061
          expand-region
 	 tuareg-mode
          go-mode
