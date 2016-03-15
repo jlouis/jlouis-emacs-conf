@@ -26,7 +26,9 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(setq visible-bell f)
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
+
 (setq-default echo-keystrokes 0.1)
 (setq-default font-lock-maximum-decoration t)
 (setq-default inhibit-startup-message t)

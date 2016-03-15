@@ -148,7 +148,7 @@
 (setq custom-safe-themes t)
 
 ; (load-theme 'solarized-dark t)
-(load-theme 'solarized t)
+
 
 ;; A function to load config files
 (defun load-config-files (files)
@@ -180,4 +180,4 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-
+(load-theme 'solarized t)
