@@ -30,9 +30,9 @@
 (setq ring-bell-function 'ignore)
 
 (setq-default echo-keystrokes 0.1)
-(setq-default font-lock-maximum-decoration t)
+(setq-default global-font-lock-mode 0)
+(setq-default font-lock-maximum-decoration nil)
 (setq-default inhibit-startup-message t)
-(setq-default global-font-lock-mode t)
 (setq-default delete-by-moving-to-trash t)
 (setq-default shift-select-mode nil)
 (setq-default default-tab-width 8)
@@ -123,8 +123,6 @@
 (global-set-key (kbd "C-c |") 'align)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
-
-;;; global.el ends here
 
 (setq sentence-end-double-space nil
       uniquify-buffer-name-style 'forward
