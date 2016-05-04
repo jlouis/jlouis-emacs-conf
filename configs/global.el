@@ -30,8 +30,6 @@
 (setq ring-bell-function 'ignore)
 
 (setq-default echo-keystrokes 0.1)
-(setq-default global-font-lock-mode 0)
-(setq-default font-lock-maximum-decoration nil)
 (setq-default inhibit-startup-message t)
 (setq-default delete-by-moving-to-trash t)
 (setq-default shift-select-mode nil)

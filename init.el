@@ -119,7 +119,6 @@
       (append
        '(el-get
          csv-mode
-         ess
          expand-region
 	 tuareg-mode
          go-mode
@@ -127,7 +126,7 @@
          htmlize
          json js2-mode
          markdown-mode
-         nxhtml)
+         solarized-emacs)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
@@ -158,7 +157,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      "init-agda2"
+                      ;"init-agda2"
                       "init-hippie-expand"
                       ;;"init-proofgeneral"
                       ;"init-twelf"
@@ -171,5 +170,5 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-(load-theme 'plan9)
-(enable-theme 'plan9)
+(load-theme 'solarized-dark)
+;(enable-theme 'solarized-light)
