@@ -78,7 +78,7 @@
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
 (setq erlang-root-dir "/usr/local/lib/erlang")
-(setq tools-ver "2.8.2")
+(setq tools-ver "2.8.5")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -170,5 +170,5 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-(load-theme 'solarized-dark)
-;(enable-theme 'solarized-light)
+(load-theme 'solarized-light)
+(enable-theme 'solarized-light)
