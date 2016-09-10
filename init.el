@@ -67,9 +67,8 @@
 ;;; package.el configuration
 (require 'package)
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
-                ("melpa" . "http://melpa.milkbox.net/packages/")
+                ("melpa" . "https://melpa.org/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
-                ("marmalade" . "http://marmalade-repo.org/packages/")
                 ))
   (add-to-list 'package-archives arch))
 (package-initialize)
@@ -77,7 +76,7 @@
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
-(setq erlang-root-dir "/usr/local/lib/erlang")
+(setq erlang-root-dir "/usr/lib/erlang")
 (setq tools-ver "2.8.5")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
@@ -108,7 +107,7 @@
                      (global-set-key (kbd "C-c C-m") 'smex)))
    (:name http-twiddle
           :type elpa)
-   (:name plan9-theme
+   (:name material-theme
 	  :type elpa)
    (:name magit
           :after (progn
@@ -150,6 +149,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
+                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
@@ -157,7 +157,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      ;"init-agda2"
+                      "init-agda2"
                       "init-hippie-expand"
                       ;;"init-proofgeneral"
                       ;"init-twelf"
@@ -170,5 +170,4 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-(load-theme 'solarized-light)
-(enable-theme 'solarized-light)
+(load-theme 'material)
