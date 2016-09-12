@@ -51,6 +51,7 @@
                         (or (buffer-file-name) load-file-name)))
 
 (add-to-list 'load-path (concat emacs-config-dir "/site/"))
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 
 (setq autoload-file (concat emacs-config-dir "loaddefs.el"))
 (setq site-root (concat emacs-config-dir "/site/"))
@@ -171,3 +172,4 @@
 ;;; init.el ends here
 (server-start)
 (load-theme 'material)
+;; 
