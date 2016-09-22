@@ -67,7 +67,7 @@
 ;;; package.el configuration
 (require 'package)
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
-                ("melpa" . "http://melpa.milkbox.net/packages/")
+                ("melpa" . "https://melpa.org/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
                 ("marmalade" . "http://marmalade-repo.org/packages/")
                 ))
@@ -108,7 +108,7 @@
                      (global-set-key (kbd "C-c C-m") 'smex)))
    (:name http-twiddle
           :type elpa)
-   (:name plan9-theme
+   (:name material-theme
 	  :type elpa)
    (:name magit
           :after (progn
@@ -125,8 +125,7 @@
          graphviz-dot-mode
          htmlize
          json js2-mode
-         markdown-mode
-         solarized-emacs)
+         markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
@@ -170,5 +169,4 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-(load-theme 'solarized-light)
-(enable-theme 'solarized-light)
+(load-theme 'material)

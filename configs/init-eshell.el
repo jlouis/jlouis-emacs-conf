@@ -13,7 +13,6 @@
      (require 'em-term)
      (require 'em-cmpl)
      (setenv "PAGER" "cat")
-     (set-face-attribute 'eshell-prompt nil :foreground "turquoise1")
      (add-hook 'eshell-mode-hook ;; for some reason this needs to be a hook
                '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-bol)))
      (setq eshell-cmpl-cycle-completions nil)
