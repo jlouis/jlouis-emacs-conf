@@ -124,6 +124,7 @@
          graphviz-dot-mode
          htmlize
          json js2-mode
+         powerline
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
