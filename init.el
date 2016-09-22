@@ -69,7 +69,6 @@
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
                 ("melpa" . "https://melpa.org/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
-                ("marmalade" . "http://marmalade-repo.org/packages/")
                 ))
   (add-to-list 'package-archives arch))
 (package-initialize)
@@ -77,7 +76,7 @@
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
-(setq erlang-root-dir "/usr/local/lib/erlang")
+(setq erlang-root-dir "/usr/lib/erlang")
 (setq tools-ver "2.8.5")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
@@ -149,6 +148,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
+                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
@@ -156,7 +156,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      ;"init-agda2"
+                      "init-agda2"
                       "init-hippie-expand"
                       ;;"init-proofgeneral"
                       ;"init-twelf"
