@@ -35,7 +35,7 @@
                            :height 150
                            :weight 'normal)
        (set-face-font 'default font))
-     "Source Code Pro"))))
+     "Go Mono"))))
  
 (setq disabled-command-function nil)
 (put 'set-goal-column           'disabled nil)
@@ -77,8 +77,8 @@
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
-(setq erlang-root-dir "/usr/lib/erlang")
-(setq tools-ver "2.8.5")
+(setq erlang-root-dir "/usr/local/lib/erlang")
+(setq tools-ver "2.8.6")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -125,8 +125,8 @@
          graphviz-dot-mode
          htmlize
          json js2-mode
-         markdown-mode
-         solarized-emacs)
+         powerline
+         markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
@@ -150,7 +150,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      "init-auctex"
+                      ;"init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
@@ -158,7 +158,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      "init-agda2"
+                      ;"init-agda2"
                       "init-hippie-expand"
                       ;;"init-proofgeneral"
                       ;"init-twelf"
