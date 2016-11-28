@@ -117,10 +117,11 @@
 (setq my-packages
       (append
        '(el-get
+         auto-complete
          csv-mode
          expand-region
 	 tuareg-mode
-         go-mode
+         go-mode go-eldoc go-autocomplete
          graphviz-dot-mode
          htmlize
          json js2-mode
