@@ -12,7 +12,7 @@
                            :height 120
                            :weight 'normal)
        (set-face-font 'default font))
-     "Droid Sans Mono")))
+     "Go Mono")))
  ((eq system-type 'darwin)
   (progn
     (push "/usr/local/bin" exec-path)
@@ -121,13 +121,14 @@
          csv-mode
          expand-region
 	 tuareg-mode
-         go-mode
+         go-mode go-eldoc go-autocomplete
          graphviz-dot-mode
          htmlize
          json js2-mode
          powerline
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
+
 
 ;; Install all the packages
 (el-get 'sync my-packages)
