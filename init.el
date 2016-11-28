@@ -5,6 +5,7 @@
 (cond
  ((eq system-type 'gnu/linux)
   (progn
+    (setq erlang-root-dir "/usr/lib/erlang")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -15,6 +16,7 @@
      "Go Mono")))
  ((eq system-type 'darwin)
   (progn
+    (setq erlang-root-dir "/usr/local/lib/erlang")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
     (push "/usr/texbin" exec-path)
@@ -78,7 +80,6 @@
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
-(setq erlang-root-dir "/usr/local/lib/erlang")
 (setq tools-ver "2.8.6")
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
