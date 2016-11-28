@@ -1,6 +1,6 @@
 ;;Custom Compile Command
 (defun go-mode-setup ()
-  (setq compile-command "go build -v && go test -v && go vet && golint")
+  (setq-local compile-command "go build -v && go test -v && go vet && golint")
   (define-key (current-local-map) "\C-c\C-c" 'compile)
   (go-eldoc-setup)
   (setq gofmt-command "goimports")

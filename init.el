@@ -21,6 +21,7 @@
     (push "/usr/bin" exec-path)
     (push "/usr/sbin" exec-path)
     (push "~/.cabal/bin" exec-path)
+    (push "~/go/bin" exec-path)
     (setenv "PATH"
             (concat "/usr/local/bin:/usr/local/sbin:"
                     "~/.cabal/bin:"
