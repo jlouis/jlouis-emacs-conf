@@ -21,6 +21,7 @@
     (push "/usr/bin" exec-path)
     (push "/usr/sbin" exec-path)
     (push "~/.cabal/bin" exec-path)
+    (push "~/go/bin" exec-path)
     (setenv "PATH"
             (concat "/usr/local/bin:/usr/local/sbin:"
                     "~/.cabal/bin:"
@@ -118,6 +119,7 @@
 (setq my-packages
       (append
        '(el-get
+         auto-complete
          csv-mode
          expand-region
 	 tuareg-mode
