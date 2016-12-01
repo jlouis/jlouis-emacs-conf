@@ -1,6 +1,5 @@
 ;; init.el --- Initialization file for my Emacs setup
 ;;; Commentary:
-
 ;; Set up system-specific stuff first
 (cond
  ((eq system-type 'gnu/linux)
@@ -120,11 +119,11 @@
 (setq my-packages
       (append
        '(el-get
-         auto-complete
+         company-mode
          csv-mode
          expand-region
 	 tuareg-mode
-         go-mode go-eldoc go-autocomplete
+         go-mode go-eldoc go-company
          graphviz-dot-mode
          htmlize
          json js2-mode
