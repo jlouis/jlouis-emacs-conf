@@ -33,7 +33,7 @@
 (setq-default inhibit-startup-message t)
 (setq-default delete-by-moving-to-trash t)
 (setq-default shift-select-mode nil)
-(setq-default default-tab-width 8)
+(setq-default default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default require-final-newline t) 
 (setq tab-always-indent 'complete)
