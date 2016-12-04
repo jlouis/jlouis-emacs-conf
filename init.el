@@ -9,7 +9,7 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 120
+                           :height 140
                            :weight 'normal)
        (set-face-font 'default font))
      "Go Mono")))
