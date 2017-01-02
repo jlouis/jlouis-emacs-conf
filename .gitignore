@@ -16,3 +16,7 @@ session.*
 /bookmarks
 /eshell/history
 /eshell/lastdir
+/ac-comphist.dat
+/ido.last
+/network-security.data
+/recentf
