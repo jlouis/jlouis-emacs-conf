@@ -10,7 +10,7 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 140
+                           :height 120
                            :weight 'normal)
        (set-face-font 'default font))
      "Go Mono")))
@@ -120,10 +120,11 @@
 (setq my-packages
       (append
        '(el-get
+         auctex
          company-mode
          csv-mode
          expand-region
-	 tuareg-mode
+         tuareg-mode
          go-mode go-eldoc go-company
          graphviz-dot-mode
          htmlize
@@ -154,7 +155,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      ;"init-auctex"
+                      "init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
