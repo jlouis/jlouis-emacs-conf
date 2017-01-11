@@ -18,6 +18,9 @@
  '(indicate-buffer-boundaries (quote left))
  '(org-mobile-inbox-for-pull "~/Dropbox/MobileOrg/from-mobile.org")
  '(org-refile-use-outline-path nil)
+ '(package-selected-packages
+   (quote
+    (graphql-mode plan9-theme material-theme let-alist http-twiddle git-gutter-fringe csv-mode)))
  '(user-full-name "Jesper Louis Andersen")
  '(user-mail-address "jesper.louis.andersen@gmail.com")
  '(wrangler-search-paths (quote ("/Users/jlouis/Store/P/dht_bt_src"))))

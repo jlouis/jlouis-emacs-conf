@@ -110,6 +110,8 @@
                      (global-set-key (kbd "C-c C-m") 'smex)))
    (:name http-twiddle
           :type elpa)
+   (:name graphql-mode
+          :type elpa)
    (:name material-theme
 	  :type elpa)
    (:name magit
