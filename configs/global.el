@@ -1,5 +1,13 @@
 ;;; global.el --- Global configuration
 
+;; Backups
+(defconst use-backup-dir t)
+(setq backup-directory-alist (quote ((".*" . "~/.emacs.local/backups/")))
+      version-control t
+      kept-new-versions 16
+      kept-old-versions 2
+      delete-old-versions t
+      backup-by-copying-when-linked t)
 
 ;; Disable lots and lots of fluff from the terminal. I don't want it.
 (when window-system
@@ -101,7 +109,6 @@
 
 ;; Keybindings
 (global-set-key "\M-g" 'goto-line)
-(global-set-key "\C-z" 'undo)
 (global-set-key (kbd "M-/") 'hippie-expand)
 ;; These two is because the M-` is now taken by Unity, and there
 ;; were no intelligent binding on ', so I just took that one.
@@ -110,10 +117,7 @@
 (global-set-key "\C-w"     'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
-(global-set-key [f11] 'fullscreen-toggle)
-(global-set-key [f10] 'magit-status)
 (global-set-key (kbd "C-x C-i") 'imenu)
-(global-set-key (kbd "C-c e") 'esk-eval-and-replace)
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c j") 'join-line)
 (global-set-key (kbd "C-c r") 'vc-git-grep)
@@ -139,14 +143,4 @@
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'auto-tail-revert-mode 'tail-mode)
-
-(put 'downcase-region 'disabled nil)
-(put 'narrow-to-defun 'disabled nil)
-(put 'narrow-to-page 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
-
