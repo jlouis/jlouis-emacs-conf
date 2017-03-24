@@ -5,7 +5,7 @@
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/usr/lib/erlang")
-    (setq tools-ver "2.9")
+    (setq tools-ver "2.9.1")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -97,7 +97,7 @@
 
 
 (setq el-get-user-package-directory
-      (concat user-emacs-directory "/configs"))
+      (concat user-emacs-directory "/pkg-configs"))
 
 ;; Now, set up some el-get-sources overrides for our programs
 (setq el-get-sources
@@ -109,8 +109,6 @@
                      (global-set-key (kbd "C-x C-m") 'smex)
                      (global-set-key (kbd "C-c C-m") 'smex)))
    (:name http-twiddle
-          :type elpa)
-   (:name graphql-mode
           :type elpa)
    (:name material-theme
 	  :type elpa)
@@ -179,4 +177,4 @@
 ;;; init.el ends here
 (server-start)
 (load-theme 'material)
-;; 
+
