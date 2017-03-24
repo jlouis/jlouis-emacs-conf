@@ -76,8 +76,6 @@
                 ("tromey" . "http://tromey.com/elpa/")
                 ))
   (add-to-list 'package-archives arch))
-(package-initialize)
-
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
@@ -123,12 +121,12 @@
          magit)
        (mapcar 'el-get-source-name el-get-sources)))
 
-
 ;; Install all the packages
 (el-get 'sync my-packages)
 ;; This is worth setting the first time you run, to wait on
 ;; the sync to complete
 ;; (el-get 'wait)
+(package-initialize)
 
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path
