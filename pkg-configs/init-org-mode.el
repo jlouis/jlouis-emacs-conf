@@ -29,19 +29,15 @@
 (setq org-default-notes-file "~/org/remember.org")
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
-(add-hook 'remember-mode-hook 'org-remember-apply-template)
+
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline
-                           (concat org-directory "/todo.org") "Tasks") 
-	 "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry
-         (file+datetree (concat org-directory
-                                "/journal.org"))
-	 "* %?\nEntered on %U\n  %i\n  %a")
-	("k" "Kwotes" item
-         (file+headline (concat org-directory "/quotes.org")
-                        "Unsorted Quotes"))))
+      '(("t" "Todo" entry (file+headline "todo.org" "Tasks") 
+         "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+        ("k" "Kwotes" item (file+headline "quotes.org")
+         "Unsorted Quotes")))
 
 (setq org-return-follows-link t)
 (setq org-hide-leading-stars t) 
