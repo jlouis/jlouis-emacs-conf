@@ -17,10 +17,10 @@
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "2.9")
+    (setq tools-ver "2.9.1")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
-    (push "/usr/texbin" exec-path)
+    (push "/Library/TeX/texbin" exec-path)
     (push "/usr/bin" exec-path)
     (push "/usr/sbin" exec-path)
     (push "~/.cabal/bin" exec-path)
@@ -134,7 +134,6 @@
          powerline
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
-
 
 ;; Install all the packages
 (el-get 'sync my-packages)

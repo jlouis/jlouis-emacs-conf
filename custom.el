@@ -5,6 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(agda2-include-dirs (quote ("." "/Users/jlouis/lib/agda/lib-0.6/src")))
+ '(company-dabbrev-downcase nil)
  '(compilation-ask-about-save nil)
  '(custom-safe-themes
    (quote
