@@ -119,6 +119,7 @@
          markdown-mode
          smex
          material-theme
+         org-mode
          magit)
        (mapcar 'el-get-source-name el-get-sources)))
 
