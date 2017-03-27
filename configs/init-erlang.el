@@ -2,8 +2,6 @@
 (setq exec-path (cons "/usr/local/lib/erlang" exec-path))
 (require 'erlang-start)
 
-(add-hook 'erlang-mode-hook 'esk-prog-mode-hook)
-
 ;; Align (thanks @eproxus)
 (add-hook 'align-load-hook
           (lambda ()
