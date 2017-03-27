@@ -5,7 +5,7 @@
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/usr/lib/erlang")
-    (setq tools-ver "2.9")
+    (setq tools-ver "2.9.1")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -48,6 +48,7 @@
 (put 'upcase-region             'disabled nil)
 (put 'narrow-to-region          'disabled nil)
 (put 'narrow-to-page            'disabled nil)
+(put 'narrow-to-defun           'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; Paths, sir, paths!
@@ -76,8 +77,6 @@
                 ("tromey" . "http://tromey.com/elpa/")
                 ))
   (add-to-list 'package-archives arch))
-(package-initialize)
-
 ;;; el-get configuration
 (add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
 
@@ -97,26 +96,11 @@
 
 
 (setq el-get-user-package-directory
-      (concat user-emacs-directory "/configs"))
+      (concat user-emacs-directory "/pkg-configs"))
 
 ;; Now, set up some el-get-sources overrides for our programs
 (setq el-get-sources
- '((:name smex
-          :after (progn
-                     (setq smex-save-file
-                           (concat user-emacs-directory ".smex-items"))
-                     (global-set-key (kbd "M-x") 'smex)
-                     (global-set-key (kbd "C-x C-m") 'smex)
-                     (global-set-key (kbd "C-c C-m") 'smex)))
-   (:name http-twiddle
-          :type elpa)
-   (:name graphql-mode
-          :type elpa)
-   (:name material-theme
-	  :type elpa)
-   (:name magit
-          :after (progn
-                   (global-set-key (kbd "C-c g") 'magit-status)))))
+      '())
 
 ;; Set up the packages that we are using
 (setq my-packages
@@ -132,7 +116,10 @@
          htmlize
          json js2-mode
          powerline
-         markdown-mode)
+         markdown-mode
+         smex
+         material-theme
+         magit)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
@@ -140,6 +127,7 @@
 ;; This is worth setting the first time you run, to wait on
 ;; the sync to complete
 ;; (el-get 'wait)
+(package-initialize)
 
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path
@@ -178,4 +166,4 @@
 ;;; init.el ends here
 (server-start)
 (load-theme 'material)
-;; 
+

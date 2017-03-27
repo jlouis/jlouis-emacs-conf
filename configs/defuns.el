@@ -1,36 +1,7 @@
 (require 'thingatpt)
 (require 'imenu)
 
-(defun esk-local-column-number-mode ()
-  (make-local-variable 'column-number-mode)
-  (column-number-mode t))
-
-(defun esk-local-comment-auto-fill ()
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (auto-fill-mode t))
-
-(defun esk-turn-on-save-place-mode ()
-  (require 'saveplace)
-  (setq save-place t))
-
-(defun esk-turn-on-paredit ()
-  (paredit-mode t))
-
-(defun esk-add-watchwords ()
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
-          1 font-lock-warning-face t))))
-
-(add-hook 'prog-mode-hook 'esk-local-column-number-mode)
-(add-hook 'prog-mode-hook 'esk-local-comment-auto-fill)
-(add-hook 'prog-mode-hook 'esk-turn-on-save-place-mode)
-(add-hook 'prog-mode-hook 'esk-add-watchwords)
-
-(defun esk-prog-mode-hook ()
-  (run-hooks 'prog-mode-hook))
-
-;; Commands
-
+;;; Function definitions
 (defun esk-eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
@@ -45,12 +16,6 @@
   "Insert a time-stamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
-
-;;; Function definitions
-(defun fullscreen-toggle ()
-  (interactive)
-  (set-frame-parameter nil 'fullscreen
-                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
 (defun indent-whole-buffer ()
   "Indent the whole buffer and make it nice to work on"
@@ -70,16 +35,6 @@
     (query-replace "\\O{}"  "Ø" nil start end)
     (query-replace "\\ae{}" "æ" nil start end)
     (query-replace "\\AE{}" "Æ" nil start end)))
-
-(defconst use-backup-dir t)
-(setq backup-directory-alist (quote ((".*" . "~/.emacs.local/backups/")))
-      version-control t
-      kept-new-versions 16
-      kept-old-versions 2
-      delete-old-versions t
-      backup-by-copying-when-linked t)
-
-;; Network
 
 (defun view-url ()
   "Open a new buffer containing the contents of URL."
