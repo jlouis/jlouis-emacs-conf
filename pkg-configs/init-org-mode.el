@@ -30,11 +30,13 @@
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
 
+(setq org-refile-use-outline-path 'file)
+(setq org-refile-targets '((org-agenda-files :level . 1)))
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "todo.org" "Tasks") 
+      '(("i" "Inbox" entry (file+headline "inbox.org" "Tasks") 
          "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "/journal.org")
+        ("j" "Journal" entry (file+datetree "journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ("k" "Kwotes" item (file+headline "quotes.org")
          "Unsorted Quotes")))
