@@ -120,6 +120,7 @@
          smex
          material-theme
          org-mode
+         idris-mode
          magit)
        (mapcar 'el-get-source-name el-get-sources)))
 
