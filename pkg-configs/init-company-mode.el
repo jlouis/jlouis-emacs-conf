@@ -1,6 +1,6 @@
 (require 'company)
 
-(setq company-idle-delay 0.3)
+(setq company-idle-delay 0.4)
 (setq company-tooltip-limit 10)
 (setq company-minimum-prefix-lenght 2)
 

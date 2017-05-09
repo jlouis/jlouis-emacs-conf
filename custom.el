@@ -18,7 +18,7 @@
  '(ido-ubiquitous-command-exceptions (quote (find-tag erlang-find-tag)))
  '(indicate-buffer-boundaries (quote left))
  '(org-mobile-inbox-for-pull "~/Dropbox/MobileOrg/from-mobile.org")
- '(org-refile-use-outline-path nil)
+ '(org-refile-use-outline-path nil t)
  '(package-selected-packages (quote (graphql-mode let-alist git-gutter-fringe)))
  '(user-full-name "Jesper Louis Andersen")
  '(user-mail-address "jesper.louis.andersen@gmail.com")
