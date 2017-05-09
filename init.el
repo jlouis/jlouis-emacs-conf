@@ -122,7 +122,6 @@
          org-mode
          idris-mode
          asciidoc
-         adoc-mode
          magit)
        (mapcar 'el-get-source-name el-get-sources)))
 
