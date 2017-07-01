@@ -5,6 +5,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(agda2-include-dirs (quote ("." "/Users/jlouis/lib/agda/lib-0.6/src")))
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
  '(company-dabbrev-downcase nil)
  '(compilation-ask-about-save nil)
  '(custom-safe-themes
@@ -20,6 +22,9 @@
  '(org-mobile-inbox-for-pull "~/Dropbox/MobileOrg/from-mobile.org")
  '(org-refile-use-outline-path nil t)
  '(package-selected-packages (quote (graphql-mode let-alist git-gutter-fringe)))
+ '(show-paren-mode t)
+ '(size-indication-mode t)
+ '(tool-bar-mode nil)
  '(user-full-name "Jesper Louis Andersen")
  '(user-mail-address "jesper.louis.andersen@gmail.com")
  '(wrangler-search-paths (quote ("/Users/jlouis/Store/P/dht_bt_src"))))
