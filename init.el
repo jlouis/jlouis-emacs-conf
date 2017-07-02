@@ -10,10 +10,10 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 120
+                           :height 110
                            :weight 'normal)
        (set-face-font 'default font))
-     "Go Mono")))
+     "Source Code Pro")))
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
@@ -155,7 +155,7 @@
                       "init-eshell"
                       "init-recentf"
                       "init-tramp"
-                      ;"init-agda2"
+                      "init-agda2"
                       "init-hippie-expand"
                       ;;"init-proofgeneral"
                       ;"init-twelf"
@@ -168,5 +168,5 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-(load-theme 'material)
+(load-theme 'material-light)
 
