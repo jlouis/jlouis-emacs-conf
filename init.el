@@ -17,7 +17,7 @@
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "2.9.1")
+    (setq tools-ver "2.10")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
     (push "/Library/TeX/texbin" exec-path)
@@ -39,7 +39,7 @@
                            :height 150
                            :weight 'normal)
        (set-face-font 'default font))
-     "Go Mono"))))
+     "Source Code Pro"))))
  
 (setq disabled-command-function nil)
 (put 'set-goal-column           'disabled nil)
