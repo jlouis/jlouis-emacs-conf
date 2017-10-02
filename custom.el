@@ -15,7 +15,7 @@
  '(electric-indent-mode t)
  '(font-lock-global-modes t)
  '(font-lock-maximum-decoration t)
- '(frame-background-mode (quote dark))
+ '(frame-background-mode nil)
  '(global-font-lock-mode t)
  '(ido-ubiquitous-command-exceptions (quote (find-tag erlang-find-tag)))
  '(indicate-buffer-boundaries (quote left))
