@@ -17,21 +17,22 @@
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "2.9.1")
+    (setq tools-ver "2.11")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
     (push "/Library/TeX/texbin" exec-path)
     (push "/usr/bin" exec-path)
     (push "/usr/sbin" exec-path)
-    (push "~/.cabal/bin" exec-path)
-    (push "~/go/bin" exec-path)
+    (push "/Users/jesperlouisandersen/.cabal/bin" exec-path)
+    (push "/Users/jesperlouisandersen/bin" exec-path)
+    (push "/Users/jesperlouisandersen/go/bin" exec-path)
     (setenv "PATH"
             (concat "/usr/local/bin:/usr/local/sbin:"
-                    "~/.cabal/bin:"
-                    "/Users/jlouis/bin:"
+                    "/Users/jesperlouisandersen/.cabal/bin:"
+                    "/Users/jesperlouisandersen/bin:"
                     "/usr/texbin:" (getenv "PATH")))
     (setenv "ERL_LIBS"
-            (concat "/Users/jlouis/lib/erlang"))
+            (concat "/Users/jesperlouisandersen/lib/erlang"))
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -39,7 +40,7 @@
                            :height 150
                            :weight 'normal)
        (set-face-font 'default font))
-     "Go Mono"))))
+     "Source Code Pro"))))
  
 (setq disabled-command-function nil)
 (put 'set-goal-column           'disabled nil)
@@ -106,11 +107,11 @@
 (setq my-packages
       (append
        '(el-get
-         auctex
+         ;;auctex
          company-mode
          csv-mode
          expand-region
-         tuareg-mode
+         ;;tuareg-mode
          go-mode go-eldoc go-company
          graphviz-dot-mode
          htmlize
@@ -147,7 +148,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
-                      "init-auctex"
+                      ;;"init-auctex"
                       "init-ido"
                       "init-c-mode"
                       "init-erlang"
