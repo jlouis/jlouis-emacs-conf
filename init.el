@@ -40,7 +40,7 @@
                            :height 150
                            :weight 'normal)
        (set-face-font 'default font))
-     "Source Code Pro"))))
+     "Go Mono"))))
  
 (setq disabled-command-function nil)
 (put 'set-goal-column           'disabled nil)
