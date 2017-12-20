@@ -28,6 +28,7 @@
     (push "/Users/jesperlouisandersen/go/bin" exec-path)
     (setenv "PATH"
             (concat "/usr/local/bin:/usr/local/sbin:"
+                    "/Users/jesperlouisandersen/go/bin:"
                     "/Users/jesperlouisandersen/.cabal/bin:"
                     "/Users/jesperlouisandersen/bin:"
                     "/usr/texbin:" (getenv "PATH")))
@@ -37,7 +38,7 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 150
+                           :height 160
                            :weight 'normal)
        (set-face-font 'default font))
      "Go Mono"))))
@@ -123,7 +124,7 @@
          org-mode
          idris-mode
          asciidoc
-         magit)
+         magit magit-popup)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; Install all the packages
