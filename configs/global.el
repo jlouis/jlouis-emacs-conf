@@ -52,6 +52,7 @@
 (setq-default ediff-merge-split-window-functon 'split-window-vertically)
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq-default mode-compile-always-save-buffer-p t)
+(setq-default compilation-auto-jump-to-first-error t)
 (setq-default compilation-window-height 12)
 (setq-default x-select-enable-clipboard t)
 (setq-default xterm-mouse-mode t)
