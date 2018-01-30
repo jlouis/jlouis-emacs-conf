@@ -17,7 +17,7 @@
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "2.11")
+    (setq tools-ver "2.11.1")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
     (push "/Library/TeX/texbin" exec-path)
