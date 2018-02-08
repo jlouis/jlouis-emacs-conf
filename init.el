@@ -1,6 +1,17 @@
 ;; init.el --- Initialization file for my Emacs setup
 ;;; Commentary:
 ;; Set up system-specific stuff first
+
+;;; package.el configuration
+(require 'package)
+(dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
+                ("melpa" . "https://melpa.org/packages/")
+                ("tromey" . "http://tromey.com/elpa/")
+                ))
+  (add-to-list 'package-archives arch))
+
+(package-initialize)
+
 (cond
  ((eq system-type 'gnu/linux)
   (progn
@@ -46,7 +57,8 @@
                            :weight 'normal)
        (set-face-font 'default font))
      "Go Mono"))))
- 
+
+;; Disable lots of stuff which we don't want to have in the setup
 (setq disabled-command-function nil)
 (put 'set-goal-column           'disabled nil)
 (put 'erase-buffer              'disabled nil)
@@ -76,68 +88,10 @@
 (require 'ffap)
 (require 'ansi-color)
 
-;;; package.el configuration
-(require 'package)
-(dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
-                ("melpa" . "https://melpa.org/packages/")
-                ("tromey" . "http://tromey.com/elpa/")
-                ))
-  (add-to-list 'package-archives arch))
-;;; el-get configuration
-(add-to-list 'load-path (concat emacs-config-dir "/el-get/el-get"))
-
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
                       exec-path))
-
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-(add-to-list 'el-get-recipe-path (concat emacs-config-dir "/el-get-user/recipes"))
-
-
-(setq el-get-user-package-directory
-      (concat user-emacs-directory "/pkg-configs"))
-
-;; Now, set up some el-get-sources overrides for our programs
-(setq el-get-sources
-      '())
-
-;; Set up the packages that we are using
-(setq my-packages
-      (append
-       '(el-get
-         ;;auctex
-         company-mode
-         csv-mode
-         expand-region
-         tuareg-mode
-         go-mode go-eldoc go-company
-         graphviz-dot-mode
-         htmlize
-         json js2-mode
-         powerline
-         markdown-mode
-         smex
-         material-theme
-         org-mode
-         idris-mode
-         asciidoc
-         elm-mode
-         magit magit-popup)
-       (mapcar 'el-get-source-name el-get-sources)))
-
-;; Install all the packages
-(el-get 'sync my-packages)
-;; This is worth setting the first time you run, to wait on
-;; the sync to complete
-;; (el-get 'wait)
-(package-initialize)
 
 ;; Setup a theme, it is a solarized variant
 (add-to-list 'custom-theme-load-path
@@ -154,6 +108,7 @@
 ;; Now, load the config files one at a time
 (load-config-files  '("defuns" ;; Has to go first
                       "global" ;; Has to go second
+                      "packages" ;; General package configurations
                       ;;"init-auctex"
                       "init-ido"
                       "init-c-mode"
