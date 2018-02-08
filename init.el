@@ -18,11 +18,13 @@
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
     (setq tools-ver "2.11.1")
+    (setq ocaml-ver "4.05.0")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
     (push "/Library/TeX/texbin" exec-path)
     (push "/usr/bin" exec-path)
     (push "/usr/sbin" exec-path)
+    (push (concat "/Users/jesperlouisandersen/.opam/" ocaml-ver "/bin") exec-path)
     (push "/Users/jesperlouisandersen/.cabal/bin" exec-path)
     (push "/Users/jesperlouisandersen/bin" exec-path)
     (push "/Users/jesperlouisandersen/go/bin" exec-path)
@@ -30,6 +32,8 @@
             (concat "/usr/local/bin:/usr/local/sbin:"
                     "/Users/jesperlouisandersen/go/bin:"
                     "/Users/jesperlouisandersen/.cabal/bin:"
+                    (concat "/Users/jesperlouisandersen/.opam/" ocaml-ver "/bin:")
+                    "/Users/jesperlouisandersen/.opam/4.05.0/bin:"
                     "/Users/jesperlouisandersen/bin:"
                     "/usr/texbin:" (getenv "PATH")))
     (setenv "ERL_LIBS"
@@ -112,7 +116,7 @@
          company-mode
          csv-mode
          expand-region
-         ;;tuareg-mode
+         tuareg-mode
          go-mode go-eldoc go-company
          graphviz-dot-mode
          htmlize
@@ -124,6 +128,7 @@
          org-mode
          idris-mode
          asciidoc
+         elm-mode
          magit magit-popup)
        (mapcar 'el-get-source-name el-get-sources)))
 
@@ -170,5 +175,5 @@
 (load custom-file 'noerror)
 ;;; init.el ends here
 (server-start)
-(load-theme 'material-light)
+(load-theme 'material)
 
