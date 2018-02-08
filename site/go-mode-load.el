@@ -1,1 +1,0 @@
-/home/jlouis/go/misc/emacs/go-mode-load.el
