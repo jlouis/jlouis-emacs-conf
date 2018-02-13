@@ -7,6 +7,7 @@
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
                 ("melpa" . "https://melpa.org/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
+                ("org" . "https://orgmode.org/elpa")
                 ))
   (add-to-list 'package-archives arch))
 

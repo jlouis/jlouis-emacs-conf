@@ -82,7 +82,7 @@
 (use-package material-theme
   :ensure t)
 
-(use-package org-mode
+(use-package org
   :ensure t
 
   :bind
@@ -146,7 +146,7 @@
   ;; widen category field a little
   (setq org-agenda-prefix-format "  %-17:c%?-12t% s") )
 
-(use-package powerline-
+(use-package powerline
   :ensure t
 
   :config
@@ -162,12 +162,12 @@
   (global-set-key (kbd "C-x C-m") 'smex)
   (global-set-key (kbd "C-c C-m") 'smex) )
 
-(use-package tuareg-mode
+(use-package tuareg
   :ensure t)
 
 (use-package merlin
   :ensure t
-  :after (tuareg-mode)
+  :after (tuareg)
 
   :config
   (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
