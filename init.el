@@ -17,15 +17,15 @@
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/usr/lib/erlang")
-    (setq tools-ver "2.10.1")
+    (setq tools-ver "2.11.1")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 110
+                           :height 120
                            :weight 'normal)
        (set-face-font 'default font))
-     "Source Code Pro")))
+     "Go Mono")))
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
