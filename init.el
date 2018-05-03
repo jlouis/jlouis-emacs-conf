@@ -17,7 +17,7 @@
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/usr/lib/erlang")
-    (setq tools-ver "2.11.1")
+    (setq tools-ver "2.11.2")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
