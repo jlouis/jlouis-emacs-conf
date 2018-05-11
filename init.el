@@ -1,6 +1,6 @@
 ;; init.el --- Initialization file for my Emacs setup
 ;;; Commentary:
-;; Set up system-specific stuff first
+;; Set up system-specific stuff first.
 
 ;;; package.el configuration
 (require 'package)
