@@ -16,12 +16,12 @@
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/usr/lib/erlang")
-    (setq tools-ver "2.11.2")
+    (setq tools-ver "3.0")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 120
+                           :height 110
                            :weight 'normal)
        (set-face-font 'default font))
      "Go Mono")))
