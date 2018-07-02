@@ -28,7 +28,7 @@
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "2.11.1")
+    (setq tools-ver "2.11.2")
     (setq ocaml-ver "4.05.0")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)

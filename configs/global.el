@@ -124,7 +124,8 @@
 (global-set-key (kbd "C-c r") 'vc-git-grep)
 
 (global-set-key (kbd "C-c |") 'align)
-
+(global-set-key (kbd "C-c m") (lambda () (interactive)
+                                (erlang-man-function (current-word))))
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq sentence-end-double-space nil
