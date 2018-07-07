@@ -18,13 +18,16 @@
   (global-company-mode 1)
   (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
 
-(use-package csv-mode
-  :ensure t)
-
 (use-package elm-mode
   :ensure t)
 
 (use-package expand-region
+  :ensure t)
+
+(use-package graphql-mode
+  :ensure t)
+
+(use-package iedit
   :ensure t)
 
 (use-package idris-mode
@@ -180,8 +183,6 @@
       (add-hook 'caml-mode-hook 'merlin-mode t)
       ;; Use opam switch to lookup ocamlmerlin binary
       (setq merlin-command 'opam))) )
-  
-
 
 (provide 'packages)
 
