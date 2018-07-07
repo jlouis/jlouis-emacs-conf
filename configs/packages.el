@@ -10,7 +10,7 @@
   :ensure t
 
   :config
-  (setq company-idle-delay 0.4)
+  (setq company-idle-delay 0.5)
   (setq company-tooltip-limit 10)
   (setq company-minimum-prefix-length 2)
   
@@ -95,9 +95,6 @@
   ("C-c s" . org-capture)
   
   :config
-  ;; Extension handling
-  (require 'org-initialize)
-
   (add-to-list 'auto-mode-alist '("\\.org$'" . org-mode))
   (setq org-directory "~/org")
   (setq org-agenda-files '("~/org"))
