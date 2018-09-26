@@ -28,7 +28,7 @@
  ((eq system-type 'darwin)
   (progn
     (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "3.0")
+    (setq tools-ver "3.0.1")
     (setq ocaml-ver "4.05.0")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
@@ -119,7 +119,7 @@
                       "init-tramp"
                       "init-agda2"
                       "init-hippie-expand"
-                      ;;"init-proofgeneral"
+                      "init-proofgeneral"
                       ;"init-twelf"
                       "init-uniquify" ))
 
@@ -131,4 +131,3 @@
 ;;; init.el ends here
 (server-start)
 (load-theme 'material)
-

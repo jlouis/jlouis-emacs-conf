@@ -6,6 +6,12 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package org-jira
+  :ensure t
+
+  :config
+  (setq jiralib-url "https://shopgun.atlassian.net"))
+
 (use-package company
   :ensure t
 
@@ -13,7 +19,7 @@
   (setq company-idle-delay 0.5)
   (setq company-tooltip-limit 10)
   (setq company-minimum-prefix-length 2)
-  
+
   (setq company-tooltip-flip-when-above t)
   (global-company-mode 1)
   (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
@@ -76,6 +82,12 @@
   :bind
   ("C-c g" . magit-status))
 
+(use-package multi-line
+  :ensure t
+
+  :bind
+  ("C-c d" . multi-line))
+
 (use-package magit-popup
   :ensure t)
 
@@ -93,7 +105,7 @@
   ("C-c a" . org-agenda)
   ("C-c n" . org-iswitchb)
   ("C-c s" . org-capture)
-  
+
   :config
   (add-to-list 'auto-mode-alist '("\\.org$'" . org-mode))
   (setq org-directory "~/org")
@@ -103,7 +115,7 @@
   (setq org-todo-keywords '((type "TODO" "NEXT" "WAITING" "DONE")))
 
   ;; #+SEQ_TODO: TODO | DONE
-  ;; #+SEQ_TODO: REPORT BUG KNOWNCAUSE | FIXED 
+  ;; #+SEQ_TODO: REPORT BUG KNOWNCAUSE | FIXED
   ;; #+SEQ_TODO: | CANCELLED
 
   (setq org-agenda-custom-commands
@@ -122,7 +134,7 @@
   (setq org-refile-targets '((org-agenda-files :level . 1)))
 
   (setq org-capture-templates
-        '(("i" "Inbox" entry (file+headline "inbox.org" "Tasks") 
+        '(("i" "Inbox" entry (file+headline "inbox.org" "Tasks")
            "* TODO %?\n  %i\n  %a")
           ("j" "Journal" entry (file+datetree "journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
@@ -130,7 +142,7 @@
            "Unsorted Quotes")))
 
   (setq org-return-follows-link t)
-  (setq org-hide-leading-stars t) 
+  (setq org-hide-leading-stars t)
   (setf org-tags-column -65)
   (setf org-special-ctrl-a/e t)
 
@@ -182,4 +194,3 @@
       (setq merlin-command 'opam))) )
 
 (provide 'packages)
-

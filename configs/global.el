@@ -64,6 +64,7 @@
 
 (electric-indent-mode t)
 (electric-layout-mode t)
+(electric-pair-mode t)
 
 (defun dont-kill-emacs ()
       (interactive)
@@ -79,8 +80,12 @@
 (autoload 'goto-last-change
   "goto-last-change" "Set point to the position of the last change." t)
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'text-mode-hook
+          'turn-on-auto-fill)
+(add-hook 'text-mode-hook
+          'turn-on-flyspell)
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (random t)
