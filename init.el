@@ -4,6 +4,7 @@
 
 ;;; package.el configuration
 (require 'package)
+
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
                 ("melpa" . "https://melpa.org/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
@@ -87,6 +88,7 @@
 (require 'saveplace)
 (require 'ffap)
 (require 'ansi-color)
+(require 'use-package)
 
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))

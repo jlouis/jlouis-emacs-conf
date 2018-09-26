@@ -30,6 +30,9 @@
 (use-package expand-region
   :ensure t)
 
+(use-package ess
+  :ensure t)
+
 (use-package graphql-mode
   :ensure t)
 
