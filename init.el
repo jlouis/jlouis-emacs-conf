@@ -120,7 +120,6 @@
                       "init-recentf"
                       "init-tramp"
                       "init-agda2"
-                      "init-hippie-expand"
                       "init-proofgeneral"
                       ;"init-twelf"
                       "init-uniquify" ))

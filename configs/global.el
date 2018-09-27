@@ -43,7 +43,7 @@
 (setq-default shift-select-mode nil)
 (setq-default default-tab-width 4)
 (setq-default indent-tabs-mode nil)
-(setq-default require-final-newline t) 
+(setq-default require-final-newline t)
 (setq tab-always-indent 'complete)
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
@@ -115,7 +115,6 @@
 
 ;; Keybindings
 (global-set-key "\M-g" 'goto-line)
-(global-set-key (kbd "M-/") 'hippie-expand)
 ;; These two is because the M-` is now taken by Unity, and there
 ;; were no intelligent binding on ', so I just took that one.
 (global-set-key (kbd "M-'") 'jump-to-mark)
