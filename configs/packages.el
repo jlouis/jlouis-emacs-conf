@@ -94,7 +94,6 @@
 
 (use-package go-eldoc
   :ensure t
-  :delight
 
   :config
   (go-eldoc-setup))

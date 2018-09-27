@@ -10,5 +10,3 @@
                            (regexp . ",\\(\\s-+\\)")
                            (repeat . t)
                            (modes quote (erlang-mode))))))
-
-
