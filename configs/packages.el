@@ -6,8 +6,11 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package diminish
+(use-package delight
   :ensure t)
+
+(use-package eldoc
+  :delight eldoc-mode)
 
 (use-package org-jira
   :ensure t
@@ -17,7 +20,7 @@
 
 (use-package company
   :ensure t
-  :diminish company-mode
+  :delight
 
   :config
   (setq company-idle-delay 0.5)
@@ -33,6 +36,11 @@
 
 (use-package expand-region
   :ensure t)
+
+(use-package emacs
+  :delight
+  (auto-fill-mode " AF")
+  (visual-line-mode))
 
 (use-package ess
   :ensure t)
@@ -79,7 +87,7 @@
 
 (use-package go-eldoc
   :ensure t
-  :diminish eldoc-mode
+  :delight
 
   :config
   (go-eldoc-setup))
@@ -173,7 +181,10 @@
   (powerline-default-theme) )
 
 (use-package abbrev
-  :diminish abbrev-mode)
+  :delight)
+
+(use-package autorevert
+  :delight auto-revert-mode)
 
 (use-package smex
   :ensure t
