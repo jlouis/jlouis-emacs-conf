@@ -121,8 +121,8 @@
                       "init-tramp"
                       "init-agda2"
                       "init-proofgeneral"
-                      ;"init-twelf"
-                      "init-uniquify" ))
+                      ;;"init-twelf"
+                      ))
 
 ;; Awfully simple initializations
 (require 'midnight)
