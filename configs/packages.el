@@ -6,6 +6,9 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package diminish
+  :ensure t)
+
 (use-package org-jira
   :ensure t
 
@@ -14,6 +17,7 @@
 
 (use-package company
   :ensure t
+  :diminish company-mode
 
   :config
   (setq company-idle-delay 0.5)
@@ -75,6 +79,7 @@
 
 (use-package go-eldoc
   :ensure t
+  :diminish eldoc-mode
 
   :config
   (go-eldoc-setup))
@@ -166,6 +171,9 @@
 
   :config
   (powerline-default-theme) )
+
+(use-package abbrev
+  :diminish abbrev-mode)
 
 (use-package smex
   :ensure t
