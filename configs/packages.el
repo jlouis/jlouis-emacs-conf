@@ -25,6 +25,37 @@
         uniquify-after-kill-buffer-p t
         uniquify-ignore-buffers-re "^\\*"))
 
+(use-package yasnippet
+  :ensure t
+  :delight
+
+  :config
+  (progn
+    (yas-global-mode 1)
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
+    (defun yas/goto-end-of-active-field ()
+      (interactive)
+      (let* ((snippet (car (yas--snippets-at-point)))
+             (position (yas--field-end (yas--snippet-active-field snippet))))
+        (if (= (point) position)
+            (move-end-of-line 1)
+          (goto-char position))))
+
+    (defun yas/goto-start-of-active-field ()
+      (interactive)
+      (let* ((snippet (car (yas--snippets-at-point)))
+             (position (yas--field-start (yas--snippet-active-field snippet))))
+        (if (= (point) position)
+            (move-beginning-of-line 1)
+          (goto-char position))))
+
+    (define-key yas-keymap (kbd "C-e") 'yas/goto-end-of-active-field)
+    (define-key yas-keymap (kbd "C-a") 'yas/goto-start-of-active-field)
+    ;;(setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))
+    ;;(setq yas-verbosity 1)
+    (setq yas-wrap-around-region t)))
+
 (use-package company
   :ensure t
   :delight
@@ -55,7 +86,7 @@
 
   :config
   (progn
-    (global-git-gutter-mode t)))
+    (global-git-gutter+-mode t)))
 
 (use-package ess
   :ensure t)
