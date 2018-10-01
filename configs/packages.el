@@ -49,6 +49,14 @@
   (auto-fill-mode " AF")
   (visual-line-mode))
 
+(use-package git-gutter-fringe+
+  :ensure t
+  :delight
+
+  :config
+  (progn
+    (global-git-gutter-mode t)))
+
 (use-package ess
   :ensure t)
 
