@@ -33,10 +33,6 @@
   (progn
     (yas-global-mode 1)
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-    (define-key yas-minor-mode-map (kbd "<tab>") nil)
-    (define-key yas-minor-mode-map (kbd "TAB") nil)
-    (define-key yas-minor-mode-map (kbd "C-;") yas-maybe-expand)
-    (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
     (defun yas/goto-end-of-active-field ()
       (interactive)
       (let* ((snippet (car (yas--snippets-at-point)))
@@ -70,6 +66,8 @@
 
   (setq company-tooltip-flip-when-above t)
   (global-company-mode 1)
+  (define-key company-active-map [tab] nil)
+  (define-key company-active-map (kbd "TAB") nil)
   (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
 
 (use-package elm-mode
