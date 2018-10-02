@@ -33,6 +33,9 @@
   (progn
     (yas-global-mode 1)
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (define-key yas-minor-mode-map (kbd "<tab>") nil)
+    (define-key yas-minor-mode-map (kbd "TAB") nil)
+    (define-key yas-minor-mode-map (kbd "C-;") yas-maybe-expand)
     (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
     (defun yas/goto-end-of-active-field ()
       (interactive)
