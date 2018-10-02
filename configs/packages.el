@@ -27,7 +27,7 @@
 
 (use-package yasnippet
   :ensure t
-  :delight
+  :delight yas-minor-mode
 
   :config
   (progn
@@ -83,7 +83,7 @@
 
 (use-package git-gutter-fringe+
   :ensure t
-  :delight
+  :delight git-gutter+-mode
 
   :config
   (progn
