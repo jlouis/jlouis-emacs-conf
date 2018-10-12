@@ -7,7 +7,10 @@
   (require 'use-package))
 
 (use-package delight
-  :ensure t)
+  :ensure t
+
+  :config
+  (delight '((auto-fill-function " AF" t))))
 
 (use-package eldoc
   :delight eldoc-mode)
@@ -78,7 +81,6 @@
 
 (use-package emacs
   :delight
-  (auto-fill-mode " AF")
   (visual-line-mode))
 
 (use-package git-gutter-fringe+
