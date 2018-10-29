@@ -6,6 +6,38 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package fill-column-indicator
+  :ensure t)
+
+(use-package flx-ido
+  :ensure t
+
+  :config
+  (ido-mode 1)
+  (ido-everywhere 1)
+  (flx-ido-mode 1)
+  ;; disable ido faces to see flx highlights.
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil))
+
+(use-package ido-completing-read+
+  :ensure t
+  :after (flx-ido)
+
+  :config
+  (ido-ubiquitous-mode 1))
+
+(use-package whitespace-cleanup-mode
+  :ensure t
+  :delight
+
+  :config
+  (global-whitespace-cleanup-mode 1))
+
+
 (use-package delight
   :ensure t
 
@@ -95,7 +127,10 @@
   :ensure t)
 
 (use-package graphql-mode
-  :ensure t)
+  :ensure t
+
+  :config
+  (subword-mode 1))
 
 (use-package iedit
   :ensure t)
@@ -127,7 +162,7 @@
   (set
    (make-local-variable 'company-backends)
    '(company-go))
-  (subword-mode +1)
+  (subword-mode 1)
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   :bind

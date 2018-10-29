@@ -84,8 +84,6 @@
           'turn-on-auto-fill)
 (add-hook 'text-mode-hook
           'turn-on-flyspell)
-(add-hook 'before-save-hook
-          'delete-trailing-whitespace)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (random t)

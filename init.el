@@ -112,7 +112,6 @@
                       "global" ;; Has to go second
                       "packages" ;; General package configurations
                       ;;"init-auctex"
-                      "init-ido"
                       "init-c-mode"
                       "init-erlang"
                       "init-epa"
