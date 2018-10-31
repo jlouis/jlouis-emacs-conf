@@ -37,6 +37,11 @@
   :config
   (global-whitespace-cleanup-mode 1))
 
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode))
 
 (use-package delight
   :ensure t
@@ -115,14 +120,6 @@
   :delight
   (visual-line-mode))
 
-(use-package git-gutter-fringe+
-  :ensure t
-  :delight git-gutter+-mode
-
-  :config
-  (progn
-    (global-git-gutter+-mode t)))
-
 (use-package ess
   :ensure t)
 
@@ -177,9 +174,13 @@
 
 (use-package magit
   :ensure t
+  :after (diff-hl)
 
   :bind
-  ("C-c g" . magit-status))
+  ("C-c g" . magit-status)
+
+   :config
+   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (use-package multi-line
   :ensure t
