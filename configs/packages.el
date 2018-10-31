@@ -3,11 +3,24 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Things we want to install in the future:
+;; nix-mode nix-sandbox nix-buffer
+;; restclient
+;; edts (Erlang)
+;;
+
+
 (eval-when-compile
   (require 'use-package))
 
 (use-package dockerfile-mode
   :ensure t)
+
+(use-package perspective
+  :ensure t
+  :config
+  (persp-mode 1))
+
 
 (use-package fill-column-indicator
   :ensure t)
@@ -35,7 +48,7 @@
   :delight
 
   :config
-  (global-whitespace-cleanup-mode 1))
+  (add-hook 'after-init-hook 'global-whitespace-cleanup-mode))
 
 (use-package diff-hl
   :ensure t
@@ -172,6 +185,26 @@
   :config
   (go-eldoc-setup))
 
+(use-package magit-todos
+  :ensure t
+  :after (magit)
+
+  :config
+  (magit-todos-mode))
+
+(use-package flycheck
+  :ensure t
+
+  :init (global-flycheck-mode)
+  :config
+  (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
+
+(use-package flycheck-color-mode-line
+  :ensure t
+  :after (flycheck)
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+
 (use-package magit
   :ensure t
   :after (diff-hl)
@@ -179,8 +212,9 @@
   :bind
   ("C-c g" . magit-status)
 
-   :config
-   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  :config
+  (setq-default magit-diff-refine-hunk 1)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (use-package multi-line
   :ensure t
