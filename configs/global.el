@@ -123,7 +123,6 @@
 (global-set-key (kbd "C-x C-i") 'imenu)
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c j") 'join-line)
-(global-set-key (kbd "C-c r") 'vc-git-grep)
 
 (global-set-key (kbd "C-c |") 'align)
 (global-set-key (kbd "C-c m") (lambda () (interactive)

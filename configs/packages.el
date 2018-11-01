@@ -7,7 +7,8 @@
 ;; nix-mode nix-sandbox nix-buffer
 ;; restclient
 ;; edts (Erlang)
-;; ivy
+;; SmartParens
+;; Warp Region
 ;;
 
 (eval-when-compile
@@ -22,23 +23,56 @@
 
 ;; ------------------------------------------------------------
 ;; Window Navigation
-(use-package flx-ido
+
+;; (use-package flx-ido
+;;   :ensure t
+
+;;   :config
+;;   (ido-mode 1)
+;;   (ido-everywhere 1)
+;;   (flx-ido-mode 1)
+;;   ;; disable ido faces to see flx highlights.
+;;   (setq ido-enable-flex-matching t)
+;;   (setq ido-use-faces nil))
+
+;; (use-package ido-completing-read+
+;;   :ensure t
+;;   :after (flx-ido)
+
+;;   :config
+;;   (ido-ubiquitous-mode 1))
+
+;; This whole thing can be configured way more:
+;; https://oremacs.com/swiper/
+;;
+
+(use-package flx
+  :ensure t)
+
+(use-package ivy
   :ensure t
 
   :config
-  (ido-mode 1)
-  (ido-everywhere 1)
-  (flx-ido-mode 1)
-  ;; disable ido faces to see flx highlights.
-  (setq ido-enable-flex-matching t)
-  (setq ido-use-faces nil))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
 
-(use-package ido-completing-read+
+(use-package swiper
   :ensure t
-  :after (flx-ido)
+  :after (ivy)
 
-  :config
-  (ido-ubiquitous-mode 1))
+  :bind
+  ("C-s" . swiper))
+
+(use-package counsel
+  :ensure t
+  :after (ivy)
+
+  :bind
+  ("C-c r" . counsel-git-grep)
+  ("C-c f" . counsel-git)
+  ("M-x" . counsel-M-x)
+  ("C-x C-f" . counsel-find-file))
 
 (use-package perspective
   :ensure t
@@ -65,10 +99,7 @@
 
   :config
   (setq smex-save-file
-      (concat user-emacs-directory ".smex-items"))
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "C-x C-m") 'smex)
-  (global-set-key (kbd "C-c C-m") 'smex) )
+      (concat user-emacs-directory ".smex-items")))
 
 (use-package hippie-expand
   :init
@@ -164,6 +195,12 @@
 (use-package iedit
   :ensure t)
 
+(use-package flycheck
+  :ensure t
+
+  :init (global-flycheck-mode)
+  :config
+
   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
 
 (use-package flycheck-color-mode-line
@@ -199,6 +236,8 @@
   :bind
   ("C-c d" . multi-line))
 
+(use-package restclient
+  :ensure t)
 
 ;; ------------------------------------------------------------
 ;; File Modes
@@ -257,12 +296,6 @@
 
   :config
   (go-eldoc-setup))
-
-(use-package flycheck
-  :ensure t
-
-  :init (global-flycheck-mode)
-  :config
 
 (use-package markdown-mode
   :ensure t)
