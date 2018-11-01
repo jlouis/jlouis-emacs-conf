@@ -133,10 +133,7 @@
   )
 
 (use-package powerline
-  :ensure t
-
-  :config
-  (powerline-default-theme) )
+  :ensure t)
 
 (use-package abbrev
   :delight)
@@ -161,6 +158,22 @@
           try-expand-dabbrev-from-kill))
   :bind
   ("M-/" . hippie-expand))
+
+(use-package smart-mode-line
+  :ensure t
+  :config
+  ;; See https://github.com/Malabarba/smart-mode-line/issues/217
+  (setq mode-line-format (delq 'mode-line-position mode-line-format))
+  (sml/setup)
+  (sml/apply-theme 'dark)
+  (remove-hook 'display-time-hook 'sml/propertize-time-string))
+
+(use-package smart-mode-line-powerline-theme
+  :ensure t
+  :disabled t
+  :after smart-mode-line
+  :config
+  (sml/apply-theme 'powerline))
 
 (use-package fill-column-indicator
   :ensure t)
