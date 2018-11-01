@@ -30,28 +30,6 @@
 ;; ------------------------------------------------------------
 ;; Window Navigation
 
-;; (use-package flx-ido
-;;   :ensure t
-
-;;   :config
-;;   (ido-mode 1)
-;;   (ido-everywhere 1)
-;;   (flx-ido-mode 1)
-;;   ;; disable ido faces to see flx highlights.
-;;   (setq ido-enable-flex-matching t)
-;;   (setq ido-use-faces nil))
-
-;; (use-package ido-completing-read+
-;;   :ensure t
-;;   :after (flx-ido)
-
-;;   :config
-;;   (ido-ubiquitous-mode 1))
-
-;; This whole thing can be configured way more:
-;; https://oremacs.com/swiper/
-;;
-
 (use-package recentf
   :config
   (recentf-mode 1))
