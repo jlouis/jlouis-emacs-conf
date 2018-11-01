@@ -115,10 +115,12 @@
 
   :bind
   ("C-c r" . counsel-git-grep)
+  ("C-c C-r" . ivy-resume)
   ("C-c f" . counsel-git)
   ("M-x" . counsel-M-x)
   ("C-x C-f" . counsel-find-file)
   ("C-x C-r" . counsel-recentf))
+
 
 (use-package perspective
   :ensure t
