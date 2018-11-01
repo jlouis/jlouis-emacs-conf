@@ -54,6 +54,7 @@
 
 (use-package ivy
   :ensure t
+  :delight
 
   :config
   (ivy-mode 1)
