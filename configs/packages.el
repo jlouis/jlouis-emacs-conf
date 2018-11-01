@@ -1,4 +1,7 @@
-;; Set up use-package
+;;; package --- Installation of packages via use-package
+;;; Commentary:
+;;;  Kept separate as to not clutter the main init files
+;;; Code:
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -154,7 +157,7 @@
     (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
     (defun yas/goto-end-of-active-field ()
       (interactive)
-      (let* ((snippet (car (yas--snippets-at-point)))
+      (let* ((snippet (car (yas-active-snippets)))
              (position (yas--field-end (yas--snippet-active-field snippet))))
         (if (= (point) position)
             (move-end-of-line 1)
@@ -162,7 +165,7 @@
 
     (defun yas/goto-start-of-active-field ()
       (interactive)
-      (let* ((snippet (car (yas--snippets-at-point)))
+      (let* ((snippet (car (yas-active-snippets)))
              (position (yas--field-start (yas--snippet-active-field snippet))))
         (if (= (point) position)
             (move-beginning-of-line 1)
@@ -383,3 +386,4 @@
   (setq org-agenda-prefix-format "  %-17:c%?-12t% s") )
 
 (provide 'packages)
+;;; packages.el ends here
