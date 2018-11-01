@@ -201,6 +201,7 @@
 
 (use-package flycheck
   :ensure t
+  :delight
 
   :init (global-flycheck-mode)
   :config
@@ -209,6 +210,8 @@
 
 (use-package flycheck-color-mode-line
   :ensure t
+  :delight
+
   :after (flycheck)
   :config
   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
