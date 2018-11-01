@@ -21,6 +21,12 @@
   :delight
   (visual-line-mode))
 
+(use-package server
+  :unless (or noninteractive
+              alternate-emacs)
+  :no-require
+  :hook (after-init . server-start))
+
 (use-package material-theme
   :ensure t)
 
@@ -86,6 +92,10 @@
 ;; ------------------------------------------------------------
 ;; Generally useful modes
 
+(use-package eshell
+  :commands (eshell eshell-command)
+  )
+
 (use-package powerline
   :ensure t
 
@@ -123,8 +133,7 @@
   :ensure t
   :delight
 
-  :config
-  (add-hook 'after-init-hook 'global-whitespace-cleanup-mode))
+  :hook (after-init-hook . global-whitespace-cleanup-mode))
 
 (use-package diff-hl
   :ensure t
@@ -213,8 +222,7 @@
   :delight
 
   :after (flycheck)
-  :config
-  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+  :hook (flycheck-mode-hook . flycheck-color-mode-line-mode))
 
 (use-package magit
   :ensure t
@@ -223,9 +231,9 @@
   :bind
   ("C-c g" . magit-status)
 
+  :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh)
   :config
-  (setq-default magit-diff-refine-hunk 1)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  (setq-default magit-diff-refine-hunk 1))
 
 (use-package magit-todos
   :ensure t
@@ -286,6 +294,7 @@
   ;; go get -u golang.org/x/tools/cmd/guru
   ;; go get -u github.com/dougm/goflymake
 
+  :hook (before-save-hook . gofmt-before-save)
   :config
   (setq-local compile-command "go build -v && go test -v && go vet")
   (set
@@ -293,7 +302,7 @@
    '(company-go))
   (subword-mode 1)
   (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save)
+
   :bind
   ("C-c C-c" . compile)
   ("M-." . godef-jump))

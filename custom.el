@@ -4,10 +4,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(graphql-indent-level 4)
  '(package-selected-packages
    (quote
-    (restclient counsel magit-todos perspective php-mode ido-completing-read+ whitespace-cleanup-mode flx flx-ido fill-column-indicator dockerfile-mode diminish multi-line ess ess-smart-equals company-coq use-package-ensure-system-package iedit merlin tuareg smex powerline material-theme markdown-mode magit go-eldoc go-mode js2-mode idris-mode expand-region elm-mode csv-mode company use-package))))
+    (counsel swiper ivy yasnippet whitespace-cleanup-mode use-package tuareg smex restclient powerline perspective org-jira multi-line merlin material-theme markdown-mode magit-todos js2-mode iedit idris-mode graphql-mode go-eldoc git-gutter-fringe+ flycheck-color-mode-line flx fill-column-indicator expand-region ess elm-mode dockerfile-mode diff-hl delight company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

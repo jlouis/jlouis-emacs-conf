@@ -3,6 +3,7 @@
 ;; Set up system-specific stuff first.
 
 ;;; package.el configuration
+;;; Code:
 (require 'package)
 
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -16,13 +17,13 @@
 (cond
  ((eq system-type 'gnu/linux)
   (progn
-    (setq erlang-root-dir "/usr/lib/erlang")
+    (setq erlang-root-dir "/home/jlouis/.nix-profile/lib/erlang")
     (setq tools-ver "3.0")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 110
+                           :height 140
                            :weight 'normal)
        (set-face-font 'default font))
      "Go Mono")))
@@ -115,11 +116,10 @@
                       "init-c-mode"
                       "init-erlang"
                       "init-epa"
-                      "init-eshell"
                       "init-recentf"
                       "init-tramp"
                       "init-agda2"
-                      "init-proofgeneral"
+                      ;;"init-proofgeneral"
                       ;;"init-twelf"
                       ))
 
@@ -128,6 +128,6 @@
 
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
-;;; init.el ends here
-(server-start)
 (load-theme 'material)
+;;; init.el ends here
+
