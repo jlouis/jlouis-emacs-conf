@@ -7,24 +7,21 @@
 ;; nix-mode nix-sandbox nix-buffer
 ;; restclient
 ;; edts (Erlang)
+;; ivy
 ;;
-
 
 (eval-when-compile
   (require 'use-package))
 
-(use-package dockerfile-mode
+(use-package emacs
+  :delight
+  (visual-line-mode))
+
+(use-package material-theme
   :ensure t)
 
-(use-package perspective
-  :ensure t
-  :config
-  (persp-mode 1))
-
-
-(use-package fill-column-indicator
-  :ensure t)
-
+;; ------------------------------------------------------------
+;; Window Navigation
 (use-package flx-ido
   :ensure t
 
@@ -42,6 +39,50 @@
 
   :config
   (ido-ubiquitous-mode 1))
+
+(use-package perspective
+  :ensure t
+  :config
+  (persp-mode 1))
+
+;; ------------------------------------------------------------
+;; Generally useful modes
+
+(use-package powerline
+  :ensure t
+
+  :config
+  (powerline-default-theme) )
+
+(use-package abbrev
+  :delight)
+
+(use-package autorevert
+  :delight auto-revert-mode)
+
+(use-package smex
+  :ensure t
+
+  :config
+  (setq smex-save-file
+      (concat user-emacs-directory ".smex-items"))
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "C-x C-m") 'smex)
+  (global-set-key (kbd "C-c C-m") 'smex) )
+
+(use-package hippie-expand
+  :init
+  (setq hippie-expand-try-functions-list
+        '(try-complete-file-name-partially
+          try-complete-file-name
+          try-expand-dabbrev
+          try-expand-dabbrev-all-buffers
+          try-expand-dabbrev-from-kill))
+  :bind
+  ("M-/" . hippie-expand))
+
+(use-package fill-column-indicator
+  :ensure t)
 
 (use-package whitespace-cleanup-mode
   :ensure t
@@ -64,12 +105,6 @@
 
 (use-package eldoc
   :delight eldoc-mode)
-
-(use-package org-jira
-  :ensure t
-
-  :config
-  (setq jiralib-url "https://shopgun.atlassian.net"))
 
 (use-package uniquify
   :config
@@ -123,15 +158,56 @@
   (define-key company-active-map (kbd "TAB") nil)
   (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
 
-(use-package elm-mode
-  :ensure t)
-
 (use-package expand-region
   :ensure t)
 
-(use-package emacs
-  :delight
-  (visual-line-mode))
+(use-package iedit
+  :ensure t)
+
+  (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
+
+(use-package flycheck-color-mode-line
+  :ensure t
+  :after (flycheck)
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+
+(use-package magit
+  :ensure t
+  :after (diff-hl)
+
+  :bind
+  ("C-c g" . magit-status)
+
+  :config
+  (setq-default magit-diff-refine-hunk 1)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+(use-package magit-todos
+  :ensure t
+  :after (magit)
+
+  :config
+  (magit-todos-mode))
+
+(use-package magit-popup
+  :ensure t)
+
+(use-package multi-line
+  :ensure t
+
+  :bind
+  ("C-c d" . multi-line))
+
+
+;; ------------------------------------------------------------
+;; File Modes
+
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package elm-mode
+  :ensure t)
 
 (use-package ess
   :ensure t)
@@ -141,9 +217,6 @@
 
   :config
   (subword-mode 1))
-
-(use-package iedit
-  :ensure t)
 
 (use-package idris-mode
   :ensure t)
@@ -185,52 +258,36 @@
   :config
   (go-eldoc-setup))
 
-(use-package magit-todos
-  :ensure t
-  :after (magit)
-
-  :config
-  (magit-todos-mode))
-
 (use-package flycheck
   :ensure t
 
   :init (global-flycheck-mode)
   :config
-  (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
-
-(use-package flycheck-color-mode-line
-  :ensure t
-  :after (flycheck)
-  :config
-  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
-
-(use-package magit
-  :ensure t
-  :after (diff-hl)
-
-  :bind
-  ("C-c g" . magit-status)
-
-  :config
-  (setq-default magit-diff-refine-hunk 1)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
-
-(use-package multi-line
-  :ensure t
-
-  :bind
-  ("C-c d" . multi-line))
-
-(use-package magit-popup
-  :ensure t)
 
 (use-package markdown-mode
   :ensure t)
 
-(use-package material-theme
+(use-package tuareg
   :ensure t)
 
+(use-package merlin
+  :ensure t
+  :after (tuareg)
+
+  :config
+  (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+    (when (and opam-share (file-directory-p opam-share))
+      ;; Register Merlin
+      (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+      (autoload 'merlin-mode "merlin" nil t nil)
+      ;; Automatically start it in OCaml buffers
+      (add-hook 'tuareg-mode-hook 'merlin-mode t)
+      (add-hook 'caml-mode-hook 'merlin-mode t)
+      ;; Use opam switch to lookup ocamlmerlin binary
+      (setq merlin-command 'opam))) )
+
+;; ------------------------------------------------------------
+;; Org
 (use-package org
   :ensure t
 
@@ -291,57 +348,5 @@
 
   ;; widen category field a little
   (setq org-agenda-prefix-format "  %-17:c%?-12t% s") )
-
-(use-package powerline
-  :ensure t
-
-  :config
-  (powerline-default-theme) )
-
-(use-package abbrev
-  :delight)
-
-(use-package autorevert
-  :delight auto-revert-mode)
-
-(use-package smex
-  :ensure t
-
-  :config
-  (setq smex-save-file
-      (concat user-emacs-directory ".smex-items"))
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "C-x C-m") 'smex)
-  (global-set-key (kbd "C-c C-m") 'smex) )
-
-(use-package tuareg
-  :ensure t)
-
-(use-package merlin
-  :ensure t
-  :after (tuareg)
-
-  :config
-  (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
-    (when (and opam-share (file-directory-p opam-share))
-      ;; Register Merlin
-      (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-      (autoload 'merlin-mode "merlin" nil t nil)
-      ;; Automatically start it in OCaml buffers
-      (add-hook 'tuareg-mode-hook 'merlin-mode t)
-      (add-hook 'caml-mode-hook 'merlin-mode t)
-      ;; Use opam switch to lookup ocamlmerlin binary
-      (setq merlin-command 'opam))) )
-
-(use-package hippie-expand
-  :init
-  (setq hippie-expand-try-functions-list
-        '(try-complete-file-name-partially
-          try-complete-file-name
-          try-expand-dabbrev
-          try-expand-dabbrev-all-buffers
-          try-expand-dabbrev-from-kill))
-  :bind
-  ("M-/" . hippie-expand))
 
 (provide 'packages)
