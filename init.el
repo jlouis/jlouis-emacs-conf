@@ -18,7 +18,7 @@
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/home/jlouis/.nix-profile/lib/erlang")
-    (setq tools-ver "3.0")
+    (setq tools-ver "3.0.1")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -87,7 +87,6 @@
 
 ;; Basic stuff we really need all the time
 (require 'saveplace)
-(require 'ffap)
 (require 'ansi-color)
 (require 'use-package)
 
@@ -114,10 +113,7 @@
                       "packages" ;; General package configurations
                       ;;"init-auctex"
                       "init-c-mode"
-                      "init-erlang"
                       "init-epa"
-                      "init-recentf"
-                      "init-tramp"
                       "init-agda2"
                       ;;"init-proofgeneral"
                       ;;"init-twelf"

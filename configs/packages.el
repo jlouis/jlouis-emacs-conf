@@ -10,8 +10,6 @@
 ;; nix-mode nix-sandbox nix-buffer
 ;; restclient
 ;; edts (Erlang)
-;; SmartParens
-;; Warp Region
 ;;
 
 (eval-when-compile
@@ -22,8 +20,7 @@
   (visual-line-mode))
 
 (use-package server
-  :unless (or noninteractive
-              alternate-emacs)
+  :unless (or noninteractive)
   :no-require
   :hook (after-init . server-start))
 
@@ -55,8 +52,46 @@
 ;; https://oremacs.com/swiper/
 ;;
 
+(use-package recentf
+  :config
+  (recentf-mode 1))
+
+(use-package tramp
+  :config
+  (setq tramp-default-method "sshx")
+
+  (add-to-list 'tramp-default-method-alist
+	       '("\\`localhost\\'" "\\`root\\'" "su"))
+  (add-to-list 'tramp-default-method-alist '("" "jlouis" "ssh"))
+  (add-to-list 'tramp-default-method-alist '("" "jla" "ssh"))
+  (add-to-list 'tramp-default-method-alist '("" "root" "ssh"))
+
+  (tramp-set-completion-function "ssh"
+			         '((tramp-parse-sconfig "/etc/ssh_config")
+				   (tramp-parse-sconfig "~/.ssh/config"))))
+
+(use-package ffap
+  :bind ("C-c v" . ffap))
+
+(use-package smartparens-config
+  :ensure smartparens
+  :delight
+
+  :commands smartparens-mode)
+
 (use-package flx
   :ensure t)
+
+(use-package avy
+  :ensure t
+  :bind* ("C-." . avy-goto-char-timer)
+  :config
+  (avy-setup-default))
+
+(use-package avy-zap
+  :ensure t
+  :bind (("M-z" . avy-zap-to-char-dwim)
+         ("M-Z" . avy-zap-up-to-char-dwim)))
 
 (use-package ivy
   :ensure t
@@ -82,7 +117,8 @@
   ("C-c r" . counsel-git-grep)
   ("C-c f" . counsel-git)
   ("M-x" . counsel-M-x)
-  ("C-x C-f" . counsel-find-file))
+  ("C-x C-f" . counsel-find-file)
+  ("C-x C-r" . counsel-recentf))
 
 (use-package perspective
   :ensure t
@@ -301,11 +337,7 @@
    (make-local-variable 'company-backends)
    '(company-go))
   (subword-mode 1)
-  (setq gofmt-command "goimports")
-
-  :bind
-  ("C-c C-c" . compile)
-  ("M-." . godef-jump))
+  (setq gofmt-command "goimports"))
 
 (use-package go-eldoc
   :ensure t
@@ -318,6 +350,11 @@
 
 (use-package tuareg
   :ensure t)
+
+(use-package erlang-start
+  :config
+  (add-hook 'erlang-mode-hook #'smartparens-mode)
+  )
 
 (use-package merlin
   :ensure t

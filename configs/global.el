@@ -64,9 +64,9 @@
 
 (electric-indent-mode t)
 (electric-layout-mode t)
-(electric-pair-mode t)
 
 (defun dont-kill-emacs ()
+  "I always accidenally hit the exit Emacs keybinding. This function handles that problem."
       (interactive)
       (error (substitute-command-keys "To exit emacs: \\[kill-emacs]")))
 (global-set-key "\C-x\C-c" 'dont-kill-emacs)
