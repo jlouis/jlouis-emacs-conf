@@ -99,6 +99,8 @@
   ("C-x C-f" . counsel-find-file)
   ("C-x C-r" . counsel-recentf))
 
+(use-package wgrep
+  :ensure t)
 
 (use-package perspective
   :ensure t
