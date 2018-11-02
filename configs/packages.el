@@ -68,8 +68,8 @@
 
 (use-package avy-zap
   :ensure t
-  :bind (("M-z" . avy-zap-to-char-dwim)
-         ("M-Z" . avy-zap-up-to-char-dwim)))
+  :bind (("M-z" . avy-zap-up-to-char-dwim)
+         ("M-Z" . avy-zap-to-char-dwim)))
 
 (use-package ivy
   :ensure t
