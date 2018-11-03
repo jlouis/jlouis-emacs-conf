@@ -171,6 +171,9 @@
   (define-key company-active-map (kbd "TAB") nil)
   (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
 
+(use-package company-erlang
+  :ensure t)
+
 (use-package counsel
   :ensure t
   :after (ivy)
@@ -415,8 +418,10 @@
   :ensure t)
 
 (use-package erlang-start
+  :after (company-erlang)
   :config
   (add-hook 'erlang-mode-hook #'smartparens-mode)
+  (add-hook 'erlang-mode-hook #'company-erlang-init)
   )
 
 (use-package ess
