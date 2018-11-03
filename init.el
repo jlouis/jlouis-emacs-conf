@@ -88,7 +88,7 @@
 ;; Basic stuff we really need all the time
 (require 'saveplace)
 (require 'ansi-color)
-(require 'use-package)
+
 
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
@@ -104,14 +104,15 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; ----------------------------------------------------------------------
+;; USE-PACKAGE
+
 ;; Things we want to install in the future:
 ;; nix-mode nix-sandbox nix-buffer
 ;; restclient
 ;; edts (Erlang)
 ;;
-
-(eval-when-compile
-  (require 'use-package))
+(require 'use-package)
 
 (use-package emacs
   :delight
@@ -125,41 +126,17 @@
 (use-package material-theme
   :ensure t)
 
+;; Personal configuration package
 (use-package personal
   :demand t)
 
 ;; ------------------------------------------------------------
-;; Window Navigation
+;; General packages
+(use-package abbrev
+  :delight)
 
-(use-package recentf
-  :config
-  (recentf-mode 1))
-
-(use-package tramp
-  :config
-  (setq tramp-default-method "sshx")
-
-  (add-to-list 'tramp-default-method-alist
-	       '("\\`localhost\\'" "\\`root\\'" "su"))
-  (add-to-list 'tramp-default-method-alist '("" "jlouis" "ssh"))
-  (add-to-list 'tramp-default-method-alist '("" "jla" "ssh"))
-  (add-to-list 'tramp-default-method-alist '("" "root" "ssh"))
-
-  (tramp-set-completion-function "ssh"
-			         '((tramp-parse-sconfig "/etc/ssh_config")
-				   (tramp-parse-sconfig "~/.ssh/config"))))
-
-(use-package ffap
-  :bind ("C-c v" . ffap))
-
-(use-package smartparens-config
-  :ensure smartparens
-  :delight
-
-  :commands smartparens-mode)
-
-(use-package flx
-  :ensure t)
+(use-package autorevert
+  :delight auto-revert-mode)
 
 (use-package avy
   :ensure t
@@ -172,21 +149,20 @@
   :bind (("M-z" . avy-zap-up-to-char-dwim)
          ("M-Z" . avy-zap-to-char-dwim)))
 
-(use-package ivy
+(use-package company
   :ensure t
   :delight
 
   :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) "))
+  (setq company-idle-delay 0.5)
+  (setq company-tooltip-limit 10)
+  (setq company-minimum-prefix-length 2)
 
-(use-package swiper
-  :ensure t
-  :after (ivy)
-
-  :bind
-  ("C-s" . swiper))
+  (setq company-tooltip-flip-when-above t)
+  (global-company-mode 1)
+  (define-key company-active-map [tab] nil)
+  (define-key company-active-map (kbd "TAB") nil)
+  (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
 
 (use-package counsel
   :ensure t
@@ -200,36 +176,45 @@
   ("C-x C-f" . counsel-find-file)
   ("C-x C-r" . counsel-recentf))
 
-(use-package wgrep
-  :ensure t)
-
-(use-package perspective
+(use-package delight
   :ensure t
-  :config
-  (persp-mode 1))
 
-;; ------------------------------------------------------------
-;; Generally useful modes
+  :config
+  (delight '((auto-fill-function " AF" t))))
+
+(use-package eldoc
+  :delight eldoc-mode)
 
 (use-package eshell
-  :commands (eshell eshell-command)
-  )
+  :commands (eshell eshell-command))
 
-(use-package powerline
+(use-package expand-region
   :ensure t)
 
-(use-package abbrev
-  :delight)
+(use-package ffap
+  :bind ("C-c v" . ffap))
 
-(use-package autorevert
-  :delight auto-revert-mode)
+(use-package fill-column-indicator
+  :ensure t)
 
-(use-package smex
+(use-package flx
+  :ensure t)
+
+(use-package flycheck
   :ensure t
+  :delight
 
+  :init (global-flycheck-mode)
   :config
-  (setq smex-save-file
-      (concat user-emacs-directory ".smex-items")))
+
+  (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
+
+(use-package flycheck-color-mode-line
+  :ensure t
+  :delight
+
+  :after (flycheck)
+  :hook (flycheck-mode-hook . flycheck-color-mode-line-mode))
 
 (use-package hippie-expand
   :init
@@ -241,6 +226,60 @@
           try-expand-dabbrev-from-kill))
   :bind
   ("M-/" . hippie-expand))
+
+(use-package iedit
+  :ensure t)
+
+(use-package ivy
+  :ensure t
+  :delight
+
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
+
+(use-package magit
+  :ensure t
+  :after (diff-hl)
+
+  :bind
+  ("C-c g" . magit-status)
+
+  :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh)
+  :config
+  (setq-default magit-diff-refine-hunk 1))
+
+(use-package magit-popup
+  :ensure t)
+
+(use-package magit-todos
+  :ensure t
+  :after (magit)
+
+  :config
+  (magit-todos-mode))
+
+(use-package multi-line
+  :ensure t
+
+  :bind
+  ("C-c d" . multi-line))
+
+(use-package perspective
+  :ensure t
+  :config
+  (persp-mode 1))
+
+(use-package powerline
+  :ensure t)
+
+(use-package recentf
+  :config
+  (recentf-mode 1))
+
+(use-package restclient
+  :ensure t)
 
 (use-package smart-mode-line
   :ensure t
@@ -258,29 +297,39 @@
   :config
   (sml/apply-theme 'powerline))
 
-(use-package fill-column-indicator
-  :ensure t)
-
-(use-package whitespace-cleanup-mode
-  :ensure t
+(use-package smartparens-config
+  :ensure smartparens
   :delight
 
-  :hook (after-init-hook . global-whitespace-cleanup-mode))
+  :commands smartparens-mode)
 
-(use-package diff-hl
-  :ensure t
-  :config
-  (global-diff-hl-mode)
-  (diff-hl-flydiff-mode))
-
-(use-package delight
+(use-package smex
   :ensure t
 
   :config
-  (delight '((auto-fill-function " AF" t))))
+  (setq smex-save-file
+      (concat user-emacs-directory ".smex-items")))
 
-(use-package eldoc
-  :delight eldoc-mode)
+(use-package swiper
+  :ensure t
+  :after (ivy)
+
+  :bind
+  ("C-s" . swiper))
+
+(use-package tramp
+  :config
+  (setq tramp-default-method "sshx")
+
+  (add-to-list 'tramp-default-method-alist
+	       '("\\`localhost\\'" "\\`root\\'" "su"))
+  (add-to-list 'tramp-default-method-alist '("" "jlouis" "ssh"))
+  (add-to-list 'tramp-default-method-alist '("" "jla" "ssh"))
+  (add-to-list 'tramp-default-method-alist '("" "root" "ssh"))
+
+  (tramp-set-completion-function "ssh"
+			         '((tramp-parse-sconfig "/etc/ssh_config")
+				   (tramp-parse-sconfig "~/.ssh/config"))))
 
 (use-package uniquify
   :config
@@ -288,6 +337,15 @@
         uniquify-separator "/"
         uniquify-after-kill-buffer-p t
         uniquify-ignore-buffers-re "^\\*"))
+
+(use-package wgrep
+  :ensure t)
+
+(use-package whitespace-cleanup-mode
+  :ensure t
+  :delight
+
+  :hook (after-init-hook . global-whitespace-cleanup-mode))
 
 (use-package yasnippet
   :ensure t
@@ -318,73 +376,6 @@
     ;;(setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))
     ;;(setq yas-verbosity 1)
     (setq yas-wrap-around-region t)))
-
-(use-package company
-  :ensure t
-  :delight
-
-  :config
-  (setq company-idle-delay 0.5)
-  (setq company-tooltip-limit 10)
-  (setq company-minimum-prefix-length 2)
-
-  (setq company-tooltip-flip-when-above t)
-  (global-company-mode 1)
-  (define-key company-active-map [tab] nil)
-  (define-key company-active-map (kbd "TAB") nil)
-  (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
-
-(use-package expand-region
-  :ensure t)
-
-(use-package iedit
-  :ensure t)
-
-(use-package flycheck
-  :ensure t
-  :delight
-
-  :init (global-flycheck-mode)
-  :config
-
-  (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
-
-(use-package flycheck-color-mode-line
-  :ensure t
-  :delight
-
-  :after (flycheck)
-  :hook (flycheck-mode-hook . flycheck-color-mode-line-mode))
-
-(use-package magit
-  :ensure t
-  :after (diff-hl)
-
-  :bind
-  ("C-c g" . magit-status)
-
-  :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh)
-  :config
-  (setq-default magit-diff-refine-hunk 1))
-
-(use-package magit-todos
-  :ensure t
-  :after (magit)
-
-  :config
-  (magit-todos-mode))
-
-(use-package magit-popup
-  :ensure t)
-
-(use-package multi-line
-  :ensure t
-
-  :bind
-  ("C-c d" . multi-line))
-
-(use-package restclient
-  :ensure t)
 
 ;; ------------------------------------------------------------
 ;; File Modes
