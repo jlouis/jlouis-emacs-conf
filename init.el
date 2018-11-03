@@ -283,6 +283,9 @@
   :config
   (magit-todos-mode))
 
+(use-package midnight
+  :bind ("C-c z" . clean-buffer-list))
+
 (use-package multi-line
   :ensure t
 
@@ -554,9 +557,6 @@
 
   ;; widen category field a little
   (setq org-agenda-prefix-format "  %-17:c%?-12t% s") )
-
-;; Awfully simple initializations
-(require 'midnight)
 
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
