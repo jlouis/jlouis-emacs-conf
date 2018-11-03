@@ -76,10 +76,6 @@
 (setq abbrev-file-name (concat emacs-config-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
-;; Basic stuff we really need all the time
-(require 'saveplace)
-(require 'ansi-color)
-
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
@@ -304,6 +300,11 @@
 
 (use-package restclient
   :ensure t)
+
+(use-package saveplace
+  :demand t
+  :config
+  (save-place-mode 1))
 
 (use-package smart-mode-line
   :ensure t
