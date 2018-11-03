@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;; Set up system-specific stuff first.
 
+(defconst emacs-start-time (current-time))
+
 ;;; package.el configuration
 ;;; Code:
 (require 'package)
@@ -114,6 +116,14 @@
 ;;
 (require 'use-package)
 
+(if init-file-debug
+      (setq use-package-verbose t
+            use-package-expand-minimally nil
+            use-package-compute-statistics t
+            debug-on-error t)
+    (setq use-package-verbose nil
+          use-package-expand-minimally t))
+
 (use-package emacs
   :delight
   (visual-line-mode))
@@ -182,6 +192,12 @@
   :config
   (delight '((auto-fill-function " AF" t))))
 
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode))
+
 (use-package eldoc
   :delight eldoc-mode)
 
@@ -246,7 +262,9 @@
   :bind
   ("C-c g" . magit-status)
 
-  :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh)
+  :hook
+  (magit-post-refresh-hook . diff-hl-magit-post-refresh)
+
   :config
   (setq-default magit-diff-refine-hunk 1))
 
@@ -528,5 +546,14 @@
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
 (load-theme 'material)
+
+(add-hook 'after-init-hook
+          `(lambda ()
+             (let ((elapsed
+                    (float-time
+                    (time-subtract (current-time) emacs-start-time))))
+               (message "Loading %s...done (%.3fs)) [after-init]"
+                        ,load-file-name elapsed)))
+          t)
 
 ;;; init.el ends here
