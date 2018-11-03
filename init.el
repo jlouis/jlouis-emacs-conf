@@ -62,17 +62,6 @@
        (set-face-font 'default font))
      "Go Mono"))))
 
-;; Disable lots of stuff which we don't want to have in the setup
-(setq disabled-command-function nil)
-(put 'set-goal-column           'disabled nil)
-(put 'erase-buffer              'disabled nil)
-(put 'downcase-region           'disabled nil)
-(put 'upcase-region             'disabled nil)
-(put 'narrow-to-region          'disabled nil)
-(put 'narrow-to-page            'disabled nil)
-(put 'narrow-to-defun           'disabled nil)
-(put 'dired-find-alternate-file 'disabled nil)
-
 ;; Paths, sir, paths!
 (setq emacs-config-dir (file-name-directory
                         (or (buffer-file-name) load-file-name)))
@@ -90,7 +79,6 @@
 ;; Basic stuff we really need all the time
 (require 'saveplace)
 (require 'ansi-color)
-
 
 (setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
                       load-path))
@@ -138,7 +126,20 @@
 
 ;; Personal configuration package
 (use-package personal
-  :demand t)
+  :demand t
+  :bind
+  (("C-x C-c" . dont-kill-emacs)
+   ("M-g" . goto-line)
+   ("M-'" . jump-to-mark)
+   ("C-'" . push-mark-no-activate)
+   ("C-w" . backward-kill-word)
+   ("C-x C-k" . kill-region)
+   ("C-c C-k" . kill-region)
+   ("C-x C-i" . imenu)
+
+   ("C-c c" . compile)
+   ("C-c j" . join-line)
+   ("C-c |" . align)))
 
 ;; ------------------------------------------------------------
 ;; General packages
@@ -205,7 +206,9 @@
   :commands (eshell eshell-command))
 
 (use-package expand-region
-  :ensure t)
+  :ensure t
+  :bind
+  (("C-=" . er/expand-region)))
 
 (use-package ffap
   :bind ("C-c v" . ffap))
@@ -245,6 +248,9 @@
 
 (use-package iedit
   :ensure t)
+
+(use-package imenu
+  :demand t)
 
 (use-package ivy
   :ensure t
@@ -335,6 +341,9 @@
   :bind
   ("C-s" . swiper))
 
+(use-package thingatpt
+  :demand t)
+
 (use-package tramp
   :config
   (setq tramp-default-method "sshx")
@@ -404,27 +413,13 @@
 (use-package elm-mode
   :ensure t)
 
+(use-package erlang-start
+  :config
+  (add-hook 'erlang-mode-hook #'smartparens-mode)
+  )
+
 (use-package ess
   :ensure t)
-
-(use-package graphql-mode
-  :ensure t
-
-  :config
-  (subword-mode 1))
-
-(use-package idris-mode
-  :ensure t)
-
-(use-package json
-  :ensure t)
-
-(use-package js2-mode
-  :ensure t
-
-  :config
-  (autoload 'js2-mode "js2" nil t)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)) )
 
 (use-package go-mode
   :ensure t
@@ -450,16 +445,27 @@
   :config
   (go-eldoc-setup))
 
+(use-package graphql-mode
+  :ensure t
+
+  :config
+  (subword-mode 1))
+
+(use-package idris-mode
+  :ensure t)
+
+(use-package json
+  :ensure t)
+
+(use-package js2-mode
+  :ensure t
+
+  :config
+  (autoload 'js2-mode "js2" nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)) )
+
 (use-package markdown-mode
   :ensure t)
-
-(use-package tuareg
-  :ensure t)
-
-(use-package erlang-start
-  :config
-  (add-hook 'erlang-mode-hook #'smartparens-mode)
-  )
 
 (use-package merlin
   :ensure t
@@ -476,6 +482,9 @@
       (add-hook 'caml-mode-hook 'merlin-mode t)
       ;; Use opam switch to lookup ocamlmerlin binary
       (setq merlin-command 'opam))) )
+
+(use-package tuareg
+  :ensure t)
 
 ;; ------------------------------------------------------------
 ;; Org
