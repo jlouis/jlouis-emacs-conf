@@ -8,6 +8,11 @@
 ;;; Code:
 (require 'package)
 
+(defvar erlang-root-dir "/usr/local/lib/erlang"
+  "Root directory of the Erlang subsystem.")
+(defvar erlang-tools-version "3.0.1"
+  "Version of the Erlang Tools.")
+
 (dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
                 ("melpa" . "https://melpa.org/packages/")
                 ("tromey" . "http://tromey.com/elpa/")
@@ -15,12 +20,11 @@
   (add-to-list 'package-archives arch))
 
 (package-initialize)
-
 (cond
  ((eq system-type 'gnu/linux)
   (progn
     (setq erlang-root-dir "/home/jlouis/.nix-profile/lib/erlang")
-    (setq tools-ver "3.0.1")
+    (setq erlang-tools-version "3.0.1")
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -31,8 +35,7 @@
      "Go Mono")))
  ((eq system-type 'darwin)
   (progn
-    (setq erlang-root-dir "/usr/local/lib/erlang")
-    (setq tools-ver "3.0.1")
+    (setq erlang-tools-version "3.0.1")
     (setq ocaml-ver "4.05.0")
     (push "/usr/local/bin" exec-path)
     (push "/usr/local/sbin" exec-path)
@@ -76,8 +79,6 @@
 (setq abbrev-file-name (concat emacs-config-dir "abbrev_defs"))
 (defconst *emacs-config-dir* (concat emacs-config-dir "/configs/" ""))
 
-(setq load-path (cons (concat erlang-root-dir "/lib/tools-" tools-ver "/emacs")
-                      load-path))
 (setq exec-path (cons (concat erlang-root-dir "/bin")
                       exec-path))
 
@@ -421,6 +422,8 @@
   :ensure t)
 
 (use-package erlang-start
+  :load-path (lambda ()
+               (concat erlang-root-dir "/lib/tools-" erlang-tools-version "/emacs"))
   :after (company-erlang)
   :config
   (add-hook 'erlang-mode-hook #'smartparens-mode)
