@@ -1,5 +1,19 @@
 ;; init.el --- Initialization file for my Emacs setup
 ;;; Commentary:
+;;;
+;;; One large configuration file
+;;;
+;;; Things to check out:
+;;;
+;;; - phi-search
+;;; - multiple-cursors
+;;; - mc-extras
+;;; - phi-search-mc
+;;; - nix-mode nix-sandbox nix-buffer
+;;; - edts (Erlang)
+;;; - winner
+;;; 
+
 ;; Set up system-specific stuff first.
 
 (defconst emacs-start-time (current-time))
@@ -94,11 +108,6 @@
 ;; ----------------------------------------------------------------------
 ;; USE-PACKAGE
 
-;; Things we want to install in the future:
-;; nix-mode nix-sandbox nix-buffer
-;; restclient
-;; edts (Erlang)
-;;
 (require 'use-package)
 
 (if init-file-debug
@@ -143,6 +152,9 @@
 (use-package abbrev
   :delight)
 
+(use-package align
+  :defer 5)
+
 (use-package autorevert
   :delight auto-revert-mode)
 
@@ -156,6 +168,10 @@
   :ensure t
   :bind (("M-z" . avy-zap-up-to-char-dwim)
          ("M-Z" . avy-zap-to-char-dwim)))
+
+(use-package change-inner
+  :bind (("M-i" . change-inner)
+         ("M-o M-o" . change-outer)))
 
 (use-package company
   :ensure t
@@ -184,6 +200,7 @@
   ("C-c C-r" . ivy-resume)
   ("C-c f" . counsel-git)
   ("M-x" . counsel-M-x)
+  ("M-s f" . counsel-file-jump)
   ("C-x C-f" . counsel-find-file)
   ("C-x C-r" . counsel-recentf))
 
@@ -306,6 +323,7 @@
   (recentf-mode 1))
 
 (use-package restclient
+  :mode ("\\.rest\\'" . restclient-mode)
   :ensure t)
 
 (use-package saveplace
@@ -415,6 +433,9 @@
 ;; ------------------------------------------------------------
 ;; File Modes
 
+(use-package csv-mode
+  :mode "\\.csv\\'")
+
 (use-package dockerfile-mode
   :ensure t)
 
@@ -427,8 +448,7 @@
   :after (company-erlang)
   :config
   (add-hook 'erlang-mode-hook #'smartparens-mode)
-  (add-hook 'erlang-mode-hook #'company-erlang-init)
-  )
+  (add-hook 'erlang-mode-hook #'company-erlang-init))
 
 (use-package ess
   :ensure t)
