@@ -189,7 +189,10 @@
   (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
 
 (use-package company-erlang
-  :ensure t)
+  ;; Will call up a file-search dialog if it cannot find the project
+  ;; I really dislike this as it has interfered with my general workflow
+  ;; more than once, so it is disabled for now
+  :disabled t)
 
 (use-package counsel
   :ensure t
