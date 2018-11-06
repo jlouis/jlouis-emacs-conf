@@ -484,6 +484,7 @@
   :ensure t
 
   :config
+  (setq graphql-indent-level 4)
   (subword-mode 1))
 
 (use-package idris-mode
