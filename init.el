@@ -170,6 +170,7 @@
          ("M-Z" . avy-zap-to-char-dwim)))
 
 (use-package change-inner
+  :ensure t
   :bind (("M-i" . change-inner)
          ("M-o M-o" . change-outer)))
 
