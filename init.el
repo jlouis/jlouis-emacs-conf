@@ -145,7 +145,10 @@
 
    ("C-c c" . compile)
    ("C-c j" . join-line)
-   ("C-c |" . align)))
+   ("C-c |" . align))
+
+  :config
+  (setq compilation-skip-threshold 2))
 
 ;; ------------------------------------------------------------
 ;; General packages
