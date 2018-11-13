@@ -148,7 +148,8 @@
    ("C-c |" . align))
 
   :config
-  (setq compilation-skip-threshold 2))
+  (setq compilation-skip-threshold 2)
+  (delete-selection-mode 1))
 
 ;; ------------------------------------------------------------
 ;; General packages
