@@ -454,10 +454,8 @@
 (use-package erlang-start
   :load-path (lambda ()
                (concat erlang-root-dir "/lib/tools-" erlang-tools-version "/emacs"))
-  :after (company-erlang)
   :config
-  (add-hook 'erlang-mode-hook #'smartparens-mode)
-  (add-hook 'erlang-mode-hook #'company-erlang-init))
+  (add-hook 'erlang-mode-hook #'smartparens-mode))
 
 (use-package ess
   :ensure t)
