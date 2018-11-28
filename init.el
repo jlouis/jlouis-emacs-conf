@@ -18,22 +18,19 @@
 
 (defconst emacs-start-time (current-time))
 
-;;; package.el configuration
-;;; Code:
-(require 'package)
-
 (defvar erlang-root-dir "/usr/local/lib/erlang"
   "Root directory of the Erlang subsystem.")
 (defvar erlang-tools-version "3.0.1"
   "Version of the Erlang Tools.")
 
-(dolist (arch '(("gnu" . "http://elpa.gnu.org/packages/")
-                ("melpa" . "https://melpa.org/packages/")
-                ("tromey" . "http://tromey.com/elpa/")
-                ))
-  (add-to-list 'package-archives arch))
-
+;;; package.el configuration
+;;; Code:
+(require 'package)
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
+
 (cond
  ((eq system-type 'gnu/linux)
   (progn
