@@ -5,6 +5,7 @@
 ;;;
 ;;; Things to check out:
 ;;;
+;;; - nyyManni/ejira
 ;;; - nix-mode nix-sandbox nix-buffer
 ;;; - edts (Erlang)
 ;;; - winner
