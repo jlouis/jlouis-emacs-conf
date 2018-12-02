@@ -151,10 +151,7 @@
    ("C-c c" . compile)
    ("C-c j" . join-line)
    ("C-c |" . align))
-
-  :config
-  (setq compilation-skip-threshold 2)
-  (delete-selection-mode 1))
+)
 
 ;; ------------------------------------------------------------
 ;; General packages
@@ -442,6 +439,17 @@
   :ensure t
   :demand t
   :delight selected-minor-mode
+  :bind (:map selected-keymap
+              ("q" . selected-off)
+              ("[" . align-code)
+              ("f" . fill-region)
+              ("U" . unfill-region)
+              ("d" . downcase-region)
+              ("u" . upcase-region)
+              ("r" . reverse-region)
+              ("k" . kill-region)
+              ("s" . sort-lines))
+
   :config
   (selected-global-mode 1))
 
