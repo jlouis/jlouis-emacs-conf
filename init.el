@@ -170,8 +170,7 @@
   :bind* (("C-." . avy-goto-char-timer)
           ("C-'" . avy-goto-char))
   :config
-  (avy-setup-default)
-  (setq avy-timeout-seconds 0.35))
+  (avy-setup-default))
 
 (use-package avy-zap
   :ensure t
