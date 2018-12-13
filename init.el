@@ -441,7 +441,6 @@
   :delight selected-minor-mode
   :bind (:map selected-keymap
               ("q" . selected-off)
-              ("[" . align-code)
               ("f" . fill-region)
               ("U" . unfill-region)
               ("d" . downcase-region)
