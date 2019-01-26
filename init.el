@@ -100,18 +100,6 @@
   (package-install 'use-package))
 
 ;; ----------------------------------------------------------------------
-;; Keymaps
-
-(define-key input-decode-map [?\C-m] [C-m])
-
-(eval-and-compile
-  (mapc #'(lambda (entry)
-            (define-prefix-command (cdr entry))
-            (bind-key (car entry) (cdr entry)))
-        '(("<C-m>" . my-ctrl-m-map)
-          )))
-
-;; ----------------------------------------------------------------------
 ;; USE-PACKAGE
 
 (require 'use-package)
@@ -124,6 +112,21 @@
     (setq use-package-verbose nil
           use-package-expand-minimally t))
 
+;; ----------------------------------------------------------------------
+;; Keymaps
+
+(define-key input-decode-map [?\C-m] [C-m])
+
+(eval-and-compile
+  (mapc #'(lambda (entry)
+            (define-prefix-command (cdr entry))
+            (bind-key (car entry) (cdr entry)))
+        '(("<C-m>" . my-ctrl-m-map)
+          )))
+
+;; ----------------------------------------------------------------------
+;; Packages
+
 (use-package emacs
   :delight
   (visual-line-mode))
@@ -134,6 +137,9 @@
   :hook (after-init . server-start))
 
 (use-package material-theme
+  :ensure t)
+
+(use-package zenburn-theme
   :ensure t)
 
 ;; Personal configuration package
@@ -633,6 +639,9 @@
 (use-package markdown-mode
   :ensure t)
 
+(use-package tuareg
+  :ensure t)
+
 (use-package merlin
   :ensure t
   :after (tuareg)
@@ -648,9 +657,6 @@
       (add-hook 'caml-mode-hook 'merlin-mode t)
       ;; Use opam switch to lookup ocamlmerlin binary
       (setq merlin-command 'opam))) )
-
-(use-package tuareg
-  :ensure t)
 
 ;; ------------------------------------------------------------
 ;; Org
@@ -717,7 +723,7 @@
 
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
-(load-theme 'material)
+(load-theme 'zenburn)
 
 (add-hook 'after-init-hook
           `(lambda ()
