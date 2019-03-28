@@ -178,11 +178,6 @@
   :config
   (avy-setup-default))
 
-(use-package avy-zap
-  :ensure t
-  :bind (("M-z" . avy-zap-up-to-char-dwim)
-         ("M-Z" . avy-zap-to-char-dwim)))
-
 (use-package change-inner
   :ensure t
   :bind (("M-i" . change-inner)
