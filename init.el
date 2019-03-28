@@ -256,6 +256,7 @@
 
 (use-package flycheck
   :ensure t
+  :disabled t
   :delight
 
   :init (global-flycheck-mode)
@@ -265,6 +266,7 @@
 
 (use-package flycheck-color-mode-line
   :ensure t
+  :disabled t
   :delight
 
   :after (flycheck)
@@ -638,6 +640,10 @@
 
 (use-package markdown-mode
   :ensure t)
+
+(use-package yaml-mode
+  :defer 5
+  )
 
 (use-package tuareg
   :ensure t)
