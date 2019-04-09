@@ -71,7 +71,7 @@
                            :height 160
                            :weight 'normal)
        (set-face-font 'default font))
-     "Go Mono"))))
+     "Fira Mono"))))
 
 ;; Paths, sir, paths!
 (setq emacs-config-dir (file-name-directory
