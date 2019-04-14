@@ -38,9 +38,10 @@
        (set-face-attribute 'default nil
                            :font font
                            :height 140
-                           :weight 'normal)
+                           :weight 'medium
+                           :width 'normal)
        (set-face-font 'default font))
-     "Go Mono")))
+     "Fira Code")))
  ((eq system-type 'darwin)
   (progn
     (setq erlang-tools-version "3.0.1")
