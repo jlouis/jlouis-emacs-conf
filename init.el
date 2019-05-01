@@ -592,24 +592,37 @@
 
 (use-package go-mode
   :ensure t
-  ;; go get -u github.com/x/tools/cmd/...
+  :after company-go
+  ;; go get -u golang.org/x/tools/cmd/...
   ;; go get -u github.com/rogpeppe/godef/...
   ;; go get -u github.com/nsf/gocode
   ;; go get -u golang.org/x/tools/cmd/goimports
   ;; go get -u golang.org/x/tools/cmd/guru
   ;; go get -u github.com/dougm/goflymake
 
-  :hook (before-save-hook . gofmt-before-save)
+  :bind (("M-." . godef-jump)
+         ("M-*" . pop-tag-mark))
   :config
-  (setq-local compile-command "go build -v && go test -v && go vet")
-  (set
-   (make-local-variable 'company-backends)
-   '(company-go))
-  (subword-mode 1)
-  (setq gofmt-command "goimports"))
+  (defun jlouis/go-mode-hook ()
+    ;; Call Gofmt before saving
+    (add-hook 'before-save-hook 'gofmt-before-save)
+    ;; Customize compile command to run go build
+    (if (not (string-match "go" compile-command))
+        (set (make-local-variable 'compile-command)
+             "go build -v && go test -v && go vet"))
+    ;; Company Go backend
+    (set (make-local-variable 'company-backends) '(company-go)))
+  (progn
+    (add-hook 'go-mode-hook 'jlouis/go-mode-hook)
+    (subword-mode 1)
+    (setq gofmt-command "goimports")))
+
+(use-package company-go
+  :ensure t)
 
 (use-package go-eldoc
   :ensure t
+  :after go-mode
 
   :config
   (go-eldoc-setup))
