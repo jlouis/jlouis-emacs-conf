@@ -65,6 +65,8 @@
                     "/usr/texbin:" (getenv "PATH")))
     (setenv "ERL_LIBS"
             (concat "/Users/jesperlouisandersen/lib/erlang"))
+    (set-fontset-font "fontset-default" nil
+                  (font-spec :size 20 :name "DejaVu Sans"))
     ((lambda (font)
        (set-frame-font font)
        (set-face-attribute 'default nil
@@ -72,7 +74,7 @@
                            :height 160
                            :weight 'normal)
        (set-face-font 'default font))
-     "Fira Mono"))))
+     "Go Mono"))))
 
 ;; Paths, sir, paths!
 (setq emacs-config-dir (file-name-directory
@@ -604,6 +606,8 @@
          ("M-*" . pop-tag-mark))
   :config
   (defun jlouis/go-mode-hook ()
+    (setq indent-tabs-mode 1)
+    (setq tab-width 4)
     ;; Call Gofmt before saving
     (add-hook 'before-save-hook 'gofmt-before-save)
     ;; Customize compile command to run go build
