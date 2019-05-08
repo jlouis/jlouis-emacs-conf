@@ -41,7 +41,7 @@
                            :weight 'medium
                            :width 'normal)
        (set-face-font 'default font))
-     "Fira Code")))
+     "Fira Code Retina")))
  ((eq system-type 'darwin)
   (progn
     (setq erlang-tools-version "3.0.1")

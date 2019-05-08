@@ -206,4 +206,7 @@
 
 (defalias 'auto-tail-revert-mode 'tail-mode)
 
+;; Some font setup for fallbacks
+(set-fontset-font "fontset-default" 'unicode "DejaVu Sans")
+
 (provide 'personal)
