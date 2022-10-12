@@ -37,11 +37,11 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 140
+                           :height 120
                            :weight 'medium
                            :width 'normal)
        (set-face-font 'default font))
-     "Fira Code Retina")))
+     "Noto Sans Mono")))
  ((eq system-type 'darwin)
   (progn
     (setq erlang-tools-version "3.0.1")
@@ -142,9 +142,6 @@
 (use-package material-theme
   :ensure t)
 
-(use-package zenburn-theme
-  :ensure t)
-
 ;; Personal configuration package
 (use-package personal
   :demand t
@@ -191,15 +188,12 @@
   :delight
 
   :config
-  (setq company-idle-delay 0.5)
+  (setq company-idle-delay 0.2)
   (setq company-tooltip-limit 10)
   (setq company-minimum-prefix-length 2)
 
   (setq company-tooltip-flip-when-above t)
-  (global-company-mode 1)
-  (define-key company-active-map [tab] nil)
-  (define-key company-active-map (kbd "TAB") nil)
-  (define-key company-active-map (kbd "C-w") 'backward-kill-word) )
+  (global-company-mode 1))
 
 (use-package company-erlang
   ;; Will call up a file-search dialog if it cannot find the project
@@ -411,6 +405,7 @@
 
 (use-package perspective
   :ensure t
+  :disabled t
   :config
   (persp-mode 1))
 
@@ -583,11 +578,11 @@
 (use-package elm-mode
   :ensure t)
 
-(use-package erlang-start
-  :load-path (lambda ()
-               (concat erlang-root-dir "/lib/tools-" erlang-tools-version "/emacs"))
-  :config
-  (add-hook 'erlang-mode-hook #'smartparens-mode))
+;(use-package erlang-start
+;  :load-path (lambda ()
+;               (concat erlang-root-dir "/lib/tools-" erlang-tools-version "/emacs"))
+;  :config
+;  (add-hook 'erlang-mode-hook #'smartparens-mode))
 
 (use-package ess
   :ensure t)
@@ -654,6 +649,9 @@
 (use-package markdown-mode
   :ensure t)
 
+(use-package nix-mode
+  :ensure t)
+
 (use-package yaml-mode
   :defer 5
   )
@@ -681,29 +679,33 @@
 ;; Org
 (use-package org
   :ensure t
-
-  :bind
-  ("C-c l" . org-store-link)
-  ("C-c a" . org-agenda)
-  ("C-c n" . org-iswitchb)
-  ("C-c s" . org-capture)
+ 
+  :bind* (("C-c S" . org-store-link)
+          ("C-c l" . org-insert-link)
+          ("C-c a" . org-agenda)
+          ("C-c n" . org-iswitchb)
+          ("C-c s" . org-capture))
 
   :config
   (add-to-list 'auto-mode-alist '("\\.org$'" . org-mode))
   (setq org-directory "~/org")
   (setq org-agenda-files '("~/org"))
-  (setq org-default-notes-file (concat org-directory "/todo.org"))
-
-  (setq org-todo-keywords '((type "TODO" "NEXT" "WAITING" "DONE")))
-
-  ;; #+SEQ_TODO: TODO | DONE
-  ;; #+SEQ_TODO: REPORT BUG KNOWNCAUSE | FIXED
-  ;; #+SEQ_TODO: | CANCELLED
+  (setq org-agenda-ndays 7)
+  (setq org-deadline-warning-days 14)
+  (setq org-agenda-show-all t)
+  (setq org-agenda-skip-deadline-if-done t)
+  (setq org-agenda-skip-scheduled-if-done t)
+  (setq org-agenda-start-on-weekday nil)
+  (setq org-reverse-note-order t)
+  (setq org-fast-tag-selection-single-key (quote expert))
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
 
   (setq org-agenda-custom-commands
-        '(("w" todo "WAITING" nil)
-          ("n" todo "NEXT" nil)
-          ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
+        (quote (("d" todo "DELEGATED" nil)
+                ("c" todo "DONE|DEFERRED|CANCELED" nil)
+                ("w" todo "WAITING" nil)
+                ("n" todo "NEXT" nil)
+                ("A" "Agenda + Next Actions" ((agenda) (todo "NEXT"))))))
 
   (setq org-archive-location "%s_archive::")
 
@@ -716,13 +718,11 @@
   (setq org-refile-targets '((org-agenda-files :level . 1)))
 
   (setq org-capture-templates
-        '(("i" "Inbox" entry (file+headline "inbox.org" "Tasks")
-           "* TODO %?\n  %i\n  %a")
-          ("j" "Journal" entry (file+datetree "journal.org")
-           "* %?\nEntered on %U\n  %i\n  %a")
-          ("k" "Kwotes" item (file+headline "quotes.org")
-           "Unsorted Quotes")))
-
+        '(("i" "Inbox" entry (file+olp "inbox.org" "Tasks")
+           "* TODO %?\n  %i\n  %u\n  %a\n")
+          ("j" "Journal" entry (file+olp "journal.org" "Notes")
+           "* %?\nEntered on %U\n  %i\n  %a")))
+  
   (setq org-return-follows-link t)
   (setq org-hide-leading-stars t)
   (setf org-tags-column -65)
@@ -740,9 +740,10 @@
   ;; widen category field a little
   (setq org-agenda-prefix-format "  %-17:c%?-12t% s") )
 
+
 ;; Get our custom configuration loaded
 (load custom-file 'noerror)
-(load-theme 'zenburn)
+(load-theme 'material)
 
 (add-hook 'after-init-hook
           `(lambda ()
@@ -754,3 +755,6 @@
           t)
 
 ;;; init.el ends here
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line
